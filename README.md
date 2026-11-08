@@ -20,9 +20,10 @@ Inicio: Go 1.26.5, Node 22.22.0 y pnpm 10.13.1. Ejecutar `pnpm install --frozen-
 `pnpm exec lefthook install` y `pnpm verify`. Para Compose, completar `.env.example` como
 `.env` y acordar los puertos 51N0/51N1. No asumir N=5.
 
-No hay todavía enlaces a una ejecución remota ni a un Quality Gate verificados. Se agregarán
-al ejecutar GitHub Actions y revisar SonarQube Cloud; no se presenta una URL genérica como
-evidencia de aprobación.
+[PR #1 en borrador](https://github.com/danieldiaz77-LAB/pingeso-grupo5/pull/1) y
+[primera ejecución de Actions](https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42489503785): calidad y seguridad fallaron; imagen fue omitido.
+El [análisis Sonar del PR](https://sonarcloud.io/dashboard?id=danieldiaz77-LAB_pingeso-grupo5&pullRequest=1) leyó los reportes y rechazó el gate por cobertura nueva
+72,5% (mínimo 80%) y un hallazgo S6549 en el servidor SPA. El hito sigue abierto.
 
 [Proyecto SonarQube Cloud verificado](https://sonarcloud.io/project/overview?id=danieldiaz77-LAB_pingeso-grupo5).
 Su existencia no acredita aún un análisis aprobado.

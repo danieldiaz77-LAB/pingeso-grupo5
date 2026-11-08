@@ -24,7 +24,8 @@ Pendientes:
 
 - Aprobar y aplicar las actualizaciones de seguridad documentadas y repetir los controles.
 - Resolver los hallazgos de Trivy y govulncheck.
-- Ejecutar el análisis remoto de SonarQube y comprobar el Quality Gate. Se conserva 80% de
+- Resolver el hallazgo S6549 del servidor SPA y elevar la cobertura nueva medida por Sonar
+  (72,5%) hasta aprobar el Quality Gate. Se conserva 80% de
   cobertura; duplicación <=3% permite el límite que el DAS <3% prohíbe. No se cambió el gate.
   New Code, Automatic Analysis y cambios pequeños requieren comprobación separada.
 - Validar el arranque completo con `docker compose up`.
@@ -38,3 +39,14 @@ cumplimiento del Quality Gate. No se solicita revisión formal todavía.
 Evidencias: [validación local](https://github.com/danieldiaz77-LAB/pingeso-grupo5/blob/feat/pipeline-hito0/docs/evidencias/validacion-local.md),
 [actualizaciones propuestas](https://github.com/danieldiaz77-LAB/pingeso-grupo5/blob/feat/pipeline-hito0/docs/actualizaciones-pendientes.md)
 y [comparación Sonar/DAS](https://github.com/danieldiaz77-LAB/pingeso-grupo5/blob/feat/pipeline-hito0/docs/sonar-das.md).
+
+Resultado de la primera ejecución remota (commit `0f5d93a0eafdea8e2281e53e4abfd69488db9a99`):
+
+- `calidad`: **fallido** en Quality Gate. Verify, contrato, mutación, e2e PostgreSQL,
+  navegador y scanner Sonar pasaron. Sonar leyó cobertura Go y LCOV; fallaron cobertura
+  nueva 72,5% <80% y security rating C >A, con S6549 en `apps/api/internal/spa/servidor.go:43`.
+- `seguridad`: **fallido** por govulncheck, audit y Trivy. Gitleaks y Hadolint pasaron.
+- `imagen`: **omitido**, porque requiere calidad y seguridad exitosos; las construcciones
+  y escaneos locales anteriores se mantienen como evidencia independiente.
+
+[Ejecución comprobada](https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42489503785) · [Sonar del PR](https://sonarcloud.io/dashboard?id=danieldiaz77-LAB_pingeso-grupo5&pullRequest=1).
