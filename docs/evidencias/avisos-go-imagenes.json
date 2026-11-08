@@ -1,0 +1,1263 @@
+[
+  {
+    "url": "https://vuln.go.dev/ID/GO-2025-3487.json",
+    "id": "GO-2025-3487",
+    "aliases": ["CVE-2025-22869"],
+    "summary": "Potential denial of service in golang.org/x/crypto",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.35.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2025-3553.json",
+    "id": "GO-2025-3553",
+    "aliases": ["CVE-2025-30204", "GHSA-mh63-6h87-95cp"],
+    "summary": "Excessive memory allocation during header parsing in github.com/golang-jwt/jwt",
+    "affected": [
+      {
+        "package": {
+          "name": "github.com/golang-jwt/jwt",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "package": {
+          "name": "github.com/golang-jwt/jwt/v4",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.5.2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "package": {
+          "name": "github.com/golang-jwt/jwt/v5",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "5.0.0-rc.1"
+              },
+              {
+                "fixed": "5.2.2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2025-4116.json",
+    "id": "GO-2025-4116",
+    "aliases": ["CVE-2025-47913"],
+    "summary": "Potential denial of service in golang.org/x/crypto/ssh/agent",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.43.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-4762.json",
+    "id": "GO-2026-4762",
+    "aliases": ["CVE-2026-33186", "GHSA-p77j-4mvh-x3m3"],
+    "summary": "Authorization bypass in gRPC-Go via missing leading slash in :path in google.golang.org/grpc",
+    "affected": [
+      {
+        "package": {
+          "name": "google.golang.org/grpc",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.79.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-4771.json",
+    "id": "GO-2026-4771",
+    "aliases": ["CVE-2026-33815", "GHSA-xgrm-4fwx-7qm8"],
+    "summary": "CVE-2026-33815 in github.com/jackc/pgx",
+    "affected": [
+      {
+        "package": {
+          "name": "github.com/jackc/pgx/v5",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "5.9.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-4772.json",
+    "id": "GO-2026-4772",
+    "aliases": ["CVE-2026-33816", "GHSA-9jj7-4m8r-rfcm"],
+    "summary": "CVE-2026-33816 in github.com/jackc/pgx",
+    "affected": [
+      {
+        "package": {
+          "name": "github.com/jackc/pgx/v5",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "5.9.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-4918.json",
+    "id": "GO-2026-4918",
+    "aliases": ["CVE-2026-33814"],
+    "summary": "Infinite loop in HTTP/2 transport when given bad SETTINGS_MAX_FRAME_SIZE in net/http/internal/http2 in golang.org/x/net",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/net",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.53.0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.10"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5006.json",
+    "id": "GO-2026-5006",
+    "aliases": ["CVE-2026-39832", "GHSA-f5wc-c3c7-36mc"],
+    "summary": "Invoking agent constraints dropped when forwarding keys in golang.org/x/crypto/ssh/agent",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5013.json",
+    "id": "GO-2026-5013",
+    "aliases": ["CVE-2026-46597"],
+    "summary": "Invoking byte arithmetic causes underflow and panic in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5014.json",
+    "id": "GO-2026-5014",
+    "aliases": ["CVE-2026-39828"],
+    "summary": "Invoking bypass of certificate restrictions in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5015.json",
+    "id": "GO-2026-5015",
+    "aliases": ["CVE-2026-39835"],
+    "summary": "Invoking server panic during CheckHostKey/Authenticate in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5017.json",
+    "id": "GO-2026-5017",
+    "aliases": ["CVE-2026-39830"],
+    "summary": "Invoking client can cause server deadlock on unexpected responses in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5018.json",
+    "id": "GO-2026-5018",
+    "aliases": ["CVE-2026-39829"],
+    "summary": "Invoking pathological RSA/DSA parameters may cause DoS in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5019.json",
+    "id": "GO-2026-5019",
+    "aliases": ["CVE-2026-39831"],
+    "summary": "Invoking bypass of FIDO/U2F security keys physical interaction in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5021.json",
+    "id": "GO-2026-5021",
+    "aliases": ["CVE-2026-42508", "GHSA-5cgq-3rg8-m6cv"],
+    "summary": "Invoking auth bypass via unenforced @revoked status in golang.org/x/crypto/ssh/knownhosts",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5023.json",
+    "id": "GO-2026-5023",
+    "aliases": ["CVE-2026-46595"],
+    "summary": "Invoking VerifiedPublicKeyCallback permissions skip enforcement in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.52.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5026.json",
+    "id": "GO-2026-5026",
+    "aliases": ["CVE-2026-39821"],
+    "summary": "Invoking failure to reject ASCII-only Punycode-encoded labels in golang.org/x/net/idna",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.13"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "package": {
+          "name": "golang.org/x/net",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.55.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5029.json",
+    "id": "GO-2026-5029",
+    "aliases": ["CVE-2026-25681"],
+    "summary": "Invoking incorrect handling of character references in DOCTYPE nodes in golang.org/x/net/html",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/net",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.55.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5030.json",
+    "id": "GO-2026-5030",
+    "aliases": ["CVE-2026-27136"],
+    "summary": "Invoking duplicate attributes can cause XSS in golang.org/x/net/html",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/net",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.55.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5942.json",
+    "id": "GO-2026-5942",
+    "aliases": ["CVE-2026-46600"],
+    "summary": "Parsing an invalid SVCB or HTTPS RR can panic in golang.org/x/net/dns/dnsmessage",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "package": {
+          "name": "golang.org/x/net",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.56.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5970.json",
+    "id": "GO-2026-5970",
+    "aliases": ["CVE-2026-56852"],
+    "summary": "Infinite loop on invalid input in golang.org/x/text",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/text",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.39.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-5972.json",
+    "id": "GO-2026-5972",
+    "aliases": ["CVE-2026-33818"],
+    "summary": "Enforce maximum recursion depth in encoding/asn1",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.13"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6061.json",
+    "id": "GO-2026-6061",
+    "aliases": ["GHSA-hrxh-6v49-42gf"],
+    "summary": "Vulnerabilities in the xDS RBAC authorization engine and the HTTP/2 transport server implementation in google.golang.org/grpc",
+    "affected": [
+      {
+        "package": {
+          "name": "google.golang.org/grpc",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.82.1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6088.json",
+    "id": "GO-2026-6088",
+    "aliases": ["CVE-2026-56859"],
+    "summary": "Add recursion depth guard during decode in encoding/xml",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.13"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6089.json",
+    "id": "GO-2026-6089",
+    "aliases": ["CVE-2026-56853"],
+    "summary": "Apply ReadHeaderTimeout when doing unencrypted HTTP/2 check in net/http",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.13"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6090.json",
+    "id": "GO-2026-6090",
+    "aliases": ["CVE-2026-56862"],
+    "summary": "Limit handshake messages we are willing to accept post-handshake in crypto/tls",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.13"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6091.json",
+    "id": "GO-2026-6091",
+    "aliases": ["CVE-2026-56858"],
+    "summary": "Fix Javascript regexp context tracking in html/template",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.13"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6218.json",
+    "id": "GO-2026-6218",
+    "aliases": ["CVE-2026-56860"],
+    "summary": "Avoid quadratic complexity in resolvePath in net/url",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.25.13"
+              },
+              {
+                "introduced": "1.26.0-0"
+              },
+              {
+                "fixed": "1.26.6"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.0-rc.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6303.json",
+    "id": "GO-2026-6303",
+    "aliases": ["CVE-2026-56854"],
+    "summary": "Source-address critical option not enforced for non-public-key auth callbacks in golang.org/x/crypto/ssh",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/crypto",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.55.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6348.json",
+    "id": "GO-2026-6348",
+    "aliases": ["CVE-2026-84304", "GHSA-vp52-pcj8-j9qc"],
+    "summary": "Heap Memory Exhaustion (OOM) via HTTP/2 DATA Frame Fragmentation in google.golang.org/grpc",
+    "affected": [
+      {
+        "package": {
+          "name": "google.golang.org/grpc",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.83.1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6443.json",
+    "id": "GO-2026-6443",
+    "aliases": ["CVE-2026-84445", "GHSA-2v4p-qf9q-27wj"],
+    "summary": "Server panic via missing authority or Host headers in google.golang.org/grpc",
+    "affected": [
+      {
+        "package": {
+          "name": "google.golang.org/grpc",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.82.2"
+              },
+              {
+                "introduced": "1.83.0"
+              },
+              {
+                "fixed": "1.83.2"
+              },
+              {
+                "introduced": "1.84.0-dev"
+              },
+              {
+                "fixed": "1.84.0-dev.0.20260825144003-d5a41119e0e3"
+              },
+              {
+                "introduced": "1.85.0-dev"
+              },
+              {
+                "fixed": "1.85.0-dev.0.20260825072537-93e31b48545e"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6607.json",
+    "id": "GO-2026-6607",
+    "aliases": ["CVE-2026-97031"],
+    "summary": "Reject malformed ECH outer extension references in crypto/tls",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.26.9"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6609.json",
+    "id": "GO-2026-6609",
+    "aliases": ["CVE-2026-78667"],
+    "summary": "Lack of limit on size of parsed Range headers in net/http",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.26.9"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6611.json",
+    "id": "GO-2026-6611",
+    "aliases": ["CVE-2026-78669"],
+    "summary": "Excessive CPU consumption from repeated initial window changes in net/http",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.26.9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "package": {
+          "name": "golang.org/x/net",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.60.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6629.json",
+    "id": "GO-2026-6629",
+    "aliases": ["CVE-2026-56851"],
+    "summary": "Panic parsing crafted input in x/text/secure/precis in golang.org/x/text",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/text",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.41.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6809.json",
+    "id": "GO-2026-6809",
+    "aliases": ["CVE-2026-111943"],
+    "summary": "Distrust compromised intermediate certificates in crypto/x509",
+    "affected": [
+      {
+        "package": {
+          "name": "stdlib",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "1.26.10"
+              },
+              {
+                "introduced": "1.27.0-0"
+              },
+              {
+                "fixed": "1.27.3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://vuln.go.dev/ID/GO-2026-6860.json",
+    "id": "GO-2026-6860",
+    "aliases": ["CVE-2026-78661"],
+    "summary": "Avoid quadratic complexity when coalescing text nodes in html in golang.org/x/net",
+    "affected": [
+      {
+        "package": {
+          "name": "golang.org/x/net",
+          "ecosystem": "Go"
+        },
+        "ranges": [
+          {
+            "type": "SEMVER",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0.62.0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

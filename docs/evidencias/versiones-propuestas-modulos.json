@@ -1,0 +1,114 @@
+[
+  {
+    "modulo": "github.com/golang-jwt/jwt/v4",
+    "version": "v4.5.2",
+    "url": "https://proxy.golang.org/github.com/golang-jwt/jwt/v4/@v/v4.5.2.info",
+    "publicada": {
+      "Version": "v4.5.2",
+      "Time": "2025-03-21T20:49:30Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://github.com/golang-jwt/jwt",
+        "Hash": "2f0e9add62078527821828c76865661aa7718a84",
+        "Ref": "refs/tags/v4.5.2"
+      }
+    },
+    "go_minimo": "go 1.16"
+  },
+  {
+    "modulo": "github.com/jackc/pgx/v5",
+    "version": "v5.9.0",
+    "url": "https://proxy.golang.org/github.com/jackc/pgx/v5/@v/v5.9.0.info",
+    "publicada": {
+      "Version": "v5.9.0",
+      "Time": "2026-03-21T17:28:41Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://github.com/jackc/pgx",
+        "Hash": "b4d8e62b6616d0c09c5021500363de0c56e01631",
+        "Ref": "refs/tags/v5.9.0"
+      }
+    },
+    "go_minimo": "go 1.25.0"
+  },
+  {
+    "modulo": "github.com/klauspost/compress",
+    "version": "v1.18.7",
+    "url": "https://proxy.golang.org/github.com/klauspost/compress/@v/v1.18.7.info",
+    "publicada": {
+      "Version": "v1.18.7",
+      "Time": "2026-06-30T09:38:05Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://github.com/klauspost/compress",
+        "Hash": "8668e357e776d5152ed62f33c17f21b8690664fa",
+        "Ref": "refs/tags/v1.18.7"
+      }
+    },
+    "go_minimo": "go 1.24"
+  },
+  {
+    "modulo": "golang.org/x/crypto",
+    "version": "v0.55.0",
+    "url": "https://proxy.golang.org/golang.org/x/crypto/@v/v0.55.0.info",
+    "publicada": {
+      "Version": "v0.55.0",
+      "Time": "2026-08-11T17:56:31Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://go.googlesource.com/crypto",
+        "Hash": "f44d03d253a1503e51b059ca880867c51d878242",
+        "Ref": "refs/heads/master"
+      }
+    },
+    "go_minimo": "go 1.25.0"
+  },
+  {
+    "modulo": "golang.org/x/net",
+    "version": "v0.62.0",
+    "url": "https://proxy.golang.org/golang.org/x/net/@v/v0.62.0.info",
+    "publicada": {
+      "Version": "v0.62.0",
+      "Time": "2026-10-27T19:00:16Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://go.googlesource.com/net",
+        "Hash": "3de643db506517b3e652a13cc0b56034cea6b8e6",
+        "Ref": "refs/tags/v0.62.0"
+      }
+    },
+    "go_minimo": "go 1.26.0"
+  },
+  {
+    "modulo": "golang.org/x/text",
+    "version": "v0.41.0",
+    "url": "https://proxy.golang.org/golang.org/x/text/@v/v0.41.0.info",
+    "publicada": {
+      "Version": "v0.41.0",
+      "Time": "2026-08-11T15:22:47Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://go.googlesource.com/text",
+        "Hash": "acdba6655fd45cdb5ab73c9d6a8981333bd65a39",
+        "Ref": "refs/tags/v0.41.0"
+      }
+    },
+    "go_minimo": "go 1.25.0"
+  },
+  {
+    "modulo": "google.golang.org/grpc",
+    "version": "v1.83.2",
+    "url": "https://proxy.golang.org/google.golang.org/grpc/@v/v1.83.2.info",
+    "publicada": {
+      "Version": "v1.83.2",
+      "Time": "2026-08-25T15:47:16Z",
+      "Origin": {
+        "VCS": "git",
+        "URL": "https://github.com/grpc/grpc-go",
+        "Hash": "030ee8becb20ce4315d6bf2dfa26bdd876169dc4",
+        "Ref": "refs/tags/v1.83.2"
+      }
+    },
+    "go_minimo": "go 1.25.0"
+  }
+]

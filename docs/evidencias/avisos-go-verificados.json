@@ -1,0 +1,262 @@
+[
+  {
+    "id": "GO-2026-6809",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6809.json",
+    "resumen": "Distrust compromised intermediate certificates in crypto/x509",
+    "aliases": ["CVE-2026-111943"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.10", "1.27.3"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6629",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6629.json",
+    "resumen": "Panic parsing crafted input in x/text/secure/precis in golang.org/x/text",
+    "aliases": ["CVE-2026-56851"],
+    "modulos": [
+      {
+        "modulo": "golang.org/x/text",
+        "correcciones": ["0.41.0"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6617",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6617.json",
+    "resumen": "HTTP/2 server crash due to HPACK encoder race in net/http",
+    "aliases": ["CVE-2026-97032"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9"]
+      },
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.27.2"]
+      },
+      {
+        "modulo": "golang.org/x/net",
+        "correcciones": ["0.60.0"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6613",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6613.json",
+    "resumen": "HTTP/1 server connection desynchronization after 2xx CONNECT response in net/http",
+    "aliases": ["CVE-2026-94439"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9", "1.27.2"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6612",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6612.json",
+    "resumen": "Double flow control refund on HTTP/2 server streams in net/http",
+    "aliases": ["CVE-2026-78663"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9"]
+      },
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.27.2"]
+      },
+      {
+        "modulo": "golang.org/x/net",
+        "correcciones": ["0.60.0"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6611",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6611.json",
+    "resumen": "Excessive CPU consumption from repeated initial window changes in net/http",
+    "aliases": ["CVE-2026-78669"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9"]
+      },
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.27.2"]
+      },
+      {
+        "modulo": "golang.org/x/net",
+        "correcciones": ["0.60.0"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6610",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6610.json",
+    "resumen": "HTTP/2 transport accepts malformed framing-related headers in net/http",
+    "aliases": ["CVE-2026-78660"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9"]
+      },
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.27.2"]
+      },
+      {
+        "modulo": "golang.org/x/net",
+        "correcciones": ["0.60.0"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6609",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6609.json",
+    "resumen": "Lack of limit on size of parsed Range headers in net/http",
+    "aliases": ["CVE-2026-78667"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9", "1.27.2"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6608",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6608.json",
+    "resumen": "Memory limit bypass when parsing MIME headers in net/textproto, mime/multipart",
+    "aliases": ["CVE-2026-94440"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9", "1.27.2"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6607",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6607.json",
+    "resumen": "Reject malformed ECH outer extension references in crypto/tls",
+    "aliases": ["CVE-2026-97031"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9", "1.27.2"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6605",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6605.json",
+    "resumen": "HTTP/1 client connection desynchronization after CONNECT rejection in net/http",
+    "aliases": ["CVE-2026-56866"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9", "1.27.2"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6603",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6603.json",
+    "resumen": "HTTP/2 server memory exhaustion due to Trailer headers in net/http",
+    "aliases": ["CVE-2026-78659"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.26.9"]
+      },
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.27.2"]
+      },
+      {
+        "modulo": "golang.org/x/net",
+        "correcciones": ["0.60.0"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6218",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6218.json",
+    "resumen": "Avoid quadratic complexity in resolvePath in net/url",
+    "aliases": ["CVE-2026-56860"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.25.13", "1.26.6", "1.27.0-rc.3"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6090",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6090.json",
+    "resumen": "Limit handshake messages we are willing to accept post-handshake in crypto/tls",
+    "aliases": ["CVE-2026-56862"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.25.13", "1.26.6", "1.27.0-rc.3"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-6089",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-6089.json",
+    "resumen": "Apply ReadHeaderTimeout when doing unencrypted HTTP/2 check in net/http",
+    "aliases": ["CVE-2026-56853"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.25.13", "1.26.6", "1.27.0-rc.3"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-5972",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-5972.json",
+    "resumen": "Enforce maximum recursion depth in encoding/asn1",
+    "aliases": ["CVE-2026-33818"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.25.13", "1.26.6", "1.27.0-rc.3"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-5970",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-5970.json",
+    "resumen": "Infinite loop on invalid input in golang.org/x/text",
+    "aliases": ["CVE-2026-56852"],
+    "modulos": [
+      {
+        "modulo": "golang.org/x/text",
+        "correcciones": ["0.39.0"]
+      }
+    ]
+  },
+  {
+    "id": "GO-2026-5026",
+    "fuente": "https://vuln.go.dev/ID/GO-2026-5026.json",
+    "resumen": "Invoking failure to reject ASCII-only Punycode-encoded labels in golang.org/x/net/idna",
+    "aliases": ["CVE-2026-39821"],
+    "modulos": [
+      {
+        "modulo": "stdlib",
+        "correcciones": ["1.25.13", "1.26.6", "1.27.0-rc.3"]
+      },
+      {
+        "modulo": "golang.org/x/net",
+        "correcciones": ["0.55.0"]
+      }
+    ]
+  }
+]

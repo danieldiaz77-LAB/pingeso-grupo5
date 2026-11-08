@@ -1,0 +1,680 @@
+{
+  "run_id": "p5-hito0-fed68527",
+  "images": [
+    {
+      "imagen": "api",
+      "tag_local": "p5-hito0-fed68527-api:local",
+      "dockerfile": "apps/api/Dockerfile",
+      "build_exit": 0,
+      "image_id": "sha256:21525128c7b6d84ad408ee947e5c3252db73cfc9e01335adc430e301da34fbe6",
+      "trivy_exit": 1,
+      "vulnerabilidades": [
+        {
+          "VulnerabilityID": "CVE-2026-56851",
+          "PkgName": "golang.org/x/text",
+          "InstalledVersion": "v0.37.0",
+          "FixedVersion": "0.41.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/text: golang.org/x/text: Denial of Service via out-of-bounds slice error in Nickname profile",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56851"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56852",
+          "PkgName": "golang.org/x/text",
+          "InstalledVersion": "v0.37.0",
+          "FixedVersion": "0.39.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/text: golang.org/x/text: Denial of Service via invalid UTF-8 input",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56852"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-111943",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.10, 1.27.3",
+          "Severity": "HIGH",
+          "Title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-111943"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-33818",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "encoding/asn1: golang: Go encoding/asn1: Denial of Service via excessive recursion in Unmarshal",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33818"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39821",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/idna: golang: net/http: golang.org/x/net/idna: Privilege escalation via incorrect Punycode label processing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39821"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-46600",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-46600"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56853",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "net/http: golang: Go net/http: Unencrypted HTTP/2 connections vulnerable to Denial of Service",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56853"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56858",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "html/template: golang: Go html/template: Cross-Site Scripting via pathological input",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56858"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56859",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "encoding/xml: golang: Go: Denial of Service via XML decoding recursion depth issue",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56859"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56860",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "net/url: golang: golang net/url: Denial of Service from quadratic complexity in path resolution",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56860"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56862",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "crypto/tls: golang: Golang crypto/tls: Denial of Service via indefinite KeyUpdate messages",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56862"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78667",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "net/http: golang: golang: Denial of Service via crafted HTTP Range headers",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78667"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78669",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "net/http: net/http/internal/http2: golang.org/x/net/http2: net/http: Denial of Service via excessive HTTP/2 SETTINGS frames",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78669"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-97031",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "crypto/tls: golang: crypto/tls: Denial of Service via multiple ECH outer extension references",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-97031"
+        }
+      ],
+      "secretos_detectados": 0,
+      "dockle_exit": 0,
+      "dockle_alertas": [
+        {
+          "code": "DKL-LI-0001",
+          "title": "Avoid empty password",
+          "level": "SKIP"
+        },
+        {
+          "code": "CIS-DI-0005",
+          "title": "Enable Content trust for Docker",
+          "level": "INFO"
+        }
+      ]
+    },
+    {
+      "imagen": "web",
+      "tag_local": "p5-hito0-fed68527-web:local",
+      "dockerfile": "apps/web/Dockerfile",
+      "build_exit": 0,
+      "image_id": "sha256:983c08f658d6ee3fb0f95d74485b1a1578f3329f9f536501b5653c818303ca2e",
+      "trivy_exit": 1,
+      "vulnerabilidades": [
+        {
+          "VulnerabilityID": "CVE-2026-111943",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.10, 1.27.3",
+          "Severity": "HIGH",
+          "Title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-111943"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-33818",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "encoding/asn1: golang: Go encoding/asn1: Denial of Service via excessive recursion in Unmarshal",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33818"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39821",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/idna: golang: net/http: golang.org/x/net/idna: Privilege escalation via incorrect Punycode label processing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39821"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-46600",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-46600"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56853",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "net/http: golang: Go net/http: Unencrypted HTTP/2 connections vulnerable to Denial of Service",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56853"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56858",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "html/template: golang: Go html/template: Cross-Site Scripting via pathological input",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56858"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56859",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "encoding/xml: golang: Go: Denial of Service via XML decoding recursion depth issue",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56859"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56860",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "net/url: golang: golang net/url: Denial of Service from quadratic complexity in path resolution",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56860"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56862",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "crypto/tls: golang: Golang crypto/tls: Denial of Service via indefinite KeyUpdate messages",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56862"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78667",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "net/http: golang: golang: Denial of Service via crafted HTTP Range headers",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78667"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78669",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "net/http: net/http/internal/http2: golang.org/x/net/http2: net/http: Denial of Service via excessive HTTP/2 SETTINGS frames",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78669"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-97031",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "crypto/tls: golang: crypto/tls: Denial of Service via multiple ECH outer extension references",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-97031"
+        }
+      ],
+      "secretos_detectados": 0,
+      "dockle_exit": 0,
+      "dockle_alertas": [
+        {
+          "code": "DKL-LI-0001",
+          "title": "Avoid empty password",
+          "level": "SKIP"
+        },
+        {
+          "code": "CIS-DI-0005",
+          "title": "Enable Content trust for Docker",
+          "level": "INFO"
+        }
+      ]
+    },
+    {
+      "imagen": "migrate",
+      "tag_local": "p5-hito0-fed68527-migrate:local",
+      "dockerfile": "apps/api/Dockerfile.migrate",
+      "build_exit": 0,
+      "image_id": "sha256:73d5b8b189c4d8a532565e4b56f50a10f503f3c9a87b62791a90a8750eaaeccf",
+      "trivy_exit": 1,
+      "vulnerabilidades": [
+        {
+          "VulnerabilityID": "CVE-2025-30204",
+          "PkgName": "github.com/golang-jwt/jwt/v4",
+          "InstalledVersion": "v4.5.1",
+          "FixedVersion": "4.5.2",
+          "Severity": "HIGH",
+          "Title": "golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-30204"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-33815",
+          "PkgName": "github.com/jackc/pgx/v5",
+          "InstalledVersion": "v5.7.1",
+          "FixedVersion": "5.9.0",
+          "Severity": "CRITICAL",
+          "Title": "github.com/jackc/pgx/v5: github.com/jackc/pgx: Memory-safety vulnerability",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33815"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-33816",
+          "PkgName": "github.com/jackc/pgx/v5",
+          "InstalledVersion": "v5.7.1",
+          "FixedVersion": "5.9.0",
+          "Severity": "CRITICAL",
+          "Title": "github.com/jackc/pgx/v5: github.com/jackc/pgx: Memory-safety vulnerability",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33816"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-63209",
+          "PkgName": "github.com/klauspost/compress",
+          "InstalledVersion": "v1.17.7",
+          "FixedVersion": "1.18.7",
+          "Severity": "HIGH",
+          "Title": "github.com/klauspost/compress: klauspost/compress: Denial of Service via integer overflow in dictionary processing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-63209"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-22869",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.35.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: Denial of Service in the Key Exchange of golang.org/x/crypto/ssh",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-22869"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-47913",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.43.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh/agent: golang.org/x/crypto/ssh/agent: SSH client panic due to unexpected SSH_AGENT_SUCCESS",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-47913"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39828",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Unauthorized command execution via discarded SSH permissions",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39828"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39829",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of Service via crafted public key with excessive parameters",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39829"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39830",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of Service via resource leak from unsolicited SSH responses",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39830"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39831",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Security key bypass due to missing user presence check",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39831"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39832",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh/agent: golang.org/x/crypto/ssh/agent: Security bypass due to improper handling of key restrictions",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39832"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39835",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh: Denial of Service via crafted SSH certificate",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39835"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-42508",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh/knownhosts: golang: golang.org/x/crypto/ssh/knownhosts: Revocation bypass via unchecked SignatureKey",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-42508"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-46595",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Authorization bypass due to skipped source-address validation",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-46595"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-46597",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.52.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Denial of Service via crafted AES-GCM packet decoder inputs",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-46597"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56854",
+          "PkgName": "golang.org/x/crypto",
+          "InstalledVersion": "v0.31.0",
+          "FixedVersion": "0.55.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/crypto/ssh: golang.org/x/crypto/ssh: Authentication bypass due to unenforced source-address restrictions",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56854"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-25681",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.33.0",
+          "FixedVersion": "0.55.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/html: golang.org/x/net/html: Arbitrary code execution via Cross-Site Scripting",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-25681"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-27136",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.33.0",
+          "FixedVersion": "0.55.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/html: golang: golang.org/x/net/html: Cross-Site Scripting via HTML parsing bypass",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-27136"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-33814",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.33.0",
+          "FixedVersion": "0.53.0",
+          "Severity": "HIGH",
+          "Title": "net/http/internal/http2: golang: golang.org/x/net: Go HTTP/2: Denial of Service via malformed SETTINGS_MAX_FRAME_SIZE frame",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33814"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39821",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.33.0",
+          "FixedVersion": "0.55.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/idna: golang: net/http: golang.org/x/net/idna: Privilege escalation via incorrect Punycode label processing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39821"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-46600",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.33.0",
+          "FixedVersion": "0.56.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-46600"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78661",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.33.0",
+          "FixedVersion": "0.62.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/html: golang.org/x/net/html: Denial of Service via crafted HTML input",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78661"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78669",
+          "PkgName": "golang.org/x/net",
+          "InstalledVersion": "v0.33.0",
+          "FixedVersion": "0.60.0",
+          "Severity": "HIGH",
+          "Title": "net/http: net/http/internal/http2: golang.org/x/net/http2: net/http: Denial of Service via excessive HTTP/2 SETTINGS frames",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78669"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56851",
+          "PkgName": "golang.org/x/text",
+          "InstalledVersion": "v0.21.0",
+          "FixedVersion": "0.41.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/text: golang.org/x/text: Denial of Service via out-of-bounds slice error in Nickname profile",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56851"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56852",
+          "PkgName": "golang.org/x/text",
+          "InstalledVersion": "v0.21.0",
+          "FixedVersion": "0.39.0",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/text: golang.org/x/text: Denial of Service via invalid UTF-8 input",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56852"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-33186",
+          "PkgName": "google.golang.org/grpc",
+          "InstalledVersion": "v1.62.1",
+          "FixedVersion": "1.79.3",
+          "Severity": "CRITICAL",
+          "Title": "google.golang.org/grpc/grpc-go: google.golang.org/grpc/authz: gRPC-Go: Authorization bypass due to improper HTTP/2 path validation",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33186"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-84304",
+          "PkgName": "google.golang.org/grpc",
+          "InstalledVersion": "v1.62.1",
+          "FixedVersion": "1.83.1",
+          "Severity": "HIGH",
+          "Title": "google.golang.org/grpc: gRPC-Go: Denial of Service via HTTP/2 DATA Frame Fragmentation",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-84304"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-84445",
+          "PkgName": "google.golang.org/grpc",
+          "InstalledVersion": "v1.62.1",
+          "FixedVersion": "1.82.2, 1.83.2, 1.84.0-dev.0.20260825144003-d5a41119e0e3, 1.85.0-dev.0.20260825072537-93e31b48545e",
+          "Severity": "HIGH",
+          "Title": "google.golang.org/grpc: gRPC-Go: Denial of Service via malformed RPC requests",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-84445"
+        },
+        {
+          "VulnerabilityID": "GHSA-hrxh-6v49-42gf",
+          "PkgName": "google.golang.org/grpc",
+          "InstalledVersion": "v1.62.1",
+          "FixedVersion": "1.82.1",
+          "Severity": "HIGH",
+          "Title": "gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities",
+          "PrimaryURL": "https://github.com/advisories/GHSA-hrxh-6v49-42gf"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-111943",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.10, 1.27.3",
+          "Severity": "HIGH",
+          "Title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-111943"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-33818",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "encoding/asn1: golang: Go encoding/asn1: Denial of Service via excessive recursion in Unmarshal",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-33818"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-39821",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/idna: golang: net/http: golang.org/x/net/idna: Privilege escalation via incorrect Punycode label processing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-39821"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-46600",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-46600"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56853",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "net/http: golang: Go net/http: Unencrypted HTTP/2 connections vulnerable to Denial of Service",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56853"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56858",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "html/template: golang: Go html/template: Cross-Site Scripting via pathological input",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56858"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56859",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "encoding/xml: golang: Go: Denial of Service via XML decoding recursion depth issue",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56859"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56860",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "net/url: golang: golang net/url: Denial of Service from quadratic complexity in path resolution",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56860"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56862",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "Severity": "HIGH",
+          "Title": "crypto/tls: golang: Golang crypto/tls: Denial of Service via indefinite KeyUpdate messages",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56862"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78667",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "net/http: golang: golang: Denial of Service via crafted HTTP Range headers",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78667"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78669",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "net/http: net/http/internal/http2: golang.org/x/net/http2: net/http: Denial of Service via excessive HTTP/2 SETTINGS frames",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78669"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-97031",
+          "PkgName": "stdlib",
+          "InstalledVersion": "v1.26.5",
+          "FixedVersion": "1.26.9, 1.27.2",
+          "Severity": "HIGH",
+          "Title": "crypto/tls: golang: crypto/tls: Denial of Service via multiple ECH outer extension references",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-97031"
+        }
+      ],
+      "secretos_detectados": 0,
+      "dockle_exit": 0,
+      "dockle_alertas": [
+        {
+          "code": "CIS-DI-0005",
+          "title": "Enable Content trust for Docker",
+          "level": "INFO"
+        },
+        {
+          "code": "CIS-DI-0006",
+          "title": "Add HEALTHCHECK instruction to the container image",
+          "level": "INFO"
+        }
+      ]
+    }
+  ]
+}
