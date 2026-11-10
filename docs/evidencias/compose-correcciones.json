@@ -1,0 +1,58 @@
+{
+  "proyecto": "p5-compose-2bac0ae9",
+  "puertos_provisionales": {
+    "web": 51781,
+    "backend": 51782
+  },
+  "asignacion_oficial": false,
+  "checks": [
+    {
+      "nombre": "backend_health",
+      "status": 200,
+      "contenido_esperado": true
+    },
+    {
+      "nombre": "backend_ready",
+      "status": 200,
+      "contenido_esperado": true
+    },
+    {
+      "nombre": "frontend",
+      "status": 200,
+      "contenido_esperado": true
+    },
+    {
+      "nombre": "frontend_api",
+      "status": 200,
+      "contenido_esperado": true
+    }
+  ],
+  "up_exit": 0,
+  "servicios": [
+    {
+      "servicio": "backend",
+      "estado": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "servicio": "frontend",
+      "estado": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "servicio": "migrate",
+      "estado": "exited",
+      "health": "",
+      "exit_code": 0
+    },
+    {
+      "servicio": "postgres",
+      "estado": "running",
+      "health": "healthy",
+      "exit_code": 0
+    }
+  ],
+  "cleanup_exit": 0
+}

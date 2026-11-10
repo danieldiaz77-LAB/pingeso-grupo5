@@ -1,0 +1,20 @@
+{
+  "run_id": "p5-hito0-3ee1ccf0",
+  "checks": [
+    {
+      "nombre": "build-runner",
+      "exit_code": 0,
+      "segundos": 69.9
+    },
+    {
+      "nombre": "start-postgres",
+      "exit_code": 0,
+      "segundos": 53.3
+    },
+    {
+      "nombre": "e2e-postgres",
+      "exit_code": 1,
+      "segundos": 467.4
+    }
+  ]
+}

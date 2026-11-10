@@ -1,0 +1,34 @@
+{
+  "name": "pingeso-grupo5",
+  "private": true,
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": "22.22.0",
+    "pnpm": "10.13.1"
+  },
+  "scripts": {
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint": "oxlint --deny-warnings apps/web/src && node scripts/arquitectura.mjs",
+    "typecheck": "pnpm --dir apps/web typecheck",
+    "test": "pnpm --dir apps/web test",
+    "test:api": "node scripts/tareas.mjs test-api",
+    "test:e2e:api": "node scripts/tareas.mjs e2e",
+    "test:e2e:web": "pnpm --dir apps/web test:e2e",
+    "build": "pnpm --dir apps/web build && node scripts/tareas.mjs build-api",
+    "codegen": "node scripts/tareas.mjs codegen",
+    "verify": "pnpm format && pnpm lint && pnpm typecheck && node scripts/tareas.mjs verify-go && pnpm test && pnpm build",
+    "check:generated": "node scripts/contrato.mjs generated",
+    "check:contract": "node scripts/contrato.mjs compatible",
+    "check:sonar": "node scripts/sonar.mjs",
+    "test:mutation": "node scripts/mutacion.mjs",
+    "check:coverage": "node scripts/validar-cobertura.mjs"
+  },
+  "devDependencies": {
+    "oxlint": "catalog:",
+    "prettier": "catalog:",
+    "prettier-plugin-tailwindcss": "catalog:",
+    "lefthook": "catalog:",
+    "typescript": "catalog:"
+  }
+}

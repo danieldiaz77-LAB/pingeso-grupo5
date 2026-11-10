@@ -1,0 +1,62 @@
+name: pingeso-grupo5-tecnico
+services:
+  postgres:
+    image: postgres:17.11@sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Completar .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Completar .env}
+      POSTGRES_DB: ${POSTGRES_DB:?Completar .env}
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes: [postgres-data:/var/lib/postgresql/data]
+  migrate:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile.migrate
+    environment:
+      GOOSE_DRIVER: postgres
+      GOOSE_DBSTRING: ${DATABASE_URL:?Completar .env}
+    command: [up]
+    depends_on:
+      postgres: { condition: service_healthy }
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  backend:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      API_PORT: '8080'
+      API_ENV: ${API_ENV:?Completar .env}
+      DATABASE_URL: ${DATABASE_URL:?Completar .env}
+      FRONTEND_URL: ${FRONTEND_URL:?Completar .env}
+      TZ: America/Santiago
+    ports: ['127.0.0.1:${BACKEND_PORT:?Definir 51N1}:8080']
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    environment:
+      BACKEND_URL: http://backend:8080
+    ports: ['127.0.0.1:${WEB_PORT:?Definir 51N0}:8080']
+    depends_on:
+      backend: { condition: service_healthy }
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  mailpit:
+    image: axllent/mailpit:v1.31.3@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d
+    profiles: [dev]
+    ports: ['127.0.0.1:8025:8025']
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+volumes:
+  postgres-data:

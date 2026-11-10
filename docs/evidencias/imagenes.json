@@ -1,0 +1,44 @@
+[
+  {
+    "imagen": "golang:1.26.5-alpine3.23",
+    "digest": "sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc",
+    "fuente": "https://registry-1.docker.io/v2/library/golang/manifests/1.26.5-alpine3.23"
+  },
+  {
+    "imagen": "node:22.22.0-alpine3.23",
+    "digest": "sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34",
+    "fuente": "https://registry-1.docker.io/v2/library/node/manifests/22.22.0-alpine3.23"
+  },
+  {
+    "imagen": "alpine:3.23.7",
+    "digest": "sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63",
+    "fuente": "https://registry-1.docker.io/v2/library/alpine/manifests/3.23.7"
+  },
+  {
+    "imagen": "postgres:17.11",
+    "digest": "sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f",
+    "fuente": "https://registry-1.docker.io/v2/library/postgres/manifests/17.11"
+  },
+  {
+    "imagen": "axllent/mailpit:v1.31.3",
+    "digest": "sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d",
+    "fuente": "https://registry-1.docker.io/v2/axllent/mailpit/manifests/v1.31.3"
+  },
+  {
+    "imagen": "goodwithtech/dockle:v0.4.15",
+    "digest": "sha256:eade932f793742de0aa8755406c7677cd7696f8675b6180926f7eeffa7abe6b9",
+    "fuente": "https://registry-1.docker.io/v2/goodwithtech/dockle/manifests/v0.4.15"
+  },
+  {
+    "imagen": "gcr.io/distroless/static-debian13:nonroot",
+    "digest": "sha256:25ac8f0c3b2334a9eb05452266bd4697864a8c8ef0ef71e5e6480d7f92868329",
+    "fuente": "https://gcr.io/v2/distroless/static-debian13/manifests/nonroot"
+  },
+  {
+    "imagen": "gcr.io/distroless/static-debian13:nonroot (digest histórico DAS conservado)",
+    "digest": "sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6",
+    "fuente": "https://gcr.io/v2/distroless/static-debian13/manifests/sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6",
+    "http": 200,
+    "plataformas": 6
+  }
+]

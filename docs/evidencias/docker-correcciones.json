@@ -1,0 +1,30 @@
+{
+  "run_id": "p5-hito0-2f746938",
+  "checks": [
+    {
+      "nombre": "build-runner",
+      "exit_code": 0,
+      "segundos": 21.7
+    },
+    {
+      "nombre": "start-postgres",
+      "exit_code": 0,
+      "segundos": 7.6
+    },
+    {
+      "nombre": "e2e-postgres",
+      "exit_code": 0,
+      "segundos": 806.3
+    },
+    {
+      "nombre": "copy-coverage",
+      "exit_code": 0,
+      "segundos": 0.5
+    },
+    {
+      "nombre": "coverage-format",
+      "exit_code": 0,
+      "segundos": 0.7
+    }
+  ]
+}

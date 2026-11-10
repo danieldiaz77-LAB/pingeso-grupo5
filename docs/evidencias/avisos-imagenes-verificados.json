@@ -1,0 +1,571 @@
+[
+  {
+    "id": "CVE-2025-22869",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2025-22869",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-hcg3-q754-cr77",
+        "html_url": "https://github.com/advisories/GHSA-hcg3-q754-cr77",
+        "summary": "golang.org/x/crypto Vulnerable to Denial of Service (DoS) via Slow or Incomplete Key Exchange",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.35.0",
+            "first_patched_version": "0.35.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2025-30204",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2025-30204",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-mh63-6h87-95cp",
+        "html_url": "https://github.com/advisories/GHSA-mh63-6h87-95cp",
+        "summary": "jwt-go allows excessive memory allocation during header parsing",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "github.com/golang-jwt/jwt/v5"
+            },
+            "vulnerable_version_range": ">= 5.0.0-rc.1, < 5.2.2",
+            "first_patched_version": "5.2.2",
+            "vulnerable_functions": []
+          },
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "github.com/golang-jwt/jwt/v4"
+            },
+            "vulnerable_version_range": "< 4.5.2",
+            "first_patched_version": "4.5.2",
+            "vulnerable_functions": []
+          },
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "github.com/golang-jwt/jwt"
+            },
+            "vulnerable_version_range": ">= 3.2.0, <= 3.2.2",
+            "first_patched_version": null,
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2025-47913",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2025-47913",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-56w8-48fp-6mgv",
+        "html_url": "https://github.com/advisories/GHSA-56w8-48fp-6mgv",
+        "summary": "golang.org/x/crypto/ssh/agent has a potential denial of service",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto/ssh/agent"
+            },
+            "vulnerable_version_range": "< 0.43.0",
+            "first_patched_version": "0.43.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-25681",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-25681",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-w9p8-pvxh-rxpj",
+        "html_url": "https://github.com/advisories/GHSA-w9p8-pvxh-rxpj",
+        "summary": "Parsing arbitrary HTML which is then rendered using Render can result in an unexpected HTML tree....",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-27136",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-27136",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-m9x8-m34x-fj9q",
+        "html_url": "https://github.com/advisories/GHSA-m9x8-m34x-fj9q",
+        "summary": "Parsing arbitrary HTML which is then rendered using Render can result in an unexpected HTML tree....",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-33186",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-33186",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-p77j-4mvh-x3m3",
+        "html_url": "https://github.com/advisories/GHSA-p77j-4mvh-x3m3",
+        "summary": "gRPC-Go has an authorization bypass via missing leading slash in :path",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "google.golang.org/grpc"
+            },
+            "vulnerable_version_range": "< 1.79.3",
+            "first_patched_version": "1.79.3",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-33814",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-33814",
+    "avisos": []
+  },
+  {
+    "id": "CVE-2026-33815",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-33815",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-xgrm-4fwx-7qm8",
+        "html_url": "https://github.com/advisories/GHSA-xgrm-4fwx-7qm8",
+        "summary": "pgx contains memory-safety vulnerability",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "github.com/jackc/pgx/v5"
+            },
+            "vulnerable_version_range": "< 5.9.0",
+            "first_patched_version": "5.9.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-33816",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-33816",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-9jj7-4m8r-rfcm",
+        "html_url": "https://github.com/advisories/GHSA-9jj7-4m8r-rfcm",
+        "summary": "Memory-safety vulnerability in github.com/jackc/pgx/v5.",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "github.com/jackc/pgx/v5"
+            },
+            "vulnerable_version_range": "< 5.9.0",
+            "first_patched_version": "5.9.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-39821",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-39821",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-w2q5-6q6x-x959",
+        "html_url": "https://github.com/advisories/GHSA-w2q5-6q6x-x959",
+        "summary": "The ToASCII and ToUnicode functions incorrectly accept Punycode-encoded labels that decode to an...",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-39828",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-39828",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-45gg-vh54-h5m9",
+        "html_url": "https://github.com/advisories/GHSA-45gg-vh54-h5m9",
+        "summary": "golang.org/x/crypto vulnerable to invoking bypass of certificate restrictions",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-39829",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-39829",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-w879-237q-wc7r",
+        "html_url": "https://github.com/advisories/GHSA-w879-237q-wc7r",
+        "summary": "golang.org/x/crypto: Invoking pathological RSA/DSA parameters may cause DoS",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-39830",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-39830",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-vgwf-h737-ff37",
+        "html_url": "https://github.com/advisories/GHSA-vgwf-h737-ff37",
+        "summary": "golang.org/x/crypto: Invoking client can cause server deadlock on unexpected responses",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-39831",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-39831",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-89gr-r52h-f8rx",
+        "html_url": "https://github.com/advisories/GHSA-89gr-r52h-f8rx",
+        "summary": "golang.org/x/crypto: FIDO/U2F security key physical presence check can be bypassed",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-39832",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-39832",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-f5wc-c3c7-36mc",
+        "html_url": "https://github.com/advisories/GHSA-f5wc-c3c7-36mc",
+        "summary": "golang.org/x/crypto doesn't drop invoking agent constraints when forwarding keys",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-39835",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-39835",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-78mq-xcr3-xm33",
+        "html_url": "https://github.com/advisories/GHSA-78mq-xcr3-xm33",
+        "summary": "golang.org/x/crypto is vulnerable to invoking server panic during CheckHostKey/Authenticate flow",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-42508",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-42508",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-5cgq-3rg8-m6cv",
+        "html_url": "https://github.com/advisories/GHSA-5cgq-3rg8-m6cv",
+        "summary": "golang.org/x/crypto vulnerable to auth bypass via unenforced @revoked status",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-46595",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-46595",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-x527-x647-q7gg",
+        "html_url": "https://github.com/advisories/GHSA-x527-x647-q7gg",
+        "summary": "golang.org/x/crypto: Invoking VerifiedPublicKeyCallback permissions skip enforcement",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-46597",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-46597",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-q4h4-gmj2-qvw2",
+        "html_url": "https://github.com/advisories/GHSA-q4h4-gmj2-qvw2",
+        "summary": "golang.org/x/crypto: Invoking byte arithmetic causes underflow and panic",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "golang.org/x/crypto"
+            },
+            "vulnerable_version_range": "< 0.52.0",
+            "first_patched_version": "0.52.0",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-46600",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-46600",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-gg3m-vvp2-p2c5",
+        "html_url": "https://github.com/advisories/GHSA-gg3m-vvp2-p2c5",
+        "summary": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a parameter value overflows the...",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-56851",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-56851",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-gx9w-9qq8-m485",
+        "html_url": "https://github.com/advisories/GHSA-gx9w-9qq8-m485",
+        "summary": "The Nickname profile can panic with an out-of-bounds slice error when transforming crafted input...",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-56852",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-56852",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-jpjm-c3r5-q96r",
+        "html_url": "https://github.com/advisories/GHSA-jpjm-c3r5-q96r",
+        "summary": "A norm.Iter can enter an infinite loop when handling input containing invalid UTF-8 bytes.",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-56854",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-56854",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-gjhq-gjfw-99mq",
+        "html_url": "https://github.com/advisories/GHSA-gjhq-gjfw-99mq",
+        "summary": "The source-address critical option in the Permissions returned by an authentication callback was...",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-63209",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-63209",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-259r-337f-4rfw",
+        "html_url": "https://github.com/advisories/GHSA-259r-337f-4rfw",
+        "summary": "Compress/s2: Integer Overflow or Wraparound and Out-of-bounds Write in compress",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "github.com/klauspost/compress"
+            },
+            "vulnerable_version_range": "<= 1.18.6",
+            "first_patched_version": "1.18.7",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-78661",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-78661",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-75pg-wvh3-34jr",
+        "html_url": "https://github.com/advisories/GHSA-75pg-wvh3-34jr",
+        "summary": "When coalescing adjacent text nodes in addText and fosterParent, appending to an existing...",
+        "vulnerabilities": []
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-78669",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-78669",
+    "avisos": []
+  },
+  {
+    "id": "CVE-2026-84304",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-84304",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-vp52-pcj8-j9qc",
+        "html_url": "https://github.com/advisories/GHSA-vp52-pcj8-j9qc",
+        "summary": "gRPC-Go: Heap Memory Exhaustion (OOM) via HTTP/2 DATA Frame Fragmentation",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "google.golang.org/grpc"
+            },
+            "vulnerable_version_range": "<= 1.83.0",
+            "first_patched_version": "1.83.1",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CVE-2026-84445",
+    "url": "https://api.github.com/advisories?cve_id=CVE-2026-84445",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-2v4p-qf9q-27wj",
+        "html_url": "https://github.com/advisories/GHSA-2v4p-qf9q-27wj",
+        "summary": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "google.golang.org/grpc"
+            },
+            "vulnerable_version_range": "< 1.82.2",
+            "first_patched_version": "1.82.2",
+            "vulnerable_functions": []
+          },
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "google.golang.org/grpc"
+            },
+            "vulnerable_version_range": ">= 1.83.0, < 1.83.2",
+            "first_patched_version": "1.83.2",
+            "vulnerable_functions": []
+          },
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "google.golang.org/grpc"
+            },
+            "vulnerable_version_range": ">= 1.84.0-dev, < 1.84.0-dev.0.20260825144003-d5a41119e0e3",
+            "first_patched_version": "1.84.0-dev.0.20260825144003-d5a41119e0e3",
+            "vulnerable_functions": []
+          },
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "google.golang.org/grpc"
+            },
+            "vulnerable_version_range": ">= 1.85.0-dev, < 1.85.0-dev.0.20260825072537-93e31b48545e",
+            "first_patched_version": "1.85.0-dev.0.20260825072537-93e31b48545e",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "GHSA-hrxh-6v49-42gf",
+    "url": "https://api.github.com/advisories/GHSA-hrxh-6v49-42gf",
+    "avisos": [
+      {
+        "ghsa_id": "GHSA-hrxh-6v49-42gf",
+        "html_url": "https://github.com/advisories/GHSA-hrxh-6v49-42gf",
+        "summary": "gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities",
+        "vulnerabilities": [
+          {
+            "package": {
+              "ecosystem": "go",
+              "name": "google.golang.org/grpc"
+            },
+            "vulnerable_version_range": "< 1.82.1",
+            "first_patched_version": "1.82.1",
+            "vulnerable_functions": []
+          }
+        ]
+      }
+    ]
+  }
+]

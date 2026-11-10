@@ -1,0 +1,668 @@
+=== Symbol Results ===
+
+Vulnerability #1: GO-2026-6809
+    Distrust compromised intermediate certificates in crypto/x509
+  More info: https://pkg.go.dev/vuln/GO-2026-6809
+  Standard library
+    Found in: crypto/x509@go1.26.5
+    Fixed in: crypto/x509@go1.26.10
+    Example traces found:
+      #1: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close, which eventually calls x509.Certificate.Verify
+
+Vulnerability #2: GO-2026-6629
+    Panic parsing crafted input in x/text/secure/precis in golang.org/x/text
+  More info: https://pkg.go.dev/vuln/GO-2026-6629
+  Module: golang.org/x/text
+    Found in: golang.org/x/text@v0.37.0
+    Fixed in: golang.org/x/text@v0.41.0
+    Example traces found:
+      #1: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls precis.Profile.String
+
+Vulnerability #3: GO-2026-6617
+    HTTP/2 server crash due to HPACK encoder race in net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6617
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #2: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #3: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #4: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #5: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #6: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #7: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #8: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #9: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #10: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #11: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #12: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #13: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #14: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #15: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #16: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #17: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #18: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #19: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #20: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #21: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #22: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #23: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #24: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #25: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #26: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #27: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #28: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #29: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #30: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #31: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #32: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #33: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #34: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #35: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #36: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #37: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #38: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #39: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #40: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #41: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #42: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #43: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #44: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #45: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #46: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #47: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #48: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #49: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #50: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #51: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #52: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #53: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #54: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #55: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #56: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #57: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #58: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #59: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #60: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #61: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #62: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #63: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #64: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #65: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #66: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #67: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #68: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #69: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #70: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #71: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #72: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #73: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #74: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #75: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #76: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #77: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #78: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #79: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #80: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #81: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #82: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #83: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #84: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #85: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #86: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #87: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #88: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #89: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #90: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #91: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #92: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #93: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #94: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #95: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #96: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #97: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #98: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #99: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #100: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #101: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #102: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #103: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #104: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #105: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #106: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #107: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #108: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #109: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #110: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #111: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+      #112: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+
+Vulnerability #4: GO-2026-6613
+    HTTP/1 server connection desynchronization after 2xx CONNECT response in
+    net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6613
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.CanonicalHeaderKey
+      #2: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #3: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.Header.Del
+      #4: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.Header.Get
+      #5: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #6: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #7: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #8: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #9: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.body.Read
+      #10: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #11: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.bodyEOFSignal.Read
+      #12: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.bodyLocked.Read
+      #13: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.bufioFlushWriter.Write
+      #14: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #15: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.cancelTimerBody.Read
+      #16: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.checkConnErrorWriter.Write
+      #17: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.chunkWriter.Write
+      #18: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.connReader.Read
+      #19: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.expectContinueReader.Close
+      #20: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.expectContinueReader.Read
+      #21: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #22: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.gzipReader.Read
+      #23: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.loggingConn.Read
+      #24: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.loggingConn.Write
+      #25: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.maxBytesReader.Read
+      #26: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #27: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.persistConn.Read
+      #28: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.persistConnWriter.Write
+      #29: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.readTrackingBody.Close
+      #30: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.readTrackingBody.Read
+      #31: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close, which eventually calls http.readWriteCloserBody.Read
+      #32: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.response.Write
+      #33: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls http.response.WriteString
+      #34: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+
+Vulnerability #5: GO-2026-6612
+    Double flow control refund on HTTP/2 server streams in net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6612
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #2: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #3: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #4: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #5: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #6: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #7: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #8: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #9: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #10: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #11: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #12: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #13: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #14: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #15: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #16: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #17: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #18: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #19: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #20: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #21: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #22: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #23: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #24: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #25: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #26: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #27: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #28: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #29: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #30: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #31: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #32: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #33: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #34: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #35: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #36: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #37: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #38: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #39: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #40: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #41: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #42: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #43: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #44: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #45: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #46: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #47: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #48: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #49: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #50: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #51: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #52: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #53: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #54: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #55: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #56: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #57: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #58: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #59: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #60: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #61: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #62: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #63: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #64: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #65: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #66: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #67: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #68: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #69: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #70: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #71: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #72: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #73: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #74: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #75: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #76: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #77: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #78: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #79: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #80: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #81: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #82: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #83: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #84: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #85: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #86: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #87: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #88: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #89: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #90: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #91: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #92: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #93: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #94: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #95: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #96: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #97: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #98: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #99: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #100: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #101: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #102: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #103: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #104: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #105: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #106: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #107: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #108: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #109: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #110: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #111: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+      #112: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+
+Vulnerability #6: GO-2026-6611
+    Excessive CPU consumption from repeated initial window changes in net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6611
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #2: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #3: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #4: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #5: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #6: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #7: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #8: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #9: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #10: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #11: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #12: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #13: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #14: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #15: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #16: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #17: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #18: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #19: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #20: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #21: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #22: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #23: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #24: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #25: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #26: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #27: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #28: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #29: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #30: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #31: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #32: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #33: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #34: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #35: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #36: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #37: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #38: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #39: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #40: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #41: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #42: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #43: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #44: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #45: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #46: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #47: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #48: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #49: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #50: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #51: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #52: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #53: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #54: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #55: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #56: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #57: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #58: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #59: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #60: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #61: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #62: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #63: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #64: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #65: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #66: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #67: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #68: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #69: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #70: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #71: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #72: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #73: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #74: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #75: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #76: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #77: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #78: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #79: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #80: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #81: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #82: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #83: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #84: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #85: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #86: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #87: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #88: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #89: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #90: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #91: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #92: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #93: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #94: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #95: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #96: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #97: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #98: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #99: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #100: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #101: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #102: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #103: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #104: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #105: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #106: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #107: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #108: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #109: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #110: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #111: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+      #112: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+
+Vulnerability #7: GO-2026-6610
+    HTTP/2 transport accepts malformed framing-related headers in net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6610
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #2: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #3: internal/spa/servidor.go:34:19: spa.Nuevo calls httputil.ReverseProxy.ServeHTTP, which calls http.Transport.RoundTrip
+      #4: internal/spa/servidor.go:34:19: spa.Nuevo calls httputil.ReverseProxy.ServeHTTP, which calls http.Transport.RoundTrip
+
+Vulnerability #8: GO-2026-6609
+    Lack of limit on size of parsed Range headers in net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6609
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: internal/spa/servidor.go:44:18: spa.Nuevo calls http.ServeFile
+      #2: internal/spa/servidor.go:39:22: spa.Nuevo calls http.fileHandler.ServeHTTP
+
+Vulnerability #9: GO-2026-6608
+    Memory limit bypass when parsing MIME headers in net/textproto,
+    mime/multipart
+  More info: https://pkg.go.dev/vuln/GO-2026-6608
+  Standard library
+    Found in: net/textproto@go1.26.5
+    Fixed in: net/textproto@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe, which eventually calls multipart.Reader.ReadForm
+      #2: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close, which eventually calls textproto.Reader.ReadMIMEHeader
+
+Vulnerability #10: GO-2026-6607
+    Reject malformed ECH outer extension references in crypto/tls
+  More info: https://pkg.go.dev/vuln/GO-2026-6607
+  Standard library
+    Found in: crypto/tls@go1.26.5
+    Fixed in: crypto/tls@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe, which eventually calls tls.Conn.HandshakeContext
+      #2: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close, which eventually calls tls.Conn.Read
+      #3: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls tls.Conn.Write
+      #4: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get, which eventually calls tls.Dialer.DialContext
+
+Vulnerability #11: GO-2026-6605
+    HTTP/1 client connection desynchronization after CONNECT rejection in
+    net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6605
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #2: internal/spa/servidor.go:34:19: spa.Nuevo calls httputil.ReverseProxy.ServeHTTP, which calls http.Transport.RoundTrip
+      #3: internal/spa/servidor.go:34:19: spa.Nuevo calls httputil.ReverseProxy.ServeHTTP
+
+Vulnerability #12: GO-2026-6603
+    HTTP/2 server memory exhaustion due to Trailer headers in net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6603
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.9
+    Example traces found:
+      #1: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #2: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.CanonicalHeaderKey
+      #3: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #4: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #5: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #6: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.Header.Del
+      #7: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #8: internal/api/salud.go:30:24: api.Nueva calls humago.New, which eventually calls http.ServeMux.HandleFunc
+      #9: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #10: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+      #11: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #12: cmd/api/main.go:83:27: api.ejecutar calls http.Server.Shutdown
+      #13: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #14: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close
+      #15: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #16: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.body.Read
+      #17: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #18: cmd/api/main.go:38:3: api.ejecutar calls http.bodyEOFSignal.Close
+      #19: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #20: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyEOFSignal.Read
+      #21: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #22: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.bodyLocked.Read
+      #23: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #24: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls http.bufioFlushWriter.Write
+      #25: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #26: cmd/api/main.go:38:3: api.ejecutar calls http.cancelTimerBody.Close
+      #27: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #28: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.cancelTimerBody.Read
+      #29: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #30: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.checkConnErrorWriter.Write
+      #31: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #32: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.chunkWriter.Write
+      #33: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #34: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.connReader.Read
+      #35: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #36: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.expectContinueReader.Read
+      #37: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #38: cmd/api/main.go:38:3: api.ejecutar calls http.gzipReader.Close
+      #39: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #40: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.gzipReader.Read
+      #41: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #42: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2ConnectionError.Error
+      #43: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #44: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2ErrCode.String
+      #45: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #46: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameHeader.String
+      #47: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #48: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameType.String
+      #49: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #50: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2FrameWriteRequest.String
+      #51: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #52: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2GoAwayError.Error
+      #53: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #54: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2Setting.String
+      #55: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #56: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2SettingID.String
+      #57: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #58: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2StreamError.Error
+      #59: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #60: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2bufferedWriterTimeoutWriter.Write
+      #61: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #62: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2chunkWriter.Write
+      #63: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #64: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2connError.Error
+      #65: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #66: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2duplicatePseudoHeaderError.Error
+      #67: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #68: cmd/api/main.go:38:3: api.ejecutar calls http.http2gzipReader.Close
+      #69: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #70: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2gzipReader.Read
+      #71: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #72: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldNameError.Error
+      #73: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #74: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2headerFieldValueError.Error
+      #75: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #76: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.http2pseudoHeaderError.Error
+      #77: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #78: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2requestBody.Read
+      #79: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #80: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.http2responseWriter.Write
+      #81: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #82: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2responseWriter.WriteString
+      #83: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #84: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.http2stickyErrWriter.Write
+      #85: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #86: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close
+      #87: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #88: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.http2transportResponseBody.Read
+      #89: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #90: cmd/api/main.go:46:21: api.ejecutar calls fmt.Errorf, which eventually calls http.http2writeData.String
+      #91: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #92: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.loggingConn.Read
+      #93: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #94: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.loggingConn.Write
+      #95: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #96: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.maxBytesReader.Read
+      #97: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #98: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls http.onceCloseListener.Close
+      #99: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #100: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.persistConn.Read
+      #101: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #102: cmd/api/main.go:27:13: api.main calls slog.Error, which eventually calls http.persistConnWriter.Write
+      #103: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #104: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readTrackingBody.Read
+      #105: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #106: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.readWriteCloserBody.Read
+      #107: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #108: internal/api/salud.go:31:10: api.Nueva calls huma.Get[struct{}, github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api.Salud], which eventually calls http.response.Write
+      #109: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #110: cmd/api/main.go:38:3: api.ejecutar calls tls.Conn.Close, which eventually calls http.response.WriteString
+      #111: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+      #112: cmd/api/main.go:27:52: api.main calls net.OpError.Error, which calls http.transportReadFromServerError.Error
+
+Vulnerability #13: GO-2026-6218
+    Avoid quadratic complexity in resolvePath in net/url
+  More info: https://pkg.go.dev/vuln/GO-2026-6218
+  Standard library
+    Found in: net/url@go1.26.5
+    Fixed in: net/url@go1.26.6
+    Example traces found:
+      #1: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get, which eventually calls url.URL.Parse
+
+Vulnerability #14: GO-2026-6090
+    Limit handshake messages we are willing to accept post-handshake in
+    crypto/tls
+  More info: https://pkg.go.dev/vuln/GO-2026-6090
+  Standard library
+    Found in: crypto/tls@go1.26.5
+    Fixed in: crypto/tls@go1.26.6
+    Example traces found:
+      #1: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe, which eventually calls tls.Conn.HandshakeContext
+      #2: cmd/api/main.go:38:3: api.ejecutar calls http.body.Close, which eventually calls tls.Conn.Read
+      #3: cmd/api/main.go:38:3: api.ejecutar calls http.http2transportResponseBody.Close, which eventually calls tls.Conn.Write
+      #4: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get, which eventually calls tls.Dialer.DialContext
+
+Vulnerability #15: GO-2026-6089
+    Apply ReadHeaderTimeout when doing unencrypted HTTP/2 check in net/http
+  More info: https://pkg.go.dev/vuln/GO-2026-6089
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.6
+    Example traces found:
+      #1: cmd/api/main.go:73:50: api.ejecutar calls http.Server.ListenAndServe
+
+Vulnerability #16: GO-2026-5972
+    Enforce maximum recursion depth in encoding/asn1
+  More info: https://pkg.go.dev/vuln/GO-2026-5972
+  Standard library
+    Found in: encoding/asn1@go1.26.5
+    Fixed in: encoding/asn1@go1.26.6
+    Example traces found:
+      #1: cmd/api/main.go:69:2: api.ejecutar calls pgxpool.Pool.Close, which eventually calls asn1.Unmarshal
+
+Vulnerability #17: GO-2026-5970
+    Infinite loop on invalid input in golang.org/x/text
+  More info: https://pkg.go.dev/vuln/GO-2026-5970
+  Module: golang.org/x/text
+    Found in: golang.org/x/text@v0.37.0
+    Fixed in: golang.org/x/text@v0.39.0
+    Example traces found:
+      #1: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls norm.Form.Properties
+      #2: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls norm.Form.Span
+      #3: cmd/api/main.go:65:26: api.ejecutar calls pgxpool.New, which eventually calls norm.Form.Transform
+
+Vulnerability #18: GO-2026-5026
+    Invoking failure to reject ASCII-only Punycode-encoded labels in
+    golang.org/x/net/idna
+  More info: https://pkg.go.dev/vuln/GO-2026-5026
+  Standard library
+    Found in: net/http@go1.26.5
+    Fixed in: net/http@go1.26.6
+    Example traces found:
+      #1: cmd/api/main.go:34:24: api.ejecutar calls http.Client.Get
+      #2: internal/spa/servidor.go:34:19: spa.Nuevo calls httputil.ReverseProxy.ServeHTTP, which calls http.Transport.RoundTrip
+
+Your code is affected by 18 vulnerabilities from 1 module and the Go standard library.
+This scan also found 3 vulnerabilities in packages you import and 3
+vulnerabilities in modules you require, but your code doesn't appear to call
+these vulnerabilities.
+Use '-show verbose' for more details.
+exit status 3

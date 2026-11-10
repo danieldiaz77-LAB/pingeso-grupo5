@@ -1,0 +1,151 @@
+[
+  {
+    "paquete": "vitest",
+    "version": "4.1.12",
+    "url": "https://registry.npmjs.org/vitest/4.1.12",
+    "engines": {
+      "node": "^20.0.0 || ^22.0.0 || >=24.0.0"
+    },
+    "dependencies": {
+      "obug": "^2.1.1",
+      "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+      "pathe": "^2.0.3",
+      "std-env": "^4.0.0-rc.1",
+      "tinyexec": "^1.0.2",
+      "picomatch": "^4.0.3",
+      "tinybench": "^2.9.0",
+      "tinyglobby": "^0.2.15",
+      "@vitest/spy": "4.1.12",
+      "expect-type": "^1.3.0",
+      "tinyrainbow": "^3.1.0",
+      "magic-string": "^0.30.21",
+      "@vitest/utils": "4.1.12",
+      "@vitest/expect": "4.1.12",
+      "@vitest/mocker": "4.1.12",
+      "@vitest/runner": "4.1.12",
+      "es-module-lexer": "^2.0.0",
+      "@vitest/snapshot": "4.1.12",
+      "why-is-node-running": "^2.3.0",
+      "@vitest/pretty-format": "4.1.12"
+    },
+    "peerDependencies": {
+      "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+      "jsdom": "*",
+      "happy-dom": "*",
+      "@vitest/ui": "4.1.12",
+      "@types/node": "^20.0.0 || ^22.0.0 || >=24.0.0",
+      "@edge-runtime/vm": "*",
+      "@opentelemetry/api": "^1.9.0",
+      "@vitest/coverage-v8": "4.1.12",
+      "@vitest/browser-preview": "4.1.12",
+      "@vitest/coverage-istanbul": "4.1.12",
+      "@vitest/browser-playwright": "4.1.12",
+      "@vitest/browser-webdriverio": "^4.1.11"
+    }
+  },
+  {
+    "paquete": "@vitest/mocker",
+    "version": "4.1.12",
+    "url": "https://registry.npmjs.org/@vitest%2fmocker/4.1.12",
+    "engines": null,
+    "dependencies": {
+      "@vitest/spy": "4.1.12",
+      "magic-string": "^0.30.21",
+      "estree-walker": "^3.0.3"
+    },
+    "peerDependencies": {
+      "msw": "^2.4.9",
+      "vite": "^6.0.0 || ^7.0.0 || ^8.0.0"
+    }
+  },
+  {
+    "paquete": "@vitest/coverage-v8",
+    "version": "4.1.12",
+    "url": "https://registry.npmjs.org/@vitest%2fcoverage-v8/4.1.12",
+    "engines": null,
+    "dependencies": {
+      "obug": "^2.1.1",
+      "std-env": "^4.0.0-rc.1",
+      "magicast": "^0.5.2",
+      "tinyrainbow": "^3.1.0",
+      "@vitest/utils": "4.1.12",
+      "istanbul-reports": "^3.2.0",
+      "@bcoe/v8-coverage": "^1.0.2",
+      "ast-v8-to-istanbul": "^1.0.0",
+      "istanbul-lib-report": "^3.0.1",
+      "istanbul-lib-coverage": "^3.2.2"
+    },
+    "peerDependencies": {
+      "vitest": "4.1.12",
+      "@vitest/browser": "4.1.12"
+    }
+  },
+  {
+    "id": "GHSA-82fw-gwwq-j7x9",
+    "url": "https://api.github.com/advisories/GHSA-82fw-gwwq-j7x9",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "@vitest/mocker"
+        },
+        "vulnerable_version_range": ">= 2.1.0, < 4.1.11",
+        "first_patched_version": "4.1.11",
+        "vulnerable_functions": []
+      },
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "vitest"
+        },
+        "vulnerable_version_range": ">= 2.1.0, < 4.1.11",
+        "first_patched_version": "4.1.11",
+        "vulnerable_functions": []
+      },
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "vitest"
+        },
+        "vulnerable_version_range": ">= 5.0.0-beta.1, < 5.0.0-rc.2",
+        "first_patched_version": "5.0.0-rc.2",
+        "vulnerable_functions": []
+      },
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "@vitest/mocker"
+        },
+        "vulnerable_version_range": ">= 5.0.0-beta.1, < 5.0.0-rc.2",
+        "first_patched_version": "5.0.0-rc.2",
+        "vulnerable_functions": []
+      }
+    ],
+    "summary": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock"
+  },
+  {
+    "id": "GHSA-qxg6-89mg-rqv8",
+    "url": "https://api.github.com/advisories/GHSA-qxg6-89mg-rqv8",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "@vitest/mocker"
+        },
+        "vulnerable_version_range": ">= 2.1.0-beta.7, < 4.1.12",
+        "first_patched_version": "4.1.12",
+        "vulnerable_functions": []
+      },
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "@vitest/mocker"
+        },
+        "vulnerable_version_range": ">= 5.0.0-beta.1, < 5.0.3",
+        "first_patched_version": "5.0.3",
+        "vulnerable_functions": []
+      }
+    ],
+    "summary": "Vitest: Code injection via unauthenticated manual mock registration"
+  }
+]
