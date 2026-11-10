@@ -8,9 +8,9 @@ pendiente de revisión por Benja y el contrato funcional, de completar por Manue
 
 Validación local:
 
-- Migración y cuatro pruebas con PostgreSQL real aprobadas. Se corrigió el enlace `$schema`
+- Migración y nueve pruebas con PostgreSQL real aprobadas. Se corrigió el enlace `$schema`
   que Huma añadía en producción hacia una ruta deshabilitada.
-- Cobertura Go: 104 de 141 sentencias (73,76%). Formato, rutas y lector oficial Go comprobados.
+- Cobertura Go: 171 de 180 sentencias (95%). Formato, rutas y lector oficial Go comprobados.
 - `pnpm verify`, actionlint, Hadolint y Gitleaks aprobados según las evidencias registradas.
 - Imágenes de API, web y migraciones construidas.
 - Dockle aprobado al umbral `warn`, con INFO y SKIP nativos documentados.
@@ -24,11 +24,10 @@ Pendientes:
 
 - Aprobar y aplicar las actualizaciones de seguridad documentadas y repetir los controles.
 - Resolver los hallazgos de Trivy y govulncheck.
-- Resolver el hallazgo S6549 del servidor SPA y elevar la cobertura nueva medida por Sonar
-  (72,5%) hasta aprobar el Quality Gate. Se conserva 80% de
-  cobertura; duplicación <=3% permite el límite que el DAS <3% prohíbe. No se cambió el gate.
-  New Code, Automatic Analysis y cambios pequeños requieren comprobación separada.
-- Validar el arranque completo con `docker compose up`.
+- Comprobar el nuevo análisis remoto de Sonar tras la corrección de S6549 y la ampliación
+  de pruebas. Se conserva el 80% de cobertura; duplicación <=3% permite el límite que el
+  DAS <3% prohíbe. No se cambió el gate. Automatic Analysis está desactivado; el PR compara
+  contra main. La excepción efectiva para cambios pequeños requiere revisión administrativa.
 - Confirmar nombre y número del servicio.
 - Obtener la revisión de la base técnica y la aprobación de otro integrante.
 
@@ -50,3 +49,15 @@ Resultado de la primera ejecución remota (commit `0f5d93a0eafdea8e2281e53e4abfd
   y escaneos locales anteriores se mantienen como evidencia independiente.
 
 [Ejecución comprobada](https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42489503785) · [Sonar del PR](https://sonarcloud.io/dashboard?id=danieldiaz77-LAB_pingeso-grupo5&pullRequest=1).
+
+Correcciones del servidor SPA y validación adicional:
+
+- El bundle se carga mediante os.Root al iniciar y se sirve desde un catálogo en memoria.
+  Se rechazan enlaces simbólicos y rutas de traversal. La reproducción anterior expuso
+  un fixture externo; el binario corregido rechazó el bundle sin exponerlo.
+- Se añaden pruebas de procesos reales para configuración inválida, healthchecks, puerto
+  ocupado, contrato generado, bundles inválidos y comportamiento HTTP del servidor SPA.
+- Compose completo aprobado con PostgreSQL saludable, migraciones terminadas y backend,
+  frontend, salud y proxy API operativos. Los puertos locales son provisionales.
+- `pnpm verify` aprobado después de las correcciones. La cobertura y el gate remotos
+  se registrarán a partir del análisis del nuevo commit.

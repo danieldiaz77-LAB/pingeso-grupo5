@@ -86,3 +86,13 @@ con 1.26.10; eso no sustituye compilación y pruebas. El mínimo Vite publicado 
 - [GO-2026-5972](https://vuln.go.dev/ID/GO-2026-5972.json): Enforce maximum recursion depth in encoding/asn1.
 - [GO-2026-5970](https://vuln.go.dev/ID/GO-2026-5970.json): Infinite loop on invalid input in golang.org/x/text.
 - [GO-2026-5026](https://vuln.go.dev/ID/GO-2026-5026.json): Invoking failure to reject ASCII-only Punycode-encoded labels in golang.org/x/net/idna.
+
+## Decisión pendiente tras las correcciones sin cambio de versiones
+
+Las filas de la tabla anterior siguen pendientes de aprobación del jefe. Las correcciones
+del servidor SPA y sus pruebas no modifican Go, módulos, catalog pnpm ni lockfiles. La
+aprobación debe cubrir por separado el toolchain/stdlib, x/text de la API, Vite, la familia
+Vitest y el grafo propio de Goose. Las versiones corregidas y fuentes verificadas se mantienen
+en la tabla y en sus evidencias; no se afirma que el grafo propuesto haya sido instalado o probado.
+Tras la aprobación corresponde regenerar los archivos indicados, reconstruir imágenes y
+repetir controles. Mientras tanto `seguridad` debe continuar bloqueando los hallazgos.

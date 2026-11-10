@@ -27,3 +27,9 @@ El [análisis Sonar del PR](https://sonarcloud.io/dashboard?id=danieldiaz77-LAB_
 
 [Proyecto SonarQube Cloud verificado](https://sonarcloud.io/project/overview?id=danieldiaz77-LAB_pingeso-grupo5).
 Su existencia no acredita aún un análisis aprobado.
+
+El servidor SPA carga un catálogo de archivos regulares al iniciar y rechaza bundles con
+enlaces simbólicos. Las correcciones incluyen pruebas de errores de arranque y de HTTP.
+El arranque completo con Compose fue validado; los puertos utilizados son provisionales
+hasta confirmar el número del servicio. Los resultados anteriores de Sonar se conservan
+como antecedentes; el siguiente análisis debe comprobar la corrección y la cobertura nueva.

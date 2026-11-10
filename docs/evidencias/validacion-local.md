@@ -124,3 +124,38 @@ usa el formato correcto y el scanner lo bloqueó. No se presenta aquel intento c
 Los archivos `govulncheck.txt`, `trivy-fs.json`, `oasdiff-negativo.txt`, `versiones.json`,
 `imagenes.json` y `sonar-gate.json` contienen evidencia local/consultas oficiales, no evidencia
 de un pipeline remoto verde. Los resultados finales resumidos se guardan en `comprobaciones.json`.
+
+## Correcciones y Compose — 9 de noviembre de 2026
+
+S6549: se confirmó el flujo URL.Path → os.Stat → FileServer. Con un enlace simbólico
+preexistente dentro del bundle hacia un archivo externo, el binario anterior devolvió el
+fixture privado con HTTP 200. El corregido rechaza ese bundle al iniciar (salida 1), sin
+exponer el contenido. Evidencia: `spa-regresion.json`. El cambio carga archivos regulares
+mediante os.Root al arrancar y sirve un catálogo inmutable; una petición no consulta el
+filesystem. El bundle debe ser pequeño, confiable y desplegarse completo: modificar archivos
+requiere reiniciar. Se mantienen assets, fallback SPA, proxy, GET/HEAD y cabeceras de seguridad.
+
+Compose completo aprobado: proyecto aislado `p5-compose-2bac0ae9`, PostgreSQL saludable,
+migración terminada con código 0, backend/frontend saludables; healthz, readyz, HTML y
+`/api/openapi.yaml` a través del frontend dieron 200 con contenido comprobado. Puertos
+provisionales 51781 (web) y 51782 (backend), no asignación oficial. Se usó API_ENV=dev para
+verificar el contrato a través del proxy. El perfil opcional Mailpit no se activó.
+
+El primer intento no pudo crear red: Docker agotó sus pools automáticos. Se comprobó que
+las subredes 10.253.240.0/24 y 10.253.241.0/24 no coincidían con redes Docker ni rutas locales
+específicas y se usaron overrides temporales exclusivamente para validación. No se borró
+ninguna red o volumen ajeno. `compose down --volumes` se ejecutó solo sobre el nombre único
+creado por esta prueba. Evidencia: `compose-correcciones.json`.
+
+Sonar antes del cambio: 21 líneas sin cobertura en cmd/api, 14 en cmd/spa-server, 4 en
+cmd/openapi y 2 en internal/spa. El frontend no reportaba líneas ni condiciones pendientes.
+Se añadieron escenarios de procesos reales para configuración inválida, puertos ocupados,
+healthchecks exitosos/no saludables/inaccesibles, bundle inválido, traversal, HEAD/POST,
+assets ausentes e inmutabilidad. El generador OpenAPI se instrumenta y su salida se compara
+con el contrato versionado; no se excluyó código ni se modificó el umbral.
+
+La migración y las nueve pruebas e2e terminaron con código 0 sobre PostgreSQL real.
+Cobertura Go: 171/180 sentencias (95%); las cinco fuentes de producción están presentes,
+sin archivos omitidos. El validador de rutas/formato pasó. Esta cifra local no sustituye
+la cobertura nueva medida por Sonar. `pnpm verify` y Gitleaks sobre apps/api pasaron.
+Evidencias: `docker-correcciones.json` y `cobertura-correcciones.json`.

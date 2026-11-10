@@ -105,6 +105,9 @@ switch (process.argv[2]) {
       ],
       api,
     )
+    const openapi = resolve('.tmp/openapi-e2e')
+    ejecutar('go', ['build', '-cover', '-o', openapi, './cmd/openapi'], api)
+    process.env.OPENAPI_E2E_BINARY = openapi
     process.env.WEB_E2E_BINARY = web
     process.env.API_E2E_BINARY = binario
     process.env.GOCOVERDIR = cobertura

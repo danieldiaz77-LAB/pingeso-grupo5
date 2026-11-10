@@ -50,3 +50,16 @@ La tabla anterior es la diferencia concreta que debe aprobarse antes de escribir
 
 Fuentes: [código nuevo](https://docs.sonarsource.com/sonarqube-cloud/standards/about-new-code),
 [cobertura Go y análisis por CI](https://docs.sonarsource.com/sonarqube-cloud/analyzing-source-code/test-coverage/go-test-coverage).
+
+## Comprobación del 9 de noviembre de 2026
+
+Consultas de solo lectura: `settings/values` informa `sonar.autoscan.enabled=false`:
+el proyecto utiliza análisis por CI y tiene Automatic Analysis desactivado. La misma API
+informa `sonar.leak.period=previous_version`, heredado de la instancia; `project_pull_requests/list`
+confirma que el PR 1 tiene `main` como base/target. El endpoint específico `new_code_periods/show`
+sigue sin estar disponible (404), por lo que no se atribuye a esa API una definición adicional.
+
+No se obtiene valor efectivo de `sonar.qualitygate.ignoreSmallChanges`. El resultado del gate
+anterior indicó `ignoredConditions=false`, que acredita la evaluación de ese PR, no la
+configuración global para futuros cambios pequeños. Este último ajuste requiere revisión
+administrativa. El gate asignado sigue siendo Sonar way; no se editó ninguna condición.

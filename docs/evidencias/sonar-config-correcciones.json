@@ -1,0 +1,9 @@
+{
+  "automatic_analysis": false,
+  "new_code_legacy_setting": "previous_version",
+  "new_code_origin": "INSTANCE",
+  "pr_base": "main",
+  "small_changes_effective_setting": "no comprobado",
+  "gate": "Sonar way",
+  "modificado": false
+}

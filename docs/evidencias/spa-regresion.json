@@ -1,0 +1,12 @@
+{
+  "antes": {
+    "status": 200,
+    "expusoFixture": true,
+    "exit": 0
+  },
+  "despues": {
+    "status": null,
+    "expusoFixture": false,
+    "exit": 1
+  }
+}

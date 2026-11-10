@@ -162,6 +162,32 @@ func TestServidorWebReal(t *testing.T) {
 			t.Fatalf("%s: %s", ruta, cuerpo)
 		}
 	}
+	for _, ruta := range []string{"/../privado", "/%2e%2e/privado", "/assets/%2e%2e/%2e%2e/privado", "/ruta%5cprivada"} {
+		consultar(t, ruta, 400)
+	}
+	consultar(t, "/assets/ausente.js", 404)
+	consultar(t, "/assets/%252e%252e/privado", 404)
+	for metodo, codigo := range map[string]int{"HEAD": 200, "POST": 405} {
+		peticion, _ := http.NewRequest(metodo, "http://127.0.0.1:8080/assets/app.js", nil)
+		respuesta, err := http.DefaultClient.Do(peticion)
+		if err != nil {
+			t.Fatal(err)
+		}
+		cuerpo, err := io.ReadAll(respuesta.Body)
+		respuesta.Body.Close()
+		if err != nil || respuesta.StatusCode != codigo {
+			t.Fatalf("%s: %v %d", metodo, err, respuesta.StatusCode)
+		}
+		if metodo == "HEAD" && len(cuerpo) != 0 {
+			t.Fatal("HEAD incluyó cuerpo")
+		}
+	}
+	if err := os.WriteFile(filepath.Join(dir, "assets", "app.js"), []byte("reemplazado"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	if consultar(t, "/assets/app.js", 200) != "codigo" {
+		t.Fatal("el catálogo cambió después del arranque")
+	}
 	backend.Close()
 	consultar(t, "/api/falla", 502)
 }
