@@ -159,3 +159,19 @@ Cobertura Go: 171/180 sentencias (95%); las cinco fuentes de producción están 
 sin archivos omitidos. El validador de rutas/formato pasó. Esta cifra local no sustituye
 la cobertura nueva medida por Sonar. `pnpm verify` y Gitleaks sobre apps/api pasaron.
 Evidencias: `docker-correcciones.json` y `cobertura-correcciones.json`.
+
+## Validación remota de las correcciones
+
+[Actions del commit 8fad783](https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42739207546): **calidad aprobado**, **seguridad fallido**,
+**imagen omitido**. Calidad ejecutó verify, mutación de readiness, contrato, e2e PostgreSQL,
+e2e navegador, scanner y Quality Gate con éxito. Sonar atribuye el análisis al SHA
+`8fad7834f28042a808082ffbb3ff6270770c7b4e`: cobertura nueva **95,1%**, gate **OK**, ratings A,
+duplicación 0% y hotspots revisados 100%. No hay incidencias abiertas; S6549 dejó de
+reportarse sin exclusiones ni resolución manual. `ignoredConditions=false` en este análisis.
+
+Seguridad sigue fallando en govulncheck (19 avisos: 17 stdlib + 2 x/text), audit (8 avisos)
+y Trivy filesystem (2 HIGH). Gitleaks y Hadolint pasaron. El aviso adicional GO-2026-6604
+se explica en actualizaciones pendientes; la propuesta de Go 1.26.10 lo cubre. No se cambiaron
+versiones, gate ni dependencias entre jobs. Imagen **no está validado en CI**.
+La limpieza de los recursos locales exclusivos terminó con éxito. El lector oficial
+`go tool cover` confirmó 95% local. Evidencia remota: `remoto-correcciones.json`.

@@ -20,16 +20,13 @@ Inicio: Go 1.26.5, Node 22.22.0 y pnpm 10.13.1. Ejecutar `pnpm install --frozen-
 `pnpm exec lefthook install` y `pnpm verify`. Para Compose, completar `.env.example` como
 `.env` y acordar los puertos 51N0/51N1. No asumir N=5.
 
-[PR #1 en borrador](https://github.com/danieldiaz77-LAB/pingeso-grupo5/pull/1) y
-[primera ejecución de Actions](https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42489503785): calidad y seguridad fallaron; imagen fue omitido.
-El [análisis Sonar del PR](https://sonarcloud.io/dashboard?id=danieldiaz77-LAB_pingeso-grupo5&pullRequest=1) leyó los reportes y rechazó el gate por cobertura nueva
-72,5% (mínimo 80%) y un hallazgo S6549 en el servidor SPA. El hito sigue abierto.
-
-[Proyecto SonarQube Cloud verificado](https://sonarcloud.io/project/overview?id=danieldiaz77-LAB_pingeso-grupo5).
-Su existencia no acredita aún un análisis aprobado.
+[PR #1 en borrador](https://github.com/danieldiaz77-LAB/pingeso-grupo5/pull/1).
+La [validación de las correcciones](https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42739207546) aprobó calidad:
+Sonar midió 95,1% de cobertura nueva y Quality Gate OK, sin incidencias abiertas.
+Seguridad falló por dependencias e imagen fue omitido. El hito sigue abierto.
 
 El servidor SPA carga un catálogo de archivos regulares al iniciar y rechaza bundles con
-enlaces simbólicos. Las correcciones incluyen pruebas de errores de arranque y de HTTP.
-El arranque completo con Compose fue validado; los puertos utilizados son provisionales
-hasta confirmar el número del servicio. Los resultados anteriores de Sonar se conservan
-como antecedentes; el siguiente análisis debe comprobar la corrección y la cobertura nueva.
+enlaces simbólicos. Las nueve pruebas e2e con PostgreSQL real pasaron; la cobertura local
+Go es 95% y no se confunde con la medición de Sonar. Compose completo fue validado con
+puertos provisionales hasta confirmar el número del servicio. El bundle debe reiniciarse
+para reflejar cambios en archivos. Las versiones pendientes de aprobación se conservan.

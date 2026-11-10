@@ -63,3 +63,7 @@ No se obtiene valor efectivo de `sonar.qualitygate.ignoreSmallChanges`. El resul
 anterior indicó `ignoredConditions=false`, que acredita la evaluación de ese PR, no la
 configuración global para futuros cambios pequeños. Este último ajuste requiere revisión
 administrativa. El gate asignado sigue siendo Sonar way; no se editó ninguna condición.
+
+El análisis remoto de 8fad783 aprobó el gate: cobertura nueva 95,1%, ratings A, duplicación
+0% y hotspots revisados 100%. No se cambió ninguna condición; la diferencia del límite de
+duplicación con el DAS y la comprobación administrativa de cambios pequeños siguen pendientes.

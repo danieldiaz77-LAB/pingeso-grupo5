@@ -1,0 +1,72 @@
+{
+  "commit": "8fad7834f28042a808082ffbb3ff6270770c7b4e",
+  "actions": "https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42739207546",
+  "checks": {
+    "calidad": "success",
+    "seguridad": "failure",
+    "imagen": "skipped"
+  },
+  "sonar": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_reliability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_security_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_maintainability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "80",
+        "actualValue": "95.1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_security_hotspots_reviewed",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "100",
+        "actualValue": "100.0"
+      }
+    ],
+    "periods": [],
+    "ignoredConditions": false
+  },
+  "sonar_incidencias_abiertas": 0,
+  "govulncheck": {
+    "avisos": 19,
+    "stdlib": 17,
+    "x_text": 2
+  },
+  "audit_avisos": 8,
+  "trivy_filesystem_high": 2
+}

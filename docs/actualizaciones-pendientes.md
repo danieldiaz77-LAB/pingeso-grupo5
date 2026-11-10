@@ -10,7 +10,7 @@ que el grafo propuesto haya pasado pruebas. Evidencias: `evidencias/avisos-go-ve
 
 | Dependencia                           | Actual                   | Avisos                                                              | Impacto / alcanzabilidad observada                                                                                                                                                                      | Corrección propuesta verificada                                              | Archivos por modificar tras aprobación                                                                                  |
 | ------------------------------------- | ------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Go / biblioteca estándar              | 1.26.5                   | 16 GO alcanzables, lista abajo; incluye GO-2026-6809                | HTTP, TLS/X.509 y parsers: DoS, validación de certificados y otros impactos según aviso. govulncheck detecta rutas llamadas; no prueba explotación. Trivy identifica 12 HIGH repetidos en cada binario. | 1.26.10, máximo de fixes de la rama 1.26 entre estos avisos                  | apps/api/go.mod, .github/workflows/ci.yml, los tres Dockerfiles, scripts/entorno-local.ps1 y documentación de versiones |
+| Go / biblioteca estándar              | 1.26.5                   | 17 GO reportados, lista abajo y GO-2026-6604; incluye GO-2026-6809  | HTTP, TLS/X.509 y parsers: DoS, validación de certificados y otros impactos según aviso. govulncheck detecta rutas llamadas; no prueba explotación. Trivy identifica 12 HIGH repetidos en cada binario. | 1.26.10, máximo de fixes de la rama 1.26 entre estos avisos                  | apps/api/go.mod, .github/workflows/ci.yml, los tres Dockerfiles, scripts/entorno-local.ps1 y documentación de versiones |
 | golang.org/x/text                     | API 0.37.0; Goose 0.21.0 | GO-2026-6629 / CVE-2026-56851; GO-2026-5970 / CVE-2026-56852        | DoS al procesar texto; API: rutas llamadas desde inicialización de pgx. Goose: presencia en binario, sin prueba de alcanzabilidad                                                                       | 0.41.0 (el segundo aviso se corrige desde 0.39.0)                            | apps/api/go.mod y go.sum; módulo de herramientas Goose propuesto                                                        |
 | Vite                                  | 8.1.5                    | GHSA-587h-7wmj-h5pm (HIGH); otros 4 avisos en audit                 | launch-editor en Windows y servidor dev; no se incluye como servidor en runtime SPA Go. Linux CI no justifica ignorarlo                                                                                 | 8.1.6; rango vulnerable de esta serie >=8.0.0 <=8.1.5                        | pnpm-workspace.yaml, pnpm-lock.yaml                                                                                     |
 | Vitest                                | 4.1.10                   | GHSA-82fw-gwwq-j7x9                                                 | Lectura arbitraria/traversal en mocker durante desarrollo; no runtime productivo                                                                                                                        | 4.1.11 corrige este aviso; proponer 4.1.12 para alinear mocker y coverage-v8 | pnpm-workspace.yaml, pnpm-lock.yaml                                                                                     |
@@ -22,7 +22,7 @@ que el grafo propuesto haya pasado pruebas. Evidencias: `evidencias/avisos-go-ve
 | golang.org/x/net (Goose)              | 0.33.0                   | 7 CVE, lista abajo                                                  | HTML (XSS/DoS), HTTP/2, DNS, IDNA y proxies; presencia en binario, sin prueba por ruta de ejecución                                                                                                     | 0.62.0 cubre los fixes listados                                              | Módulo Goose propuesto                                                                                                  |
 | google.golang.org/grpc (Goose)        | 1.62.1                   | CVE-2026-33186, CVE-2026-84304, CVE-2026-84445, GHSA-hrxh-6v49-42gf | DoS y autorización RBAC en drivers extra; no se levanta servidor gRPC en esta migración                                                                                                                 | 1.83.2 cubre los cuatro; 1.82.2 no cubre el fix 1.83.1 de CVE-2026-84304     | Módulo Goose propuesto                                                                                                  |
 
-Los **18 de govulncheck** son **16 avisos de stdlib + 2 de un único módulo x/text**,
+Los **18 de govulncheck en la evaluación inicial** son **16 avisos de stdlib + 2 de un único módulo x/text**,
 no 18 dependencias. La biblioteca estándar queda incorporada en los binarios: actualizar
 solo la instalación local de Go sin reconstruir imágenes no remedia los binarios existentes.
 Los avisos adicionales de Goose los encontró Trivy en la imagen; no se suman a los 18 de
@@ -96,3 +96,20 @@ Vitest y el grafo propio de Goose. Las versiones corregidas y fuentes verificada
 en la tabla y en sus evidencias; no se afirma que el grafo propuesto haya sido instalado o probado.
 Tras la aprobación corresponde regenerar los archivos indicados, reconstruir imágenes y
 repetir controles. Mientras tanto `seguridad` debe continuar bloqueando los hallazgos.
+
+## Resultado remoto de las correcciones
+
+En el commit 8fad783, govulncheck pasó de 18 a **19 avisos: 17 de stdlib y 2 de x/text**.
+Se conserva arriba el conteo de la evaluación anterior. El adicional es
+[GO-2026-6604](https://vuln.go.dev/ID/GO-2026-6604.json): Go 1.26.5 está dentro del rango
+anterior a 1.26.9 (también afecta 1.27 anterior a 1.27.2). El aviso describe Root.Mkdir y
+Root.MkdirAll siguiendo junctions fuera de la raíz en Windows. El scanner informa el símbolo
+compartido doInRoot desde fs.WalkDir; el servidor recorre/lee archivos y la imagen usa Linux,
+no crea directorios mediante esos métodos. No se demostró explotación en este flujo ni se
+silenció el hallazgo. Evidencia oficial: `evidencias/aviso-root-verificado.json`.
+
+La propuesta de Go **1.26.10** ya cubre este fix y los restantes; no requiere ampliar el
+cambio de versión propuesto. Los archivos afectados son los mismos de la fila Go y la
+aprobación sigue pendiente. Audit mantiene 8 avisos y Trivy filesystem 2 HIGH; sus checks
+remotos fallan. Los escaneos de imágenes locales anteriores son evidencia separada:
+el job imagen sigue condicionado a los dos checks previos.
