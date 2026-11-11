@@ -1,0 +1,43 @@
+{
+  "name": "@pingeso-grupo5/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:mock": "vite --open \"/?mocks=1\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "codegen:tipos": "openapi-typescript ../../contracts/openapi.yaml -o src/api/contrato.ts"
+  },
+  "dependencies": {
+    "@base-ui/react": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "openapi-fetch": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-hook-form": "catalog:",
+    "react-router": "catalog:"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "msw": "catalog:",
+    "openapi-typescript": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}
