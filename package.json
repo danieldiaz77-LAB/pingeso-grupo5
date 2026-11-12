@@ -1,0 +1,24 @@
+{
+  "name": "pingeso-grupo5",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": "22.22.0",
+    "pnpm": "10.13.1"
+  },
+  "scripts": {
+    "dev:api": "cd apps/api && go run ./cmd/api",
+    "dev:web": "pnpm --filter @pingeso-grupo5/web dev",
+    "dev:web:mock": "pnpm --filter @pingeso-grupo5/web dev:mock",
+    "build:web": "pnpm --filter @pingeso-grupo5/web build",
+    "typecheck": "pnpm --filter @pingeso-grupo5/web typecheck",
+    "test": "pnpm --filter @pingeso-grupo5/web test",
+    "test:api": "cd apps/api && go test ./...",
+    "generate": "cd apps/api && go run github.com/sqlc-dev/sqlc/cmd/sqlc@v1.29.0 generate",
+    "codegen": "pnpm codegen:contrato && pnpm codegen:tipos",
+    "codegen:contrato": "cd apps/api && go run ./cmd/contrato -o ../../contracts/openapi.yaml",
+    "codegen:tipos": "pnpm --filter @pingeso-grupo5/web codegen:tipos",
+    "verify": "pnpm typecheck && pnpm test && pnpm build:web"
+  }
+}
