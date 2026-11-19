@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/service"
 	"github.com/danielgtaylor/huma/v2"
 	"github.com/danielgtaylor/huma/v2/adapters/humago"
 )
@@ -16,7 +17,7 @@ type Salud struct {
 	}
 }
 
-func Nueva(base Comprobador, ambiente string) (*http.ServeMux, huma.API) {
+func Nueva(base Comprobador, ambiente string, ejemplos ...*service.EjemploServicio) (*http.ServeMux, huma.API) {
 	mux := http.NewServeMux()
 	config := huma.DefaultConfig("Base técnica PINGESO", "0.0.0")
 	config.DocsPath = "/api/docs"
@@ -45,5 +46,8 @@ func Nueva(base Comprobador, ambiente string) (*http.ServeMux, huma.API) {
 		salida.Body.Estado = "ok"
 		return salida, nil
 	})
+	if len(ejemplos) > 0 {
+		registrarEjemplos(contrato, ejemplos[0])
+	}
 	return mux, contrato
 }

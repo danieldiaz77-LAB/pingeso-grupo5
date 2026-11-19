@@ -5,10 +5,8 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"errors"
-	"fmt"
 	"log/slog"
 	"net/http"
-	"net/url"
 	"os"
 	"os/signal"
 	"syscall"
@@ -16,6 +14,10 @@ import (
 	_ "time/tzdata"
 
 	"github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api"
+	"github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/config"
+	"github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/repository"
+	"github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/service"
+	"github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/store"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -41,34 +43,23 @@ func ejecutar() error {
 		}
 		return nil
 	}
-	for _, clave := range []string{"API_PORT", "API_ENV", "DATABASE_URL", "FRONTEND_URL", "TZ"} {
-		if os.Getenv(clave) == "" {
-			return fmt.Errorf("falta %s", clave)
-		}
-	}
-	if os.Getenv("API_PORT") != "8080" {
-		return errors.New("API_PORT debe ser 8080")
-	}
-	ambiente := os.Getenv("API_ENV")
-	if ambiente != "dev" && ambiente != "test" && ambiente != "prod" {
-		return errors.New("API_ENV inválido")
-	}
-	origen, err := url.Parse(os.Getenv("FRONTEND_URL"))
-	if err != nil || origen.Host == "" || (origen.Scheme != "http" && origen.Scheme != "https") {
-		return errors.New("FRONTEND_URL inválido")
-	}
-	if _, err = time.LoadLocation(os.Getenv("TZ")); err != nil {
-		return errors.New("TZ inválido")
+	cfg, err := config.Cargar()
+	if err != nil {
+		return err
 	}
 	ctx, cancelar := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancelar()
-	base, err := pgxpool.New(ctx, os.Getenv("DATABASE_URL"))
+	base, err := pgxpool.New(ctx, cfg.DatabaseURL)
 	if err != nil {
 		return errors.New("DATABASE_URL inválido")
 	}
 	defer base.Close()
-	mux, _ := api.Nueva(base, ambiente)
-	servidor := &http.Server{Addr: ":8080", Handler: registrar(mux), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 10 * time.Second, WriteTimeout: 10 * time.Second, IdleTimeout: 60 * time.Second}
+	mux, _ := api.Nueva(base, cfg.Entorno, service.Nuevo(store.Nuevo(repository.New(base))))
+	protegido, err := api.Proteger(ctx, cfg.AuthJWKSURL, mux)
+	if err != nil {
+		return errors.New("AUTH_JWKS_URL inválido")
+	}
+	servidor := &http.Server{Addr: ":8080", Handler: registrar(api.Recuperar(protegido)), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 10 * time.Second, WriteTimeout: 10 * time.Second, IdleTimeout: 60 * time.Second}
 	resultado := make(chan error, 1)
 	go func() { resultado <- servidor.ListenAndServe() }()
 	slog.Info("API iniciada", "servicio", "base-tecnica", "version", version)

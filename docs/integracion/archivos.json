@@ -1,0 +1,250 @@
+{
+  "changes": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "status": "modified"
+    },
+    {
+      "path": "apps/api/cmd/api/main.go",
+      "status": "modified"
+    },
+    {
+      "path": "apps/api/cmd/openapi/main.go",
+      "status": "modified"
+    },
+    {
+      "path": "apps/api/db/migrations/202611080001_crear_ejemplos.sql",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/db/queries/ejemplos.sql",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/db/seed/seed.sql",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/e2e/ejemplos_handler_test.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/e2e/ejemplos_proceso_test.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/e2e/testdata/ejemplos-proceso.golden.md",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/e2e/testdata/listar_ejemplos.golden.json",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/api/ejemplos.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/api/salud.go",
+      "status": "modified"
+    },
+    {
+      "path": "apps/api/internal/repository/db.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/repository/ejemplos.sql.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/repository/models.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/repository/querier.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/service/ejemplos.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/service/ejemplos_test.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/internal/store/ejemplos.go",
+      "status": "added"
+    },
+    {
+      "path": "apps/api/sqlc.yaml",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/.env.example",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/components.json",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/e2e/ejemplos.spec.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/package.json",
+      "status": "modified"
+    },
+    {
+      "path": "apps/web/public/mockServiceWorker.js",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/app.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "apps/web/src/componentes/ejemplos/ejemplos.api.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/componentes/ejemplos/Ejemplos.tsx",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/componentes/ejemplos/formulario-ejemplo.tsx",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/componentes/ejemplos/index.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/componentes/ejemplos/lista-ejemplos.tsx",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/componentes/ejemplos/use-ejemplos.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/componentes/ejemplos/utilidades.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/estilos.css",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/main.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "apps/web/src/mocks/browser.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/mocks/datos.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/mocks/handlers.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/src/vite-env.d.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/tests/mocks.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/tests/utilidades.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "apps/web/vite.config.ts",
+      "status": "modified"
+    },
+    {
+      "path": "docker-compose.integracion.yaml",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/archivos.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/continuacion.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/contrato-manuel.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/dependencias.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/estado.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/informe-estatico.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/revision-estatica.json",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/seguridad.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/integracion/validacion.md",
+      "status": "added"
+    },
+    {
+      "path": "package.json",
+      "status": "modified"
+    },
+    {
+      "path": "README.md",
+      "status": "modified"
+    },
+    {
+      "path": "scripts/contrato.mjs",
+      "status": "modified"
+    },
+    {
+      "path": "scripts/tareas.mjs",
+      "status": "modified"
+    },
+    {
+      "path": "sonar-project.properties",
+      "status": "modified"
+    }
+  ],
+  "omittedBenjaPaths": [
+    "apps/api/cmd/contrato/main.go",
+    "apps/api/Makefile",
+    "apps/api/e2e/e2e_test.go",
+    "apps/api/internal/api/api.go",
+    "apps/api/internal/api/auth.go",
+    "apps/api/internal/api/middleware.go",
+    "apps/api/internal/api/errores.go",
+    "apps/api/internal/config/config_test.go",
+    "apps/api/internal/config/config.go",
+    "apps/web/src/api/ejemplos.ts",
+    "apps/web/src/api/cliente.ts",
+    "apps/web/src/api/esquema.ts",
+    "apps/web/src/App.tsx",
+    "apps/web/src/componentes/ejemplos/utilidades.test.ts",
+    "apps/web/src/features/inicio/Inicio.tsx",
+    "apps/web/src/mocks/handlers.test.ts"
+  ]
+}

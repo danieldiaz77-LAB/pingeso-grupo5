@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-19",
+  "scope": "Hashes leidos al preparar el traspaso; no son un commit ni prueban por si mismos ejecucion de tests",
+  "branch": "integration/pipeline-plantilla-local",
+  "head": "c445c03450692a0c7dd302b07edbbdf72ab20395",
+  "mergeHead": "7d2b7dcc216eec847b78b7d7aeb4731aec1cd94d",
+  "files": [
+    {
+      "path": "apps/api/internal/api/ejemplos.go",
+      "sha256": "c1a63328a4fedd242cdcd922bd391362168d7ee7227887c52c209b9d41612ae8"
+    },
+    {
+      "path": "apps/api/go.mod",
+      "sha256": "d46bc0eb623055037b79471f406b2a1748815afd0c578d99a3d133f5d1b36e9b"
+    },
+    {
+      "path": "apps/api/go.sum",
+      "sha256": "973fe41784ee4bbc1a40c21c6cba408b190cee0494e5c309d20550d16b4edc6d"
+    },
+    {
+      "path": "apps/web/tests/inicio.test.tsx",
+      "sha256": "cf05d31827502d6830bbea438f0392c704b6820f42b4ec17a10b72ca45321b03"
+    },
+    {
+      "path": "apps/web/tests/ejemplos-api.test.ts",
+      "sha256": "4f6a7a2d9997b636ca7c0be00f91d231fdaba7219f0dddceec647ff7e5a6eb9d"
+    },
+    {
+      "path": "apps/web/tests/lista-ejemplos.test.tsx",
+      "sha256": "04c93d7c9518c27b133c5dade4c2fc02b1e2e00c8add32154d34e24a38534348"
+    },
+    {
+      "path": "contracts/openapi.yaml",
+      "sha256": "fc44b4ebf14d184bb3f737af8b7facdf46b735255e6b89b281d06dca00147d0e"
+    },
+    {
+      "path": "apps/web/src/api/schema.d.ts",
+      "sha256": "1ee44e2b2f4d1fb8acc183a00506ff6c32dc102ea094f7e1737942847aafd184"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "0206d0566623bb7c451ab4993fa682343b6f8408962db418fb9bcd429309f3c9"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "sha256": "65306131dd97de629f7640fb72eaa98313ca2ac62c645967b75088477f40c8a5"
+    },
+    {
+      "path": "scripts/tareas.mjs",
+      "sha256": "60ec569ea40c6fa35c51d29be29d6f271717ba623532feca86f20e12e0c45aec"
+    },
+    {
+      "path": "scripts/contrato.mjs",
+      "sha256": "50b0ca917485d51fabe728e579edb9acaee1e9cf24f742c53d439d05a2f2b9eb"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "bd28815c2c2e4d347cb74822db72020be057df849be1f0fa8fd95537bc0bc47a"
+    }
+  ]
+}

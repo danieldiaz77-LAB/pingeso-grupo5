@@ -22,7 +22,11 @@
     "check:contract": "node scripts/contrato.mjs compatible",
     "check:sonar": "node scripts/sonar.mjs",
     "test:mutation": "node scripts/mutacion.mjs",
-    "check:coverage": "node scripts/validar-cobertura.mjs"
+    "check:coverage": "node scripts/validar-cobertura.mjs",
+    "dev:api": "cd apps/api && go run ./cmd/api",
+    "dev:web": "pnpm --dir apps/web dev",
+    "dev:web:mock": "pnpm --dir apps/web dev:mock",
+    "generate": "node scripts/tareas.mjs sqlc"
   },
   "devDependencies": {
     "oxlint": "catalog:",

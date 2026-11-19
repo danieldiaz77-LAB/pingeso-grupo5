@@ -1,0 +1,18 @@
+
+> pingeso-grupo5@ test:e2e:web C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> pnpm --dir apps/web test:e2e
+
+
+> @pingeso-grupo5/web-tecnica@0.0.0 test:e2e C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla\apps\web
+> playwright test
+
+
+Running 2 tests using 2 workers
+
+[WebServer] 4:03:15 a. m. [vite] http proxy error: /api/v1/ejemplos
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8080
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+  ok 2 e2e\inicio.spec.ts:2:1 › la aplicación monta el contenido en un navegador real (13.5s)
+  ok 1 e2e\ejemplos.spec.ts:3:1 › los ejemplos de plantilla permiten crear y validar entradas con MSW (15.6s)
+
+  2 passed (47.9s)

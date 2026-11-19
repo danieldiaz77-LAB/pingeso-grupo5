@@ -1,3 +1,8 @@
+# Preparación local de integración — sin validar
+
+Esta copia no es una rama ni un worktree. Véase [estado y pasos](docs/integracion/estado.md).
+Los generados y el lockfile requieren regeneración; no se han ejecutado pruebas ni Compose.
+
 # pingeso-grupo5
 
 Microservicio del grupo 5 de PINGESO, semestre 2-2026. Base reutilizable con Go, React,

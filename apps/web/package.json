@@ -9,12 +9,16 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "codegen": "openapi-typescript ../../contracts/openapi.yaml -o src/api/schema.d.ts"
+    "codegen": "openapi-typescript ../../contracts/openapi.yaml -o src/api/schema.d.ts",
+    "dev:mock": "vite --host 127.0.0.1 --open /?mocks=1"
   },
   "dependencies": {
     "react": "catalog:",
     "react-dom": "catalog:",
-    "openapi-fetch": "catalog:"
+    "openapi-fetch": "catalog:",
+    "@base-ui/react": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "react-hook-form": "catalog:"
   },
   "devDependencies": {
     "typescript": "catalog:",
@@ -25,6 +29,14 @@
     "@playwright/test": "catalog:",
     "openapi-typescript": "catalog:",
     "@types/react": "catalog:",
-    "@types/react-dom": "catalog:"
+    "@types/react-dom": "catalog:",
+    "msw": "catalog:",
+    "tailwindcss": "catalog:",
+    "@tailwindcss/vite": "catalog:"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process'
-import { mkdirSync, writeFileSync, statSync } from 'node:fs'
+import { mkdirSync, writeFileSync, statSync, readFileSync } from 'node:fs'
 function ejecutar(cmd, args) {
   const r = spawnSync(cmd, args, { encoding: 'utf8' })
   if (r.error) throw r.error
@@ -8,8 +8,11 @@ function ejecutar(cmd, args) {
 }
 if (process.argv[2] === 'generated') {
   for (const archivo of ['contracts/openapi.yaml', 'apps/web/src/api/schema.d.ts']) {
+    ejecutar('git', ['ls-files', '--error-unmatch', '--', archivo])
     if (!statSync(archivo).size) throw new Error(`Generado vacío: ${archivo}`)
   }
+  if (!/^  \/api\/v1\/ejemplos:/m.test(readFileSync('contracts/openapi.yaml', 'utf8')))
+    throw new Error('Contrato de plantilla desactualizado: ejecutar pnpm codegen')
   const rutas = ['contracts', 'apps/web/src/api', 'apps/api/internal/repository']
   ejecutar('git', ['diff', '--exit-code', 'HEAD', '--', ...rutas])
   const nuevos = ejecutar('git', [

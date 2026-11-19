@@ -1,5 +1,60 @@
 components:
   schemas:
+    CrearEjemploEntradaBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/api/schemas/CrearEjemploEntradaBody.json
+          format: uri
+          readOnly: true
+          type: string
+        descripcion:
+          description: Descripción del ejemplo
+          maxLength: 500
+          type: string
+        nombre:
+          description: Nombre del ejemplo
+          maxLength: 120
+          minLength: 1
+          type: string
+      required:
+        - nombre
+      type: object
+    Ejemplo:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/api/schemas/Ejemplo.json
+          format: uri
+          readOnly: true
+          type: string
+        creadoEn:
+          description: Fecha de creación
+          format: date-time
+          type: string
+        descripcion:
+          description: Descripción del ejemplo
+          maxLength: 500
+          type: string
+        id:
+          description: Identificador único del ejemplo
+          format: uuid
+          type: string
+        nombre:
+          description: Nombre del ejemplo
+          maxLength: 120
+          minLength: 1
+          type: string
+      required:
+        - id
+        - nombre
+        - descripcion
+        - creadoEn
+      type: object
     ErrorDetail:
       additionalProperties: false
       properties:
@@ -59,6 +114,24 @@ components:
           format: uri
           type: string
       type: object
+    ListarEjemplosSalidaBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/api/schemas/ListarEjemplosSalidaBody.json
+          format: uri
+          readOnly: true
+          type: string
+        ejemplos:
+          description: Listado de ejemplos
+          items:
+            $ref: "#/components/schemas/Ejemplo"
+          type: array
+      required:
+        - ejemplos
+      type: object
     SaludBody:
       additionalProperties: false
       properties:
@@ -83,6 +156,49 @@ info:
   version: 0.0.0
 openapi: 3.1.0
 paths:
+  /api/v1/ejemplos:
+    get:
+      operationId: listarEjemplos
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListarEjemplosSalidaBody"
+          description: OK
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Error
+      summary: Lista los ejemplos disponibles
+      tags:
+        - Ejemplos
+    post:
+      operationId: crearEjemplo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CrearEjemploEntradaBody"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Ejemplo"
+          description: Created
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Error
+      summary: Crea un ejemplo
+      tags:
+        - Ejemplos
   /healthz:
     get:
       operationId: get-healthz

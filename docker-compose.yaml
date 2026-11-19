@@ -33,6 +33,8 @@ services:
       API_ENV: ${API_ENV:?Completar .env}
       DATABASE_URL: ${DATABASE_URL:?Completar .env}
       FRONTEND_URL: ${FRONTEND_URL:?Completar .env}
+      # Vacío solo en dev/test; en prod la API no arranca sin JWKS.
+      AUTH_JWKS_URL: ${AUTH_JWKS_URL:-}
       TZ: America/Santiago
     ports: ['127.0.0.1:${BACKEND_PORT:?Definir 51N1}:8080']
     depends_on:

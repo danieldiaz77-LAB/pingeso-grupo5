@@ -50,8 +50,11 @@ func ejecutarBinario(t *testing.T, binario string, variables map[string]string, 
 	}
 	return string(salida)
 }
+
+// configuracionAPI fija AUTH_JWKS_URL vacío para no heredarlo del entorno;
+// el caso que lo necesita lo sobrescribe explícitamente.
 func configuracionAPI() map[string]string {
-	return map[string]string{"API_PORT": "8080", "API_ENV": "test", "DATABASE_URL": os.Getenv("TEST_DATABASE_URL"), "FRONTEND_URL": "http://localhost:8080", "TZ": "America/Santiago"}
+	return map[string]string{"API_PORT": "8080", "API_ENV": "test", "DATABASE_URL": os.Getenv("TEST_DATABASE_URL"), "FRONTEND_URL": "http://localhost:8080", "TZ": "America/Santiago", "AUTH_JWKS_URL": ""}
 }
 func TestRechazosDeArranque(t *testing.T) {
 	for _, caso := range []struct{ clave, valor, mensaje string }{
@@ -60,6 +63,8 @@ func TestRechazosDeArranque(t *testing.T) {
 		{"API_PORT", "8090", "API_PORT debe ser"}, {"API_ENV", "otro", "API_ENV inválido"},
 		{"FRONTEND_URL", "://", "FRONTEND_URL inválido"}, {"FRONTEND_URL", "file:///tmp", "FRONTEND_URL inválido"},
 		{"TZ", "Zona/Inexistente", "TZ inválido"}, {"DATABASE_URL", "postgres://%", "DATABASE_URL inválido"},
+		{"AUTH_JWKS_URL", "replace-with-identity-jwks-url", "AUTH_JWKS_URL inválido"},
+		{"API_ENV", "prod", "falta AUTH_JWKS_URL en prod"},
 	} {
 		t.Run(caso.clave+"_"+caso.valor, func(t *testing.T) {
 			variables := configuracionAPI()

@@ -25,3 +25,21 @@ catalog:
   'typescript': '6.0.3'
   'vite': '8.1.5'
   'vitest': '4.1.10'
+
+# Conservar las versiones transitivas de la plantilla: compatibles con Node 22.22.0.
+# Ver docs/integracion/resolucion-msw.md.
+overrides:
+  '@inquirer/ansi': '2.0.10'
+  '@inquirer/confirm': '6.3.5'
+  '@inquirer/core': '12.0.6'
+  '@inquirer/figures': '2.0.10'
+  '@inquirer/type': '4.2.1'
+  '@babel/runtime': '7.29.13'
+  '@types/node': '22.20.5'
+  'enhanced-resolve': '5.26.1'
+  'graceful-fs': '4.2.11'
+  'set-cookie-parser': '3.2.2'
+  'tapable': '2.3.3'
+  'tldts-core': '7.4.20'
+  'tldts': '7.4.19'
+  'undici-types': '6.21.0'

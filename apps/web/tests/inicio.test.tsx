@@ -1,4 +1,5 @@
 import { afterEach, expect, test, vi } from 'vitest'
+import { App } from '../src/app'
 const { render, createRoot } = vi.hoisted(() => {
   const render = vi.fn()
   return { render, createRoot: vi.fn(() => ({ render })) }
@@ -15,6 +16,7 @@ test('monta React en el contenedor existente', async () => {
   await import('../src/main')
   expect(createRoot).toHaveBeenCalledWith(contenedor)
   expect(render).toHaveBeenCalledOnce()
+  expect(render).toHaveBeenCalledWith(expect.objectContaining({ type: App }))
 })
 test('informa un HTML sin contenedor en vez de continuar sin interfaz', async () => {
   vi.stubGlobal('document', { getElementById: () => null })

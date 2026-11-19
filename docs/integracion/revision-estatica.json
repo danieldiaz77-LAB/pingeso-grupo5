@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-17",
+  "scope": "static-only; no processes launched",
+  "priorSnapshotHashCount": 139,
+  "backup": "C:\\Users\\danie\\OneDrive\\Desktop\\ULTIMOS SEMESTRES\\Semestre 2_2026\\Proyecto Ingeniería de Software (Pingeso)\\Proyecto_PINGESO\\pingeso-grupo5\\.tmp\\revision-seguridad-integracion-bdfdbd5d",
+  "terminal": {
+    "command": "git fetch origin",
+    "executable": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "code": 1260,
+    "executed": false
+  },
+  "checks": {
+    "noAutomaticGitAdd": true,
+    "mergeNoCommit": true,
+    "preservesUnmergedIndex": true,
+    "checksScriptHash": true,
+    "checksSourceCommits": true,
+    "noTableCloning": true,
+    "noTruncateOrSkip": true,
+    "gooseUsesSchemaURL": true,
+    "poolUsesSchemaURL": true,
+    "cleanupOwnQuotedSchema": true,
+    "isolationTestRequired": true,
+    "syntaxAndFormatJSMarkdown": true
+  },
+  "notExecuted": [
+    "PowerShell script",
+    "Go formatting/compilation/tests",
+    "pnpm install/frozen-lockfile/codegen/verify",
+    "PostgreSQL isolation test",
+    "Compose",
+    "security scanners",
+    "Sonar"
+  ]
+}

@@ -16,10 +16,13 @@ import (
 	"time"
 )
 
-func iniciar(t *testing.T, ambiente, base string) func() {
+func iniciar(t *testing.T, ambiente, base string, extra ...string) func() {
 	t.Helper()
 	cmd := exec.Command(os.Getenv("API_E2E_BINARY"))
-	cmd.Env = append(os.Environ(), "API_ENV="+ambiente, "API_PORT=8080", "DATABASE_URL="+base, "FRONTEND_URL=http://127.0.0.1:8080", "TZ=America/Santiago")
+	// AUTH_JWKS_URL vacío por defecto para no heredarlo del entorno; extra va
+	// después porque os/exec conserva el último valor de cada clave.
+	cmd.Env = append(os.Environ(), "API_ENV="+ambiente, "API_PORT=8080", "DATABASE_URL="+base, "FRONTEND_URL=http://127.0.0.1:8080", "TZ=America/Santiago", "AUTH_JWKS_URL=")
+	cmd.Env = append(cmd.Env, extra...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Start(); err != nil {
@@ -89,11 +92,14 @@ func TestSaludReal(t *testing.T) {
 	}
 	grupo.Wait()
 	cerrar()
-	cerrar = iniciar(t, "prod", "postgres://prueba:prueba@127.0.0.1:1/prueba?connect_timeout=1")
+	// prod exige AUTH_JWKS_URL; la salud sigue respondiendo sin token.
+	jwks, firmar := servidorJWKS(t)
+	cerrar = iniciar(t, "prod", "postgres://prueba:prueba@127.0.0.1:1/prueba?connect_timeout=1", "AUTH_JWKS_URL="+jwks)
 	consultar(t, "/healthz", 200)
 	cuerpo := consultar(t, "/readyz", 503)
-	consultar(t, "/api/openapi.yaml", 404)
-	consultar(t, "/api/docs", 404)
+	token := firmar(time.Hour)
+	consultarConToken(t, "/api/openapi.yaml", token, 404)
+	consultarConToken(t, "/api/docs", token, 404)
 	if strings.Contains(cuerpo, "$schema") || strings.Contains(cuerpo, "postgres://") || strings.Contains(cuerpo, "127.0.0.1") || !strings.Contains(cuerpo, "Base de datos no disponible") {
 		t.Error("error público no sanitizado")
 	}

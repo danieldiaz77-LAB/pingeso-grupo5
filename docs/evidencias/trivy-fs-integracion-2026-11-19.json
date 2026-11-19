@@ -1,0 +1,612 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a1f22f-c93b-7b7b-8bd6-fd57c9d2429f",
+  "CreatedAt": "2026-11-19T02:03:00.4117524-03:00",
+  "ArtifactName": ".",
+  "ArtifactType": "filesystem",
+  "Results": [
+    {
+      "Target": "apps/api/go.mod",
+      "Class": "lang-pkgs",
+      "Type": "gomod",
+      "Packages": [
+        {
+          "ID": "github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api",
+          "Name": "github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/danieldiaz77-lab/pingeso-grupo5/apps/api",
+            "UID": "6386049ab89405b8"
+          },
+          "Relationship": "root",
+          "DependsOn": [
+            "github.com/MicahParks/keyfunc/v3@v3.9.1",
+            "github.com/danielgtaylor/huma/v2@v2.34.1",
+            "github.com/golang-jwt/jwt/v5@v5.3.1",
+            "github.com/jackc/pgx/v5@v5.10.0",
+            "github.com/MicahParks/jwkset@v0.11.4",
+            "github.com/jackc/pgpassfile@v1.0.0",
+            "github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761",
+            "github.com/jackc/puddle/v2@v2.2.2",
+            "golang.org/x/sync@v0.20.0",
+            "golang.org/x/text@v0.37.0",
+            "golang.org/x/time@v0.15.0"
+          ],
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/MicahParks/keyfunc/v3@v3.9.1",
+          "Name": "github.com/MicahParks/keyfunc/v3",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/micahparks/keyfunc/v3@v3.9.1",
+            "UID": "9c4d958300786559"
+          },
+          "Version": "v3.9.1",
+          "Relationship": "direct",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/danielgtaylor/huma/v2@v2.34.1",
+          "Name": "github.com/danielgtaylor/huma/v2",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/danielgtaylor/huma/v2@v2.34.1",
+            "UID": "3d9faf66ccfdb93f"
+          },
+          "Version": "v2.34.1",
+          "Relationship": "direct",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/golang-jwt/jwt/v5@v5.3.1",
+          "Name": "github.com/golang-jwt/jwt/v5",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/golang-jwt/jwt/v5@v5.3.1",
+            "UID": "68814c29c116379f"
+          },
+          "Version": "v5.3.1",
+          "Relationship": "direct",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/jackc/pgx/v5@v5.10.0",
+          "Name": "github.com/jackc/pgx/v5",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/jackc/pgx/v5@v5.10.0",
+            "UID": "493c394863093d39"
+          },
+          "Version": "v5.10.0",
+          "Relationship": "direct",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/MicahParks/jwkset@v0.11.4",
+          "Name": "github.com/MicahParks/jwkset",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/micahparks/jwkset@v0.11.4",
+            "UID": "16df862eed17f283"
+          },
+          "Version": "v0.11.4",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/jackc/pgpassfile@v1.0.0",
+          "Name": "github.com/jackc/pgpassfile",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/jackc/pgpassfile@v1.0.0",
+            "UID": "225803bab185d149"
+          },
+          "Version": "v1.0.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761",
+          "Name": "github.com/jackc/pgservicefile",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761",
+            "UID": "27a2e5f133896d6"
+          },
+          "Version": "v0.0.0-20240606120523-5a60cdf6a761",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "github.com/jackc/puddle/v2@v2.2.2",
+          "Name": "github.com/jackc/puddle/v2",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/jackc/puddle/v2@v2.2.2",
+            "UID": "194287a33db3e83"
+          },
+          "Version": "v2.2.2",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "golang.org/x/sync@v0.20.0",
+          "Name": "golang.org/x/sync",
+          "Identifier": {
+            "PURL": "pkg:golang/golang.org/x/sync@v0.20.0",
+            "UID": "98eafa9924f10bde"
+          },
+          "Version": "v0.20.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "golang.org/x/text@v0.37.0",
+          "Name": "golang.org/x/text",
+          "Identifier": {
+            "PURL": "pkg:golang/golang.org/x/text@v0.37.0",
+            "UID": "bcc562faf47ea209"
+          },
+          "Version": "v0.37.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "gomod"
+        },
+        {
+          "ID": "golang.org/x/time@v0.15.0",
+          "Name": "golang.org/x/time",
+          "Identifier": {
+            "PURL": "pkg:golang/golang.org/x/time@v0.15.0",
+            "UID": "22b70cad7a77768c"
+          },
+          "Version": "v0.15.0",
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "gomod"
+        }
+      ],
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2026-56851",
+          "VendorIDs": ["GO-2026-6629"],
+          "PkgID": "golang.org/x/text@v0.37.0",
+          "PkgName": "golang.org/x/text",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/golang.org/x/text@v0.37.0",
+            "UID": "bcc562faf47ea209"
+          },
+          "InstalledVersion": "v0.37.0",
+          "FixedVersion": "0.41.0",
+          "Status": "fixed",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56851",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Fingerprint": "sha256:bab9115d590c7e95eb2bb332d439f5cade4a109cf1d6cdb10d99556bc44d798a",
+          "Title": "golang.org/x/text: golang.org/x/text: Denial of Service via out-of-bounds slice error in Nickname profile",
+          "Description": "The Nickname profile can panic with an out-of-bounds slice error when transforming crafted input into a short destination buffer.",
+          "Severity": "HIGH",
+          "CweIDs": ["CWE-787"],
+          "VendorSeverity": {
+            "azure": 3,
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-56851",
+            "https://github.com/golang/go/issues/80112",
+            "https://go.dev/cl/793360",
+            "https://go.dev/issue/80112",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-56851",
+            "https://pkg.go.dev/vuln/GO-2026-6629",
+            "https://www.cve.org/CVERecord?id=CVE-2026-56851"
+          ],
+          "PublishedDate": "2026-10-07T18:17:20.903Z",
+          "LastModifiedDate": "2026-10-08T21:35:53.89Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-56852",
+          "VendorIDs": ["GO-2026-5970"],
+          "PkgID": "golang.org/x/text@v0.37.0",
+          "PkgName": "golang.org/x/text",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/golang.org/x/text@v0.37.0",
+            "UID": "bcc562faf47ea209"
+          },
+          "InstalledVersion": "v0.37.0",
+          "FixedVersion": "0.39.0",
+          "Status": "fixed",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-56852",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Fingerprint": "sha256:58af195cde209cecfe697ab50ad3b2572f925afcd455f1956332013d68abdf05",
+          "Title": "golang.org/x/text: golang.org/x/text: Denial of Service via invalid UTF-8 input",
+          "Description": "A norm.Iter can enter an infinite loop when handling input containing invalid UTF-8 bytes.",
+          "Severity": "HIGH",
+          "CweIDs": ["CWE-835"],
+          "VendorSeverity": {
+            "alma": 3,
+            "amazon": 3,
+            "azure": 3,
+            "oracle-oval": 3,
+            "redhat": 3,
+            "rocky": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:70201",
+            "https://access.redhat.com/security/cve/CVE-2026-56852",
+            "https://bugzilla.redhat.com/2456335",
+            "https://bugzilla.redhat.com/2467809",
+            "https://bugzilla.redhat.com/2504233",
+            "https://bugzilla.redhat.com/2508234",
+            "https://bugzilla.redhat.com/2515815",
+            "https://bugzilla.redhat.com/2515820",
+            "https://bugzilla.redhat.com/2515827",
+            "https://bugzilla.redhat.com/2515838",
+            "https://bugzilla.redhat.com/2515839",
+            "https://bugzilla.redhat.com/2515840",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2456335",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2467809",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2504233",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2508234",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2515815",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2515820",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2515827",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2515838",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2515839",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2515840",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2518147",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-17106",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-19730",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-33810",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-33818",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-42499",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56852",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56853",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56858",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56859",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56860",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56862",
+            "https://errata.almalinux.org/10/ALSA-2026-70201.html",
+            "https://errata.rockylinux.org/RLSA-2026:70201",
+            "https://github.com/golang/go/issues/80142",
+            "https://go.dev/cl/794100",
+            "https://go.dev/issue/80142",
+            "https://linux.oracle.com/cve/CVE-2026-56852.html",
+            "https://linux.oracle.com/errata/ELSA-2026-70201.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-56852",
+            "https://pkg.go.dev/vuln/GO-2026-5970",
+            "https://www.cve.org/CVERecord?id=CVE-2026-56852"
+          ],
+          "PublishedDate": "2026-07-21T20:17:02.867Z",
+          "LastModifiedDate": "2026-10-24T19:10:00.127Z"
+        }
+      ]
+    },
+    {
+      "Target": "pnpm-lock.yaml",
+      "Class": "lang-pkgs",
+      "Type": "pnpm",
+      "Packages": [
+        {
+          "ID": "@base-ui/react@1.6.0(@types/react@19.2.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)",
+          "Name": "@base-ui/react",
+          "Identifier": {
+            "PURL": "pkg:npm/%40base-ui/react@1.6.0",
+            "UID": "857bae96aca2e955"
+          },
+          "Version": "1.6.0",
+          "Licenses": ["MIT"],
+          "Relationship": "direct",
+          "DependsOn": [
+            "@babel/runtime@7.29.13",
+            "@base-ui/utils@0.3.1(@types/react@19.2.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)",
+            "@floating-ui/react-dom@2.1.9(react-dom@19.2.8(react@19.2.8))(react@19.2.8)",
+            "@floating-ui/utils@0.2.12",
+            "react@19.2.8",
+            "react-dom@19.2.8(react@19.2.8)",
+            "use-sync-external-store@1.7.0(react@19.2.8)",
+            "@types/react@19.2.2"
+          ],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@tanstack/react-query@5.101.4(react@19.2.8)",
+          "Name": "@tanstack/react-query",
+          "Identifier": {
+            "PURL": "pkg:npm/%40tanstack/react-query@5.101.4",
+            "UID": "568226336b44ec9a"
+          },
+          "Version": "5.101.4",
+          "Licenses": ["MIT"],
+          "Relationship": "direct",
+          "DependsOn": ["@tanstack/query-core@5.101.4", "react@19.2.8"],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@types/react@19.2.2",
+          "Name": "@types/react",
+          "Identifier": {
+            "PURL": "pkg:npm/%40types/react@19.2.2",
+            "UID": "8a9dda0e3e49437"
+          },
+          "Version": "19.2.2",
+          "Licenses": ["MIT"],
+          "Relationship": "direct",
+          "DependsOn": ["csstype@3.2.3"],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "openapi-fetch@0.15.2",
+          "Name": "openapi-fetch",
+          "Identifier": {
+            "PURL": "pkg:npm/openapi-fetch@0.15.2",
+            "UID": "7d81667e9be14f66"
+          },
+          "Version": "0.15.2",
+          "Licenses": ["MIT"],
+          "Relationship": "direct",
+          "DependsOn": ["openapi-typescript-helpers@0.0.15"],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "react@19.2.8",
+          "Name": "react",
+          "Identifier": {
+            "PURL": "pkg:npm/react@19.2.8",
+            "UID": "96c650591e6bfd7a"
+          },
+          "Version": "19.2.8",
+          "Licenses": ["MIT"],
+          "Relationship": "direct",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "react-dom@19.2.8(react@19.2.8)",
+          "Name": "react-dom",
+          "Identifier": {
+            "PURL": "pkg:npm/react-dom@19.2.8",
+            "UID": "fdfb7e68d2b56f8"
+          },
+          "Version": "19.2.8",
+          "Licenses": ["MIT"],
+          "Relationship": "direct",
+          "DependsOn": ["react@19.2.8", "scheduler@0.27.0"],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "react-hook-form@7.83.0(react@19.2.8)",
+          "Name": "react-hook-form",
+          "Identifier": {
+            "PURL": "pkg:npm/react-hook-form@7.83.0",
+            "UID": "b8929cf64cf984d3"
+          },
+          "Version": "7.83.0",
+          "Licenses": ["MIT"],
+          "Relationship": "direct",
+          "DependsOn": ["react@19.2.8"],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@babel/runtime@7.29.13",
+          "Name": "@babel/runtime",
+          "Identifier": {
+            "PURL": "pkg:npm/%40babel/runtime@7.29.13",
+            "UID": "d6687d5f1e810763"
+          },
+          "Version": "7.29.13",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@base-ui/utils@0.3.1(@types/react@19.2.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)",
+          "Name": "@base-ui/utils",
+          "Identifier": {
+            "PURL": "pkg:npm/%40base-ui/utils@0.3.1",
+            "UID": "a22cdadca4f502a5"
+          },
+          "Version": "0.3.1",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "reselect@5.3.0",
+            "use-sync-external-store@1.7.0(react@19.2.8)",
+            "@types/react@19.2.2",
+            "@babel/runtime@7.29.13",
+            "@floating-ui/utils@0.2.12",
+            "react@19.2.8",
+            "react-dom@19.2.8(react@19.2.8)"
+          ],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@floating-ui/core@1.8.0",
+          "Name": "@floating-ui/core",
+          "Identifier": {
+            "PURL": "pkg:npm/%40floating-ui/core@1.8.0",
+            "UID": "267ec0456d7b26c9"
+          },
+          "Version": "1.8.0",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": ["@floating-ui/utils@0.2.12"],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@floating-ui/dom@1.8.0",
+          "Name": "@floating-ui/dom",
+          "Identifier": {
+            "PURL": "pkg:npm/%40floating-ui/dom@1.8.0",
+            "UID": "6354049aceff6e3f"
+          },
+          "Version": "1.8.0",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": ["@floating-ui/core@1.8.0", "@floating-ui/utils@0.2.12"],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@floating-ui/react-dom@2.1.9(react-dom@19.2.8(react@19.2.8))(react@19.2.8)",
+          "Name": "@floating-ui/react-dom",
+          "Identifier": {
+            "PURL": "pkg:npm/%40floating-ui/react-dom@2.1.9",
+            "UID": "862e95fd85a44e20"
+          },
+          "Version": "2.1.9",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": [
+            "react@19.2.8",
+            "react-dom@19.2.8(react@19.2.8)",
+            "@floating-ui/dom@1.8.0"
+          ],
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@floating-ui/utils@0.2.12",
+          "Name": "@floating-ui/utils",
+          "Identifier": {
+            "PURL": "pkg:npm/%40floating-ui/utils@0.2.12",
+            "UID": "2e8b4b5562504b7f"
+          },
+          "Version": "0.2.12",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "@tanstack/query-core@5.101.4",
+          "Name": "@tanstack/query-core",
+          "Identifier": {
+            "PURL": "pkg:npm/%40tanstack/query-core@5.101.4",
+            "UID": "487ee4a98b577394"
+          },
+          "Version": "5.101.4",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "csstype@3.2.3",
+          "Name": "csstype",
+          "Identifier": {
+            "PURL": "pkg:npm/csstype@3.2.3",
+            "UID": "67f36e19a9ff98b9"
+          },
+          "Version": "3.2.3",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "openapi-typescript-helpers@0.0.15",
+          "Name": "openapi-typescript-helpers",
+          "Identifier": {
+            "PURL": "pkg:npm/openapi-typescript-helpers@0.0.15",
+            "UID": "5f0ec4f426b14e80"
+          },
+          "Version": "0.0.15",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "reselect@5.3.0",
+          "Name": "reselect",
+          "Identifier": {
+            "PURL": "pkg:npm/reselect@5.3.0",
+            "UID": "c64412ee3b0a22cb"
+          },
+          "Version": "5.3.0",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "scheduler@0.27.0",
+          "Name": "scheduler",
+          "Identifier": {
+            "PURL": "pkg:npm/scheduler@0.27.0",
+            "UID": "2832cb91bee68b85"
+          },
+          "Version": "0.27.0",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "AnalyzedBy": "pnpm"
+        },
+        {
+          "ID": "use-sync-external-store@1.7.0(react@19.2.8)",
+          "Name": "use-sync-external-store",
+          "Identifier": {
+            "PURL": "pkg:npm/use-sync-external-store@1.7.0",
+            "UID": "eb94b978c63707f8"
+          },
+          "Version": "1.7.0",
+          "Licenses": ["MIT"],
+          "Indirect": true,
+          "Relationship": "indirect",
+          "DependsOn": ["react@19.2.8"],
+          "AnalyzedBy": "pnpm"
+        }
+      ]
+    },
+    {
+      "Target": "apps/api/Dockerfile",
+      "Class": "config",
+      "Type": "dockerfile",
+      "MisconfSummary": {
+        "Successes": 20,
+        "Failures": 0
+      }
+    },
+    {
+      "Target": "apps/api/Dockerfile.migrate",
+      "Class": "config",
+      "Type": "dockerfile",
+      "MisconfSummary": {
+        "Successes": 20,
+        "Failures": 0
+      }
+    },
+    {
+      "Target": "apps/web/Dockerfile",
+      "Class": "config",
+      "Type": "dockerfile",
+      "MisconfSummary": {
+        "Successes": 20,
+        "Failures": 0
+      }
+    }
+  ]
+}

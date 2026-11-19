@@ -1,0 +1,56 @@
+{
+  "scope": "Revision estatica del lock generado manualmente; no equivale a instalacion ni pruebas",
+  "pipelinePackages": 171,
+  "integrationPackages": 269,
+  "removed": [],
+  "unexpectedResolutions": [
+    {
+      "resolved": "@babel/runtime@7.29.14",
+      "template": ["@babel/runtime@7.29.13"],
+      "pipeline": []
+    },
+    {
+      "resolved": "@types/node@26.6.6",
+      "template": ["@types/node@22.20.5"],
+      "pipeline": []
+    },
+    {
+      "resolved": "enhanced-resolve@5.27.0",
+      "template": ["enhanced-resolve@5.26.1"],
+      "pipeline": []
+    },
+    {
+      "resolved": "graceful-fs@4.2.12",
+      "template": ["graceful-fs@4.2.11"],
+      "pipeline": []
+    },
+    {
+      "resolved": "set-cookie-parser@3.2.3",
+      "template": ["set-cookie-parser@3.2.2"],
+      "pipeline": []
+    },
+    {
+      "resolved": "tapable@2.3.4",
+      "template": ["tapable@2.3.3"],
+      "pipeline": []
+    },
+    {
+      "resolved": "tldts-core@7.5.4",
+      "template": ["tldts-core@7.4.20"],
+      "pipeline": []
+    },
+    {
+      "resolved": "tldts@7.5.4",
+      "template": ["tldts@7.4.19"],
+      "pipeline": []
+    },
+    {
+      "resolved": "undici-types@8.9.0",
+      "template": ["undici-types@6.21.0"],
+      "pipeline": []
+    }
+  ],
+  "action": "Retener las versiones existentes en la plantilla mediante overrides; regeneracion pendiente",
+  "peerWarning": "openapi-typescript@7.13.0 requiere typescript ^5.x; el DAS fija typescript 6.0.3. No se modifica ni se silencia.",
+  "reviewedLockSha256": "414b4d167c8b174019fa3ea6244c3f9e75d2ca8fb4203330a341596edb4c3ec2"
+}
