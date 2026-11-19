@@ -761,6 +761,28 @@ Decisión de Daniel: restaurar `apps/api/Makefile` idéntico al de Benja (MERGE_
   - Las 5 rutas sin resolver son las del bloque 1.
   - El bloque 7 lo vuelve a comprobar.
 
+#### Avance 24 — 19/11/2026 ~20:00 — Índice resuelto y commit de merge `4a68a74`: APROBADO
+
+Ejecutado por Daniel en PowerShell desde el worktree (§16.4.b a §16.4.e). Registrado por el Claude revisor, que comprobó el resultado en Git en solo lectura.
+
+- §16.4.b y §16.4.c: `git ls-files -u`, `git diff --name-only` y el filtro de archivos sensibles salieron vacíos.
+- §16.4.d: commit de merge con `.tmp/mensaje-merge.txt`; pasaron los 4 hooks de lefthook (`secretos`, `lint`, `format`, `go`). `git status --short` vacío después del commit.
+- §16.4.e: `pnpm codegen` + `pnpm check:generated` aprobados sin cambios en el árbol; `pnpm check:contract` contra `main` (`ed6f74d33d696eb4cafe807291f3f891451928b1`, `OASDIFF_VERSION=v1.35.0`) → «Primera línea base», sin errores.
+
+Comprobación independiente (solo lectura, `--no-optional-locks`):
+
+| Dato                  | Valor                                                                                                                       |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| HEAD                  | `4a68a7415860b594debc0dbd44ed9a042674a9bc`                                                                                  |
+| Padre 1 (Daniel)      | `c445c03450692a0c7dd302b07edbbdf72ab20395`                                                                                  |
+| Padre 2 (Benja)       | `7d2b7dcc216eec847b78b7d7aeb4731aec1cd94d`                                                                                  |
+| Rama                  | `integration/pipeline-plantilla-local` (local, sin push)                                                                    |
+| MERGE_HEAD            | ya no existe: merge cerrado                                                                                                 |
+| Rutas sin resolver    | 0                                                                                                                           |
+| Versionados sensibles | solo `.env.example` y `apps/web/.env.example` (plantillas permitidas); ningún `.env`, `coverage.out`, `.tmp/` ni `.claude/` |
+
+Pendiente: push (§16.4.f, opción A recomendada; decide Daniel), Sonar, `test:mutation`, PR de versiones (jefe), `$schema` (Benja y Daniel) y confirmar con Manuel si `feat/contrato-hito0` es su entrega. Este avance deja `continuidad-claude.md` modificado en el disco: va en un commit de documentación aparte, no en el merge. El Hito 0 sigue abierto.
+
 ### 16.4 Comandos pendientes para Daniel (PowerShell, desde el worktree)
 
 #### 16.4.a Bloque go get/tidy/vet/test — YA EJECUTADO por el agente (Avances 3–4), se conserva como histórico
