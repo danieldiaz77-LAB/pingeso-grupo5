@@ -1,0 +1,12 @@
+.git
+.env*
+**/.env*
+**/node_modules
+**/dist
+**/coverage
+.tools
+.tmp
+.scannerwork
+docs
+**/test-results
+**/playwright-report

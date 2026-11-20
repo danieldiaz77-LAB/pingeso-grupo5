@@ -1,0 +1,6 @@
+{
+  "imagen_propuesta": "golang:1.26.10-alpine3.23",
+  "digest": "sha256:78e7f1e419545bc4b8b5ee8a40a99ddb5df1216d38681dbab2eeb1fdb2427f43",
+  "es_indice": true,
+  "fuente": "https://registry-1.docker.io/v2/library/golang/manifests/1.26.10-alpine3.23"
+}

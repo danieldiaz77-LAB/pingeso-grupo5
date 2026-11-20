@@ -1,0 +1,4 @@
+1 changes: 1 error, 0 warning, 0 info
+error	[api-path-removed-without-deprecation] at contracts/openapi.yaml
+	in API GET /readyz
+		api path removed without deprecation

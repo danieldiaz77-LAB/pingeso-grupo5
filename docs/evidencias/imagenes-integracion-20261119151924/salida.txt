@@ -1,0 +1,419 @@
+== Proyecto pingeso-imagen-20261119151924  VERSION=c445c03-local  trivy Version: 0.76.1
+== build api
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 930B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#2 DONE 0.5s
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#3 ...
+
+#4 [auth] library/golang:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#3 DONE 2.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 177B 0.0s done
+#5 DONE 0.1s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#7 resolve gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6 0.1s done
+#7 DONE 0.1s
+
+#8 [build 1/6] FROM docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#8 resolve docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#8 resolve docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc 0.1s done
+#8 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 2.96kB 0.0s done
+#6 DONE 0.1s
+
+#9 [build 2/6] WORKDIR /src
+#9 CACHED
+
+#10 [build 3/6] COPY apps/api/go.mod apps/api/go.sum ./
+#10 CACHED
+
+#11 [build 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#11 CACHED
+
+#12 [build 5/6] COPY apps/api/ ./
+#12 CACHED
+
+#13 [build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X main.version=c445c03-local" -o /out/api ./cmd/api
+#13 DONE 5.1s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=build --chown=nonroot:nonroot /out/api /app/api
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 1.0s done
+#16 exporting manifest sha256:6bfbc2968fcae33ed86b816517d11db5eedfd7bfdcb12d00d3a1d81c0999854b 0.0s done
+#16 exporting config sha256:3a5fdc34ed396e36cf7f30f6dd647bda78918921ee8ff8994a269308f31cce62 0.0s done
+#16 exporting attestation manifest sha256:e9264007055c0fbfe53b3e16f39e952858d21e073d052a021a7998a084eaef4f 0.1s done
+#16 exporting manifest list sha256:6191347227a8e1788e3936e101e46e6cff1ff894e2a804d7ffcb55795f76186a
+#16 exporting manifest list sha256:6191347227a8e1788e3936e101e46e6cff1ff894e2a804d7ffcb55795f76186a 0.0s done
+#16 naming to docker.io/library/pingeso-imagen-20261119151924-api:ci done
+#16 unpacking to docker.io/library/pingeso-imagen-20261119151924-api:ci
+#16 unpacking to docker.io/library/pingeso-imagen-20261119151924-api:ci 0.2s done
+#16 DONE 1.5s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/9r0wfuzn3kmdrro6rfrfh59vm
+== build api exit=0
+== build web
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.48kB 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#3 DONE 0.1s
+
+#4 [internal] load metadata for gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#4 DONE 0.6s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 ...
+
+#5 [auth] library/node:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 DONE 2.6s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 177B 0.0s done
+#6 DONE 0.1s
+
+#7 [internal] load build context
+#7 DONE 0.0s
+
+#8 [build 1/6] FROM docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#8 resolve docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc 0.1s done
+#8 DONE 0.1s
+
+#9 [stage-2 1/3] FROM gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#9 resolve gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6 0.1s done
+#9 DONE 0.2s
+
+#10 [web 1/8] FROM docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#10 resolve docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 0.1s done
+#10 DONE 0.2s
+
+#7 [internal] load build context
+#7 transferring context: 139.33kB 0.3s done
+#7 DONE 0.3s
+
+#11 [web 6/8] RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
+#11 CACHED
+
+#12 [build 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#12 CACHED
+
+#13 [web 5/8] COPY apps/web/package.json apps/web/package.json
+#13 CACHED
+
+#14 [web 8/8] RUN pnpm --dir apps/web build
+#14 CACHED
+
+#15 [web 7/8] COPY apps/web/ apps/web/
+#15 CACHED
+
+#16 [web 3/8] RUN npm install --global --ignore-scripts pnpm@10.13.1
+#16 CACHED
+
+#17 [stage-2 2/3] COPY --from=build --chown=nonroot:nonroot /out/spa-server /app/spa-server
+#17 CACHED
+
+#18 [build 5/6] COPY apps/api/ ./
+#18 CACHED
+
+#19 [build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w" -o /out/spa-server ./cmd/spa-server
+#19 CACHED
+
+#20 [build 2/6] WORKDIR /src
+#20 CACHED
+
+#21 [web 4/8] COPY package.json pnpm-workspace.yaml pnpm-lock.yaml .npmrc ./
+#21 CACHED
+
+#22 [build 3/6] COPY apps/api/go.mod apps/api/go.sum ./
+#22 CACHED
+
+#23 [web 2/8] WORKDIR /src
+#23 CACHED
+
+#24 [stage-2 3/3] COPY --from=web --chown=nonroot:nonroot /src/apps/web/dist /srv
+#24 CACHED
+
+#25 exporting to image
+#25 exporting layers 0.0s done
+#25 exporting manifest sha256:3d964ffee38ef59c67c7a2c805cde781f61679546fab825a9c041112a90bdf64 0.1s done
+#25 exporting config sha256:51387516eedb46ae5dc354276e25b28d302816fb5b2cb21ccab0390dd579b679 0.0s done
+#25 exporting attestation manifest sha256:e9908a1048b3a37d0bd641633a5d8e48e52814de7c96b48f4e56ce416dce9002
+#25 exporting attestation manifest sha256:e9908a1048b3a37d0bd641633a5d8e48e52814de7c96b48f4e56ce416dce9002 0.1s done
+#25 exporting manifest list sha256:94b507676f2715f44ccbd28c995ea361e4c96e00767a3e1e5fedd00fe6db89dd 0.0s done
+#25 naming to docker.io/library/pingeso-imagen-20261119151924-web:ci
+#25 naming to docker.io/library/pingeso-imagen-20261119151924-web:ci done
+#25 unpacking to docker.io/library/pingeso-imagen-20261119151924-web:ci 0.1s done
+#25 DONE 0.6s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/vcmsgvnmwmpebyanrakwq7koe
+== build web exit=0
+== build migrate
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.migrate
+#1 transferring dockerfile: 917B 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#3 ...
+
+#4 [auth] library/alpine:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#3 DONE 1.5s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 177B 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 318B 0.1s done
+#6 DONE 0.1s
+
+#7 [stage-1 1/4] FROM docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#7 resolve docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#7 resolve docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63 0.2s done
+#7 DONE 0.2s
+
+#8 [build 1/2] FROM docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#8 resolve docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc 0.1s done
+#8 DONE 0.1s
+
+#9 [stage-1 2/4] WORKDIR /app
+#9 CACHED
+
+#10 [build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" github.com/pressly/goose/v3/cmd/goose@v3.24.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#10 CACHED
+
+#11 [stage-1 3/4] COPY --from=build --chown=65532:65532 /out/goose /usr/local/bin/goose
+#11 CACHED
+
+#12 [stage-1 4/4] COPY --chown=65532:65532 apps/api/db/migrations/ /app/db/migrations/
+#12 CACHED
+
+#13 exporting to image
+#13 exporting layers done
+#13 exporting manifest sha256:917f189673bd6c62b311916d87143fdfae96b4a9730957b12dba33d864d92cba 0.1s done
+#13 exporting config sha256:58ff4299d19a24624c01b607d9d86e692c859159a345c4e0093dcc02a72f6ba4 0.1s done
+#13 exporting attestation manifest sha256:f7f47fed0b13fff343241218abf6a06ac7d5ff93d663f0d10cb6b6282bd44840 0.1s done
+#13 exporting manifest list sha256:7b497264a0783c80a6ab466ad2a2e989311d3ebcdc3b837c105e061afedc044b
+#13 exporting manifest list sha256:7b497264a0783c80a6ab466ad2a2e989311d3ebcdc3b837c105e061afedc044b 0.1s done
+#13 naming to docker.io/library/pingeso-imagen-20261119151924-migrate:ci done
+#13 unpacking to docker.io/library/pingeso-imagen-20261119151924-migrate:ci 0.1s done
+#13 DONE 0.5s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/h7mnk35jeza3dlp05jn4zr1j3
+== build migrate exit=0
+pingeso-imagen-20261119151924-api:ci 6191347227a8 23.3MB
+pingeso-imagen-20261119151924-web:ci 94b507676f27 16.1MB
+pingeso-imagen-20261119151924-migrate:ci 7b497264a078 62MB
+== trivy api
+2026-11-19T15:20:13-03:00	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-19T15:20:13-03:00	INFO	[secret] Secret scanning is enabled
+2026-11-19T15:20:13-03:00	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-11-19T15:20:13-03:00	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-11-19T15:20:15-03:00	INFO	Detected OS	family="debian" version="13.6"
+2026-11-19T15:20:15-03:00	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=5
+2026-11-19T15:20:15-03:00	INFO	Number of language-specific files	num=1
+2026-11-19T15:20:15-03:00	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-19T15:20:15-03:00	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+== trivy api exit=1
+│                   │                 │          │        │                   │                              │ invalid DNS record parsing                                   │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46600                   │
+│                   ├─────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-56853  │          │        │                   │ 1.25.13, 1.26.6, 1.27.0-rc.3 │ net/http: golang: Go net/http: Unencrypted HTTP/2            │
+│                   │                 │          │        │                   │                              │ connections vulnerable to Denial of Service...               │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56853                   │
+│                   ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-56858  │          │        │                   │                              │ html/template: golang: Go html/template: Cross-Site          │
+│                   │                 │          │        │                   │                              │ Scripting via pathological input                             │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56858                   │
+│                   ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-56859  │          │        │                   │                              │ encoding/xml: golang: Go: Denial of Service via XML decoding │
+│                   │                 │          │        │                   │                              │ recursion depth issue...                                     │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56859                   │
+│                   ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-56860  │          │        │                   │                              │ net/url: golang: golang net/url: Denial of Service from      │
+│                   │                 │          │        │                   │                              │ quadratic complexity in path...                              │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56860                   │
+│                   ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-56862  │          │        │                   │                              │ crypto/tls: golang: Golang crypto/tls: Denial of Service via │
+│                   │                 │          │        │                   │                              │ indefinite KeyUpdate messages                                │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56862                   │
+│                   ├─────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-78667  │          │        │                   │ 1.26.9, 1.27.2               │ net/http: golang: golang: Denial of Service via crafted HTTP │
+│                   │                 │          │        │                   │                              │ Range headers                                                │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-78667                   │
+│                   ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-78669  │          │        │                   │                              │ net/http: net/http/internal/http2: golang.org/x/net/http2:   │
+│                   │                 │          │        │                   │                              │ net/http: Denial of Service via excessive HTTP/2 SETTINGS    │
+│                   │                 │          │        │                   │                              │ frames...                                                    │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-78669                   │
+│                   ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-97031  │          │        │                   │                              │ crypto/tls: golang: crypto/tls: Denial of Service via        │
+│                   │                 │          │        │                   │                              │ multiple ECH outer extension references...                   │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-97031                   │
+│                   ├─────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                   │ CVE-2026-97054  │          │        │                   │ 1.26.11, 1.27.4              │ For HTTP/1 servers, when MaxBytesReader's limit is exceeded, │
+│                   │                 │          │        │                   │                              │ "Connecti ...                                                │
+│                   │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-97054                   │
+└───────────────────┴─────────────────┴──────────┴────────┴───────────────────┴──────────────────────────────┴──────────────────────────────────────────────────────────────┘
+== trivy web
+2026-11-19T15:20:22-03:00	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-19T15:20:22-03:00	INFO	[secret] Secret scanning is enabled
+2026-11-19T15:20:22-03:00	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-11-19T15:20:22-03:00	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-11-19T15:20:23-03:00	INFO	Detected OS	family="debian" version="13.6"
+2026-11-19T15:20:23-03:00	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=5
+2026-11-19T15:20:23-03:00	INFO	Number of language-specific files	num=1
+2026-11-19T15:20:23-03:00	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-19T15:20:23-03:00	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+== trivy web exit=1
+│         │                 │          │        │                   │                              │ invalid DNS record parsing                                   │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-46600                   │
+│         ├─────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-56853  │          │        │                   │ 1.25.13, 1.26.6, 1.27.0-rc.3 │ net/http: golang: Go net/http: Unencrypted HTTP/2            │
+│         │                 │          │        │                   │                              │ connections vulnerable to Denial of Service...               │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56853                   │
+│         ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-56858  │          │        │                   │                              │ html/template: golang: Go html/template: Cross-Site          │
+│         │                 │          │        │                   │                              │ Scripting via pathological input                             │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56858                   │
+│         ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-56859  │          │        │                   │                              │ encoding/xml: golang: Go: Denial of Service via XML decoding │
+│         │                 │          │        │                   │                              │ recursion depth issue...                                     │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56859                   │
+│         ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-56860  │          │        │                   │                              │ net/url: golang: golang net/url: Denial of Service from      │
+│         │                 │          │        │                   │                              │ quadratic complexity in path...                              │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56860                   │
+│         ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-56862  │          │        │                   │                              │ crypto/tls: golang: Golang crypto/tls: Denial of Service via │
+│         │                 │          │        │                   │                              │ indefinite KeyUpdate messages                                │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-56862                   │
+│         ├─────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-78667  │          │        │                   │ 1.26.9, 1.27.2               │ net/http: golang: golang: Denial of Service via crafted HTTP │
+│         │                 │          │        │                   │                              │ Range headers                                                │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-78667                   │
+│         ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-78669  │          │        │                   │                              │ net/http: net/http/internal/http2: golang.org/x/net/http2:   │
+│         │                 │          │        │                   │                              │ net/http: Denial of Service via excessive HTTP/2 SETTINGS    │
+│         │                 │          │        │                   │                              │ frames...                                                    │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-78669                   │
+│         ├─────────────────┤          │        │                   │                              ├──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-97031  │          │        │                   │                              │ crypto/tls: golang: crypto/tls: Denial of Service via        │
+│         │                 │          │        │                   │                              │ multiple ECH outer extension references...                   │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-97031                   │
+│         ├─────────────────┤          │        │                   ├──────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-97054  │          │        │                   │ 1.26.11, 1.27.4              │ For HTTP/1 servers, when MaxBytesReader's limit is exceeded, │
+│         │                 │          │        │                   │                              │ "Connecti ...                                                │
+│         │                 │          │        │                   │                              │ https://avd.aquasec.com/nvd/cve-2026-97054                   │
+└─────────┴─────────────────┴──────────┴────────┴───────────────────┴──────────────────────────────┴──────────────────────────────────────────────────────────────┘
+== trivy migrate
+2026-11-19T15:20:33-03:00	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-19T15:20:33-03:00	INFO	[secret] Secret scanning is enabled
+2026-11-19T15:20:33-03:00	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-11-19T15:20:33-03:00	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-11-19T15:20:35-03:00	INFO	Detected OS	family="alpine" version="3.23.7"
+2026-11-19T15:20:35-03:00	INFO	[alpine] Detecting vulnerabilities...	os_version="3.23" repository="3.23" pkg_num=16
+2026-11-19T15:20:35-03:00	INFO	Number of language-specific files	num=1
+2026-11-19T15:20:35-03:00	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-19T15:20:35-03:00	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+== trivy migrate exit=1
+│                               │                     │          │        │                   │                                                           │ invalid DNS record parsing                                   │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-46600                   │
+│                               ├─────────────────────┤          │        │                   ├───────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-56853      │          │        │                   │ 1.25.13, 1.26.6, 1.27.0-rc.3                              │ net/http: golang: Go net/http: Unencrypted HTTP/2            │
+│                               │                     │          │        │                   │                                                           │ connections vulnerable to Denial of Service...               │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-56853                   │
+│                               ├─────────────────────┤          │        │                   │                                                           ├──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-56858      │          │        │                   │                                                           │ html/template: golang: Go html/template: Cross-Site          │
+│                               │                     │          │        │                   │                                                           │ Scripting via pathological input                             │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-56858                   │
+│                               ├─────────────────────┤          │        │                   │                                                           ├──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-56859      │          │        │                   │                                                           │ encoding/xml: golang: Go: Denial of Service via XML decoding │
+│                               │                     │          │        │                   │                                                           │ recursion depth issue...                                     │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-56859                   │
+│                               ├─────────────────────┤          │        │                   │                                                           ├──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-56860      │          │        │                   │                                                           │ net/url: golang: golang net/url: Denial of Service from      │
+│                               │                     │          │        │                   │                                                           │ quadratic complexity in path...                              │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-56860                   │
+│                               ├─────────────────────┤          │        │                   │                                                           ├──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-56862      │          │        │                   │                                                           │ crypto/tls: golang: Golang crypto/tls: Denial of Service via │
+│                               │                     │          │        │                   │                                                           │ indefinite KeyUpdate messages                                │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-56862                   │
+│                               ├─────────────────────┤          │        │                   ├───────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-78667      │          │        │                   │ 1.26.9, 1.27.2                                            │ net/http: golang: golang: Denial of Service via crafted HTTP │
+│                               │                     │          │        │                   │                                                           │ Range headers                                                │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-78667                   │
+│                               ├─────────────────────┤          │        │                   │                                                           ├──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-78669      │          │        │                   │                                                           │ net/http: net/http/internal/http2: golang.org/x/net/http2:   │
+│                               │                     │          │        │                   │                                                           │ net/http: Denial of Service via excessive HTTP/2 SETTINGS    │
+│                               │                     │          │        │                   │                                                           │ frames...                                                    │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-78669                   │
+│                               ├─────────────────────┤          │        │                   │                                                           ├──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-97031      │          │        │                   │                                                           │ crypto/tls: golang: crypto/tls: Denial of Service via        │
+│                               │                     │          │        │                   │                                                           │ multiple ECH outer extension references...                   │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-97031                   │
+│                               ├─────────────────────┤          │        │                   ├───────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                               │ CVE-2026-97054      │          │        │                   │ 1.26.11, 1.27.4                                           │ For HTTP/1 servers, when MaxBytesReader's limit is exceeded, │
+│                               │                     │          │        │                   │                                                           │ "Connecti ...                                                │
+│                               │                     │          │        │                   │                                                           │ https://avd.aquasec.com/nvd/cve-2026-97054                   │
+└───────────────────────────────┴─────────────────────┴──────────┴────────┴───────────────────┴───────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+== dockle api
+[34mSKIP[0m	- [36mDKL-LI-0001[0m: Avoid empty password
+	* failed to detect etc/shadow,etc/master.passwd
+[35mINFO[0m	- [36mCIS-DI-0005[0m: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+== dockle api exit=0
+== dockle web
+[34mSKIP[0m	- [36mDKL-LI-0001[0m: Avoid empty password
+	* failed to detect etc/shadow,etc/master.passwd
+[35mINFO[0m	- [36mCIS-DI-0005[0m: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+== dockle web exit=0
+== dockle migrate
+[35mINFO[0m	- [36mCIS-DI-0005[0m: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+[35mINFO[0m	- [36mCIS-DI-0006[0m: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+== dockle migrate exit=0
+== fallos=3

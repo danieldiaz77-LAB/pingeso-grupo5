@@ -1,0 +1,19 @@
+Thu Nov 19 04:16:44 HSP 2026
+v22.22.0
+10.13.1
+go version go1.26.5 windows/amd64
+
+> pingeso-grupo5@ verify C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> pnpm format && pnpm lint && pnpm typecheck && node scripts/tareas.mjs verify-go && pnpm test && pnpm build
+
+
+> pingeso-grupo5@ format C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> prettier --check .
+
+Checking formatting...
+[[33mwarn[39m] docs/evidencias/pnpm-audit-integracion-2026-11-19.json
+[[33mwarn[39m] docs/evidencias/trivy-fs-integracion-2026-11-19.json
+[[33mwarn[39m] Code style issues found in 2 files. Run Prettier with --write to fix.
+ ELIFECYCLE  Command failed with exit code 1.
+ ELIFECYCLE  Command failed with exit code 1.
+VERIFY exit=1

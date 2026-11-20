@@ -1,0 +1,84 @@
+{
+  "commit": "0f5d93a0eafdea8e2281e53e4abfd69488db9a99",
+  "run_url": "https://github.com/danieldiaz77-LAB/pingeso-grupo5/actions/runs/42489503785",
+  "pr_url": "https://github.com/danieldiaz77-LAB/pingeso-grupo5/pull/1",
+  "checks": {
+    "calidad": "failure",
+    "seguridad": "failure",
+    "imagen": "skipped"
+  },
+  "sonar": {
+    "status": "ERROR",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_reliability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "ERROR",
+        "metricKey": "new_security_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "3"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_maintainability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "ERROR",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "80",
+        "actualValue": "72.5"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_security_hotspots_reviewed",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "100",
+        "actualValue": "100.0"
+      }
+    ],
+    "periods": [],
+    "ignoredConditions": false
+  },
+  "hallazgo_sonar": {
+    "rule": "gosecurity:S6549",
+    "file": "apps/api/internal/spa/servidor.go",
+    "line": 43,
+    "message": "Filesystem Oracle via unsanitized user input"
+  },
+  "reportes_cobertura_leidos": ["coverage.out", "apps/web/coverage/lcov.info"],
+  "seguridad": {
+    "govulncheck": "18 avisos: 16 stdlib y 2 x/text",
+    "audit": "8 avisos, incluido HIGH de Vite",
+    "trivy_fs": "2 HIGH x/text",
+    "gitleaks": "success",
+    "hadolint": "success"
+  },
+  "limites": [
+    "Sonar informa shallow clone aunque checkout usa fetch-depth: 0; no impidió cargar cobertura ni evaluar el gate.",
+    "No se modificaron versiones, umbrales ni protecciones.",
+    "La imagen no se construyó en esta ejecución remota."
+  ]
+}

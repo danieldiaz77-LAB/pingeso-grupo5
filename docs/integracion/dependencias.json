@@ -1,0 +1,287 @@
+{
+  "go": {
+    "changed": [
+      {
+        "package": "github.com/jackc/puddle/v2",
+        "pipeline": "v2.2.2",
+        "benja": "v2.2.3"
+      },
+      {
+        "package": "golang.org/x/sync",
+        "pipeline": "v0.20.0",
+        "benja": "v0.24.0"
+      },
+      {
+        "package": "golang.org/x/text",
+        "pipeline": "v0.37.0",
+        "benja": "v0.43.0"
+      }
+    ],
+    "added": [
+      {
+        "package": "github.com/MicahParks/keyfunc/v3",
+        "benja": "v3.9.1"
+      },
+      {
+        "package": "github.com/golang-jwt/jwt/v5",
+        "benja": "v5.3.1"
+      },
+      {
+        "package": "github.com/pressly/goose/v3",
+        "benja": "v3.24.1"
+      },
+      {
+        "package": "github.com/testcontainers/testcontainers-go",
+        "benja": "v0.43.0"
+      },
+      {
+        "package": "github.com/testcontainers/testcontainers-go/modules/postgres",
+        "benja": "v0.43.0"
+      },
+      {
+        "package": "dario.cat/mergo",
+        "benja": "v1.0.2"
+      },
+      {
+        "package": "github.com/Azure/go-ansiterm",
+        "benja": "v0.0.0-20261006220739-8c912ac31dd4"
+      },
+      {
+        "package": "github.com/MicahParks/jwkset",
+        "benja": "v0.11.4"
+      },
+      {
+        "package": "github.com/Microsoft/go-winio",
+        "benja": "v0.6.3"
+      },
+      {
+        "package": "github.com/cenkalti/backoff/v4",
+        "benja": "v4.3.0"
+      },
+      {
+        "package": "github.com/cespare/xxhash/v2",
+        "benja": "v2.3.0"
+      },
+      {
+        "package": "github.com/containerd/errdefs",
+        "benja": "v1.0.0"
+      },
+      {
+        "package": "github.com/containerd/errdefs/pkg",
+        "benja": "v0.3.0"
+      },
+      {
+        "package": "github.com/containerd/log",
+        "benja": "v0.1.0"
+      },
+      {
+        "package": "github.com/containerd/platforms",
+        "benja": "v0.2.1"
+      },
+      {
+        "package": "github.com/cpuguy83/dockercfg",
+        "benja": "v0.3.2"
+      },
+      {
+        "package": "github.com/distribution/reference",
+        "benja": "v0.6.0"
+      },
+      {
+        "package": "github.com/docker/go-connections",
+        "benja": "v0.8.2"
+      },
+      {
+        "package": "github.com/docker/go-units",
+        "benja": "v0.5.0"
+      },
+      {
+        "package": "github.com/ebitengine/purego",
+        "benja": "v0.10.1"
+      },
+      {
+        "package": "github.com/felixge/httpsnoop",
+        "benja": "v1.1.0"
+      },
+      {
+        "package": "github.com/go-logr/logr",
+        "benja": "v1.4.4"
+      },
+      {
+        "package": "github.com/go-logr/stdr",
+        "benja": "v1.2.2"
+      },
+      {
+        "package": "github.com/go-ole/go-ole",
+        "benja": "v1.3.0"
+      },
+      {
+        "package": "github.com/google/uuid",
+        "benja": "v1.6.0"
+      },
+      {
+        "package": "github.com/klauspost/compress",
+        "benja": "v1.20.1"
+      },
+      {
+        "package": "github.com/lufia/plan9stats",
+        "benja": "v0.0.0-20260330125221-c963978e514e"
+      },
+      {
+        "package": "github.com/magiconair/properties",
+        "benja": "v1.18.12"
+      },
+      {
+        "package": "github.com/mfridman/interpolate",
+        "benja": "v0.0.2"
+      },
+      {
+        "package": "github.com/moby/docker-image-spec",
+        "benja": "v1.3.1"
+      },
+      {
+        "package": "github.com/moby/go-archive",
+        "benja": "v0.3.3"
+      },
+      {
+        "package": "github.com/moby/moby/api",
+        "benja": "v1.56.1"
+      },
+      {
+        "package": "github.com/moby/moby/client",
+        "benja": "v0.6.2"
+      },
+      {
+        "package": "github.com/moby/patternmatcher",
+        "benja": "v0.6.1"
+      },
+      {
+        "package": "github.com/moby/sys/sequential",
+        "benja": "v0.7.0"
+      },
+      {
+        "package": "github.com/moby/sys/user",
+        "benja": "v0.4.1"
+      },
+      {
+        "package": "github.com/moby/sys/userns",
+        "benja": "v0.1.0"
+      },
+      {
+        "package": "github.com/moby/term",
+        "benja": "v0.5.2"
+      },
+      {
+        "package": "github.com/opencontainers/go-digest",
+        "benja": "v1.0.0"
+      },
+      {
+        "package": "github.com/opencontainers/image-spec",
+        "benja": "v1.1.1"
+      },
+      {
+        "package": "github.com/power-devops/perfstat",
+        "benja": "v0.0.0-20240221224432-82ca36839d55"
+      },
+      {
+        "package": "github.com/sethvargo/go-retry",
+        "benja": "v0.5.0"
+      },
+      {
+        "package": "github.com/shirou/gopsutil/v4",
+        "benja": "v4.26.6"
+      },
+      {
+        "package": "github.com/sirupsen/logrus",
+        "benja": "v1.10.2"
+      },
+      {
+        "package": "github.com/stretchr/testify",
+        "benja": "v1.12.1"
+      },
+      {
+        "package": "github.com/tklauser/go-sysconf",
+        "benja": "v0.4.0"
+      },
+      {
+        "package": "github.com/tklauser/numcpus",
+        "benja": "v0.12.0"
+      },
+      {
+        "package": "github.com/yusufpapurcu/wmi",
+        "benja": "v1.2.4"
+      },
+      {
+        "package": "go.opentelemetry.io/auto/sdk",
+        "benja": "v1.2.1"
+      },
+      {
+        "package": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "benja": "v0.72.0"
+      },
+      {
+        "package": "go.opentelemetry.io/otel",
+        "benja": "v1.47.0"
+      },
+      {
+        "package": "go.opentelemetry.io/otel/log",
+        "benja": "v1.47.0"
+      },
+      {
+        "package": "go.opentelemetry.io/otel/metric",
+        "benja": "v1.47.0"
+      },
+      {
+        "package": "go.opentelemetry.io/otel/trace",
+        "benja": "v1.47.0"
+      },
+      {
+        "package": "go.uber.org/multierr",
+        "benja": "v1.11.0"
+      },
+      {
+        "package": "go.yaml.in/yaml/v3",
+        "benja": "v3.0.5"
+      },
+      {
+        "package": "golang.org/x/crypto",
+        "benja": "v0.58.0"
+      },
+      {
+        "package": "golang.org/x/sys",
+        "benja": "v0.49.0"
+      },
+      {
+        "package": "golang.org/x/time",
+        "benja": "v0.15.0"
+      }
+    ]
+  },
+  "frontend": {
+    "changed": [
+      {
+        "package": "@types/react",
+        "pipeline": "19.2.2",
+        "benja": "19.2.8"
+      },
+      {
+        "package": "@types/react-dom",
+        "pipeline": "19.2.2",
+        "benja": "19.2.3"
+      }
+    ],
+    "addedUnapproved": [
+      {
+        "package": "@types/node",
+        "benja": "22.20.5"
+      }
+    ],
+    "requiredExistingCatalog": [
+      "@base-ui/react@1.6.0",
+      "@tanstack/react-query@5.101.4",
+      "react-hook-form@7.83.0",
+      "msw@2.15.0",
+      "tailwindcss@4.3.3",
+      "@tailwindcss/vite@4.3.3"
+    ]
+  }
+}

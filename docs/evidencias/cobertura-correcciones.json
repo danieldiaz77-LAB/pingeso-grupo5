@@ -1,0 +1,15 @@
+{
+  "ruta": "coverage.out",
+  "archivos": [
+    "apps/api/cmd/api/main.go",
+    "apps/api/cmd/openapi/main.go",
+    "apps/api/cmd/spa-server/main.go",
+    "apps/api/internal/api/salud.go",
+    "apps/api/internal/spa/servidor.go"
+  ],
+  "sentencias": 180,
+  "cubiertas": 171,
+  "porcentajeSentencias": 95,
+  "fuentesGoSinReporte": [],
+  "alcance": "Formato y rutas compatibles; no acredita ingestión remota ni cobertura de código nuevo de Sonar"
+}

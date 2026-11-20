@@ -1,0 +1,95 @@
+Thu Nov 19 04:18:20 HSP 2026
+v22.22.0
+10.13.1
+go version go1.26.5 windows/amd64
+
+> pingeso-grupo5@ verify C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> pnpm format && pnpm lint && pnpm typecheck && node scripts/tareas.mjs verify-go && pnpm test && pnpm build
+
+
+> pingeso-grupo5@ format C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> pingeso-grupo5@ lint C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> oxlint --deny-warnings apps/web/src && node scripts/arquitectura.mjs
+
+
+> pingeso-grupo5@ typecheck C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> pnpm --dir apps/web typecheck
+
+
+> @pingeso-grupo5/web-tecnica@0.0.0 typecheck C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla\apps\web
+> tsc --noEmit
+
+all modules verified
+?   	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/cmd/api	[no test files]
+?   	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/cmd/openapi	[no test files]
+?   	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/cmd/spa-server	[no test files]
+ok  	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/e2e	5.570s
+ok  	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/api	3.674s
+ok  	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/config	1.526s
+?   	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/repository	[no test files]
+ok  	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/service	(cached)
+?   	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/spa	[no test files]
+?   	github.com/danieldiaz77-LAB/pingeso-grupo5/apps/api/internal/store	[no test files]
+
+> pingeso-grupo5@ test C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> pnpm --dir apps/web test
+
+
+> @pingeso-grupo5/web-tecnica@0.0.0 test C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla\apps\web
+> vitest run --coverage
+
+
+ RUN  v4.1.10 C:/Users/danie/OneDrive/Desktop/ULTIMOS SEMESTRES/Semestre 2_2026/Proyecto Ingeniería de Software (Pingeso)/Proyecto_PINGESO/pingeso-grupo5/.tmp/worktree-integracion-pipeline-plantilla/apps/web
+      Coverage enabled with v8
+
+
+ Test Files  6 passed (6)
+      Tests  20 passed (20)
+   Start at  04:21:13
+   Duration  14.31s (transform 2.04s, setup 0ms, import 30.90s, tests 2.57s, environment 3ms)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   85.89 |    71.95 |   73.91 |   84.93 |                   
+ src               |      80 |       70 |     100 |   77.77 |                   
+  main.tsx         |   71.42 |     62.5 |     100 |   66.66 | 13-14             
+ ...entes/ejemplos |   84.31 |    73.43 |   66.66 |   82.97 |                   
+  Ejemplos.tsx     |      75 |    56.25 |   33.33 |      75 | 40-50             
+  ...o-ejemplo.tsx |      50 |    44.44 |      50 |      50 | 27-32             
+  use-ejemplos.ts  |      50 |      100 |      40 |      50 | 7,13-15           
+ src/mocks         |   94.11 |     62.5 |     100 |   94.11 |                   
+  browser.ts       |       0 |      100 |     100 |       0 | 5                 
+  handlers.ts      |     100 |     62.5 |     100 |     100 | 11-22,42          
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 85.89% ( 67/78 )
+Branches     : 71.95% ( 59/82 )
+Functions    : 73.91% ( 17/23 )
+Lines        : 84.93% ( 62/73 )
+================================================================================
+
+> pingeso-grupo5@ build C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla
+> pnpm --dir apps/web build && node scripts/tareas.mjs build-api
+
+
+> @pingeso-grupo5/web-tecnica@0.0.0 build C:\Users\danie\OneDrive\Desktop\ULTIMOS SEMESTRES\Semestre 2_2026\Proyecto Ingeniería de Software (Pingeso)\Proyecto_PINGESO\pingeso-grupo5\.tmp\worktree-integracion-pipeline-plantilla\apps\web
+> vite build
+
+[36mvite v8.1.5 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...✓ 97 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.29 kB
+dist/assets/index-opfWR3tJ.css   13.50 kB │ gzip:  3.72 kB
+dist/assets/index-C_svNGwn.js   273.93 kB │ gzip: 86.95 kB
+
+[32m✓ built in 2.41s[39m
+VERIFY exit=0

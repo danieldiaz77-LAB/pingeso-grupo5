@@ -1,0 +1,22 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: '*.{js,mjs,ts,jsx,tsx,json,css,md,yml,yaml}'
+      run: pnpm exec prettier --write --ignore-unknown {staged_files}
+      stage_fixed: true
+    lint:
+      run: pnpm lint
+    go:
+      run: node scripts/tareas.mjs verify-go
+    secretos:
+      run: gitleaks protect --staged --redact --no-banner
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: pnpm typecheck
+    test:
+      run: pnpm test
+    test-api:
+      run: pnpm test:api
