@@ -526,29 +526,31 @@ Este documento no pasaba `prettier --check` desde antes de esta sesión. Se apli
 
 Tabla de estado de la sesión:
 
-| Punto                                      | Estado                                                                        | Evidencia                                   |
-| ------------------------------------------ | ----------------------------------------------------------------------------- | ------------------------------------------- |
-| 1. go get + tidy (b)                       | Aprobado                                                                      | Avance 3                                    |
-| 2. gofmt, vet, test, vet e2e (a)           | Aprobado                                                                      | Avance 4                                    |
-| 3a. e2e sin heredar AUTH_JWKS_URL          | Aprobado (vet e2e)                                                            | Avance 5; falta ejecutarlo con tag en Linux |
-| 3b. .env.example / README                  | Aprobado                                                                      | Avance 5                                    |
-| 4. Reproducibilidad codegen (d) + frontend | Aprobado                                                                      | Avance 6                                    |
-| 5. e2e integrado PostgreSQL (e)            | Aprobado: 29/29, check:coverage OK, Go 90,91 % (270/297)                      | Avances 10–12                               |
-| 5'. Playwright y Compose integrado         | Aprobados: Playwright 2/2 (MSW); Compose healthy + persistencia por curl      | Avances 13–14                               |
-| 6. govulncheck API                         | Fallido (21)                                                                  | Avance 8                                    |
-| 6. pnpm audit high                         | Fallido (1 high)                                                              | Avance 8                                    |
-| 6. govulncheck Goose                       | Fallido (32)                                                                  | Avance 8                                    |
-| 6. Trivy fs                                | Fallido (2 HIGH)                                                              | Avance 8                                    |
-| 6. Hadolint                                | Aprobado                                                                      | Avance 8                                    |
-| 7. Lista de staging                        | Preparada, la ejecuta Daniel                                                  | 16.4                                        |
-| pnpm verify completo                       | Aprobado (2.º intento; el 1.º falló en format por evidencias JSON del agente) | Avance 19                                   |
-| Gitleaks worktree + historial              | Aprobado (sin fugas)                                                          | Avance 15                                   |
-| Imagen (build + Trivy + Dockle)            | Build OK; Trivy fallido en las 3 (solo binarios Go); Dockle aprobado          | Avance 20                                   |
-| Recorrido en navegador contra Compose      | Aprobado (Daniel, PAUSA=1): crear y listar con persistencia real              | Avance 21                                   |
-| Compatibilidad de contrato (oasdiff)       | Aprobado en vista previa local frente a c445c03: 0 rupturas, 2 endpoints info | Avance 22                                   |
-| check:generated / check:contract (script)  | No ejecutados: requieren el commit de merge (§16.4.e)                         | 16.4.e                                      |
-| test:mutation                              | No ejecutado                                                                  | —                                           |
-| Sonar / Quality Gate                       | No ejecutado                                                                  | —                                           |
+| Punto                                       | Estado                                                                        | Evidencia                                   |
+| ------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------- |
+| 1. go get + tidy (b)                        | Aprobado                                                                      | Avance 3                                    |
+| 2. gofmt, vet, test, vet e2e (a)            | Aprobado                                                                      | Avance 4                                    |
+| 3a. e2e sin heredar AUTH_JWKS_URL           | Aprobado (vet e2e)                                                            | Avance 5; falta ejecutarlo con tag en Linux |
+| 3b. .env.example / README                   | Aprobado                                                                      | Avance 5                                    |
+| 4. Reproducibilidad codegen (d) + frontend  | Aprobado                                                                      | Avance 6                                    |
+| 5. e2e integrado PostgreSQL (e)             | Aprobado: 29/29, check:coverage OK, Go 90,91 % (270/297)                      | Avances 10–12                               |
+| 5'. Playwright y Compose integrado          | Aprobados: Playwright 2/2 (MSW); Compose healthy + persistencia por curl      | Avances 13–14                               |
+| 6. govulncheck API                          | Fallido (21) → **Aprobado (0) en `chore/versiones-hito0`**                    | Avances 8 y 29                              |
+| 6. pnpm audit high                          | Fallido (1 high) → **Aprobado (0) en `chore/versiones-hito0`**                | Avances 8 y 29                              |
+| 6. govulncheck Goose                        | Fallido (32) → **Aprobado (0), v3.30.1 solo postgres**                        | Avances 8 y 29                              |
+| 6. Trivy fs                                 | Fallido (2 HIGH) → **Aprobado (0) en `chore/versiones-hito0`**                | Avances 8 y 29                              |
+| 6. Hadolint                                 | Aprobado                                                                      | Avance 8                                    |
+| 7. Lista de staging                         | Preparada, la ejecuta Daniel                                                  | 16.4                                        |
+| pnpm verify completo                        | Aprobado (2.º intento; el 1.º falló en format por evidencias JSON del agente) | Avance 19                                   |
+| Gitleaks worktree + historial               | Aprobado (sin fugas)                                                          | Avance 15                                   |
+| Imagen (build + Trivy + Dockle)             | Build OK; Trivy fallido en las 3 (solo binarios Go); Dockle aprobado          | Avance 20                                   |
+| Imagen en `chore/versiones-hito0`           | **Aprobado**: build, Trivy 0 en las 3 y Dockle (IMAGEN OK)                    | Avance 29                                   |
+| verify / e2e / Compose con versiones nuevas | Aprobados: verify (2.º intento), e2e 29/29 + cobertura 90,91 %, Compose OK    | Avance 29                                   |
+| Recorrido en navegador contra Compose       | Aprobado (Daniel, PAUSA=1): crear y listar con persistencia real              | Avance 21                                   |
+| Compatibilidad de contrato (oasdiff)        | Aprobado en vista previa local frente a c445c03: 0 rupturas, 2 endpoints info | Avance 22                                   |
+| check:generated / check:contract (script)   | No ejecutados: requieren el commit de merge (§16.4.e)                         | 16.4.e                                      |
+| test:mutation                               | No ejecutado                                                                  | —                                           |
+| Sonar / Quality Gate                        | No ejecutado                                                                  | —                                           |
 
 #### Avance 10 — 19/11/2026 02:13 — (e) e2e integrado: FALLIDO en el primer paso (bloqueo de entorno Docker), sin reintento
 
@@ -783,6 +785,111 @@ Comprobación independiente (solo lectura, `--no-optional-locks`):
 
 Pendiente: push (§16.4.f, opción A recomendada; decide Daniel), Sonar, `test:mutation`, PR de versiones (jefe), `$schema` (Benja y Daniel) y confirmar con Manuel si `feat/contrato-hito0` es su entrega. Este avance deja `continuidad-claude.md` modificado en el disco: va en un commit de documentación aparte, no en el merge. El Hito 0 sigue abierto.
 
+#### Avance 25 — 19/11/2026 — Decisiones: PR de versiones APROBADO (jefe); `$schema` y Makefile DECIDIDOS (Benja)
+
+Recibidas por el chat de la sesión.
+
+- **Jefe de proyecto:** aprueba el PR de versiones según `docs/integracion/pr-versiones.md` (#1 a #5 tal cual; para el #6 pide una propuesta con evidencia antes de aplicarla, ver el Avance 27).
+- **Benja, `$schema` (Avance 16):** se mantiene como está: `CreateHooks = nil` solo en prod. El contrato y `schema.d.ts` siguen declarando `$schema` opcional. Opción (a) del Avance 16; sin cambios de código.
+- **Benja, `apps/api/Makefile` (Avance 23):** se conserva y se unifica con el Makefile raíz **en otro PR**, no en el de versiones.
+- Estado de partida comprobado (solo lectura): HEAD `b14890a` sobre el merge `4a68a74` (padres c445c03 y 7d2b7dc), árbol limpio, sin MERGE_HEAD. El remoto ya tiene `integration/pipeline-plantilla` = b14890a (§16.4.f, opción A, publicada por Daniel).
+
+#### Avance 26 — 19/11/2026 — PR de versiones: cambios APLICADOS en el disco, sin ejecutar validaciones; 1 subida no listada (x/sync) espera aprobación
+
+- **Rama:** `git switch -c chore/versiones-hito0` fue **denegado por permisos** al agente. No se reintentó. Lo ejecuta Daniel. Los cambios están en el disco de `integration/pipeline-plantilla-local` sin stage y pasan intactos a la rama nueva al crearla (`switch -c` conserva el árbol de trabajo). No hacer commit antes de cambiar de rama.
+- **Digest real de `golang:1.26.11-alpine3.23`**, verificado con Docker sin descargar la imagen: `docker buildx imagetools inspect` da el índice OCI `sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a` (linux/amd64 `sha256:6fa4e6dc…`, base alpine:3.23, creado el 2026-11-10). El SHA-256 de los bytes crudos del índice (`--raw`) coincide. Se sigue la misma convención que el pin actual: el digest de 1.26.5 (`622e56db…`) también es el del índice.
+- Cambios aplicados:
+
+| Archivo                                                            | Cambio                                                                                                                          |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `apps/api/go.mod`, `apps/api/go.sum`                               | `toolchain go1.26.5` → `go1.26.11` (`go 1.26.0` no cambia); x/text v0.37.0 → v0.41.0; **x/sync v0.20.0 → v0.22.0 (no listado)** |
+| `.github/workflows/ci.yml`                                         | `go-version` 1.26.5 → 1.26.11 en los 2 jobs (calidad y seguridad)                                                               |
+| `apps/api/Dockerfile`, `Dockerfile.migrate`, `apps/web/Dockerfile` | `golang:1.26.11-alpine3.23@sha256:23f19893…ca2a`                                                                                |
+| `pnpm-workspace.yaml`, `pnpm-lock.yaml`                            | vite 8.1.6; vitest y @vitest/coverage-v8 4.1.12                                                                                 |
+| DAS (`docs/referencias/DAS — Desarrollo de Microservicios.md`)     | Filas de Go, vite, vitest + coverage-v8 e imagen golang; ejemplos de las líneas 168 y 182; fila nueva de x/text (indirecta)     |
+| `scripts/entorno-local.ps1`                                        | PATH `.tools\go\bin` → `.tools\go1.26.11\bin` (el 1.26.5 queda en `.tools\go`)                                                  |
+| `README.md:24`, `docs/pipeline-hito0.md:48`                        | Requisito Go 1.26.11                                                                                                            |
+
+- **Subida no listada, x/sync v0.20.0 → v0.22.0:** `go get golang.org/x/text@v0.41.0` (con `GOTOOLCHAIN=local`, para que no descargue un toolchain implícito) la sube porque el `go.mod` de x/text v0.41.0 exige `golang.org/x/sync v0.22.0` (go 1.25.0). `go mod why -m`: se usa en tiempo de ejecución a través de `pgxpool` → `puddle/v2` → `x/sync/semaphore`. No sube nada más: go/toolchain, pgx, puddle, jwt, keyfunc y x/time siguen igual. **Se detuvo la validación hasta que Daniel la apruebe**, como pidió.
+- **Lock pnpm:** solo cambian vite 8.1.5 → 8.1.6, vitest 4.1.10 → 4.1.12 y la familia `@vitest/*` a 4.1.12 (coverage-v8 y mocker, listados; expect, pretty-format, runner, snapshot, spy y utils, paquetes internos de vitest que salen siempre a la misma versión). Ningún otro paquete de `packages:` cambia. El aviso de peer openapi-typescript 7.13.0 / TypeScript 6 ya existía.
+- **Incidencia de pnpm:** el primer `pnpm install` sin `--virtual-store-dir` pidió reinstalar node_modules desde cero y, al no tener TTY, terminó sin hacer nada: el lock quedó idéntico (cmp) y node_modules intacto. Según §9, se repitió con `--virtual-store-dir C:\Users\danie\AppData\Local\pnpm-pingeso-4086dfaa` → `Done`, 185 reutilizados y 10 descargados. `virtualStoreDir` sin cambios.
+- Fin de línea: el `sed` de Git Bash dejó en LF en el disco los archivos que editó (antes CRLF). Con `.gitattributes` `eol=lf` git no ve diferencia de contenido y el diff solo muestra los cambios reales.
+- **No se ejecutó** verify, govulncheck, audit, Trivy fs, e2e ni el escaneo de imágenes. Faltan la aprobación de x/sync, la decisión de Goose (Avance 27), la aprobación del cambio del script e2e y Go 1.26.11 local (§16.4.g).
+- `.tmp/e2e-integrado.sh` tiene Go 1.26.5 fijo en el runner. Propuesta sin ejecutar: `.tmp/e2e-integrado.v3-propuesta.sh` (SHA-256 `cf6ef054ef65b0440918177af9a8fe80a38e61491b087a9bf7d77e69c284b76d`, LF, `bash -n` OK). Diff de 2 líneas: comentario y `COPY --from=golang:1.26.11-alpine3.23@sha256:23f19893…ca2a`. El v2 (`3c97906d…`) queda intacto.
+
+#### Avance 27 — 19/11/2026 — Goose (#6): evidencia de las opciones y PROPUESTA B+C, NO aplicada
+
+Las compilaciones se hicieron en el scratchpad de la sesión con Go 1.26.5 local (`go install -trimpath`, CGO_ENABLED=0), sin tocar el repositorio. Las fuentes se descargaron a la caché de módulos. Con cada binario se ejecutó govulncheck v1.9.0 `-mode=binary` y Trivy 0.76.1 `rootfs` (HIGH/CRITICAL, `--ignore-unfixed`, mismos criterios que el job `imagen`).
+
+| Binario                         | Tamaño  | Módulos | govulncheck (alcanzables, sin stdlib)                                               | Trivy (sin stdlib)                                                   |
+| ------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| A0 = actual, v3.24.1 completo   | 52,2 MB | 60      | 16 en 8 módulos (pgx 2, grpc 4, x/net 4, x/text 2, jwt/v4, compress, brotli, ch-go) | 29 (x/crypto 12, x/net 7, grpc 4, pgx 2, x/text 2, jwt/v4, compress) |
+| B = v3.30.1 completo            | 62,9 MB | 68      | **0**                                                                               | **0**                                                                |
+| C = v3.24.1 solo postgres       | 17,2 MB | 12      | 4 (pgx 5.7.1: 2; x/text 0.21.0: 2)                                                  | (no medido: govulncheck ya lo descarta)                              |
+| **B+C = v3.30.1 solo postgres** | 17,8 MB | 11      | **0**                                                                               | **0**                                                                |
+
+En los 4 binarios, stdlib aparece (govulncheck 6–21, Trivy 13) porque se compilaron con Go 1.26.5. En la imagen se compilan con golang:1.26.11; eso se comprueba en el escaneo de imágenes.
+
+- Tags que excluyen drivers, comprobados en el código: v3.24.1 trae `no_clickhouse no_libsql no_mssql no_mysql no_sqlite3 no_vertica no_ydb` en `cmd/goose/driver_*.go` y en el README; v3.30.1 añade `no_azuresql`. `driver_postgres.go` solo depende de `!no_postgres`.
+- Mínimos de v3.30.1 (`go.mod`): `go 1.26.0`, pgx 5.12.0, grpc 1.85.0, x/net 0.62.0, x/crypto 0.58.0, x/text 0.44.0, compress 1.20.4, jwt/v4 4.5.2, brotli 1.3.0, ch-go 0.75.0. Cumple todos los mínimos de `pr-versiones.md`. En B+C el binario solo lleva pgx 5.12.0, x/text 0.44.0 y x/sync 0.25.0, sin x/crypto, grpc ni x/net.
+- CHANGELOG de 3.24.1 a 3.30.1, sin cambios que afecten a nuestro uso (`goose -dir db/migrations up` con `GOOSE_DRIVER`/`GOOSE_DBSTRING`, y `postgres "$URL" up`):
+  - Mínimo Go 1.25 (v3.27.0).
+  - Las plantillas de `goose create` ya no incluyen StatementBegin/End.
+  - Corrección del orden de versiones sin relleno (las nuestras están rellenadas: `00001`, `202611080001`).
+  - Cambios solo de ClickHouse.
+  - `GOOSE_TABLE` opcional (v3.24.3).
+  - Vertica obsoleto.
+  - La tabla `goose_db_version` de postgres no cambia.
+- Descartadas:
+  - **C sola**: deja pgx 5.7.1 (2 CRITICAL en Trivy) y x/text 0.21.0.
+  - **A** (v3.24.1 con un módulo de herramientas que fuerce 9 módulos): mantiene una combinación que nadie más ha probado, más difícil de sostener que B.
+  - **B sola**: funciona, pero lleva 68 módulos y 62,9 MB, una superficie innecesaria para avisos futuros.
+- **Propuesta: B+C.** Goose v3.30.1 compilado con `-tags='no_clickhouse no_libsql no_mssql no_mysql no_sqlite3 no_vertica no_ydb no_azuresql'`. Archivos que cambiarían: `apps/api/Dockerfile.migrate` (versión y `-tags`), `scripts/tareas.mjs:81` (versión y los mismos tags, para que el e2e use el mismo binario), `Makefile:2` (`GOOSE_VERSION`; `go run -tags=…`), DAS (filas de las líneas 65 y 206) y `pr-versiones.md`. Riesgo: medio-bajo; lo comprueban el e2e real (migraciones `up` con PostgreSQL 17.11) y Compose. **No aplicada: espera la aprobación del jefe o de Daniel.** (Aprobada y aplicada en el Avance 28.)
+
+#### Avance 28 — 20/11/2026 ~00:35 — Aprobaciones del jefe; Goose B+C y script e2e v3 APLICADOS
+
+- **Daniel:** creó `chore/versiones-hito0` (HEAD b14890a, índice vacío) e instaló Go 1.26.11 en `..\..\.tools\go1.26.11`. Cuando llegó el mensaje la descarga seguía en curso. El agente esperó a que terminara y comprobó:
+  - el zip completo, de 75 074 581 bytes, con SHA-256 `71ae086f…`, igual al de go.dev/dl;
+  - el árbol movido entero (256 MB), con `VERSION` = go1.26.11;
+  - que `..\..\.tools\go` sigue en 1.26.5.
+- **Jefe de proyecto: aprueba**
+  1. x/sync v0.22.0, que exige x/text v0.41.0;
+  2. Goose B+C en todos los sitios con los mismos tags, incluidos `migrate-up` y `migrate-down` de `apps/api/Makefile`;
+  3. el script e2e v3.
+- **Aplicado:** `-tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql`, separado por comas para no depender de comillas en Make, Docker ni Node, y `goose@v3.30.1` en:
+  - `apps/api/Dockerfile.migrate`;
+  - `scripts/tareas.mjs` (formateado con Prettier);
+  - el `Makefile` raíz (`GOOSE_VERSION := v3.30.1` y la variable nueva `GOOSE_TAGS`);
+  - `apps/api/Makefile` (`migrate-up` y `migrate-down`);
+  - las 2 filas de Goose del DAS. La tabla decía `go.mod` como lugar de fijación, pero Goose no está en `apps/api/go.mod`; ahora lista los 4 archivos reales.
+- No queda ninguna referencia a `goose@v3.24.1` fuera de las evidencias históricas. Las evidencias `docs/evidencias/versiones.json` y `dependencias.json` no se tocaron.
+- **Script e2e:** `.tmp/e2e-integrado.sh` (v2, SHA `3c97906d…`) pasa a `.tmp/e2e-integrado.v2.sh`, y `.tmp/e2e-integrado.v3-propuesta.sh` (SHA `cf6ef054…`) pasa a `.tmp/e2e-integrado.sh`. Se comprobaron los SHA antes y después con `mv -n`.
+
+#### Avance 29 — 20/11/2026 00:40–01:13 — Punto 5 completo con las versiones nuevas: TODO APROBADO
+
+Se usó Go 1.26.11 primero en el PATH, `GOTOOLCHAIN=local`, y se comprobó `go version` antes de cada paso de Go. Los pasos con Docker usan `golang:1.26.11-alpine3.23@sha256:23f19893…`.
+
+| Paso                                                                     | Resultado                                                                                                                                                                       | Evidencia (`docs/evidencias/`)                                                       |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| pnpm audit `--audit-level high`                                          | **exit 0**, «No known vulnerabilities found» (antes 1 high + 6 moderate + 1 low)                                                                                                | pnpm-audit-versiones-2026-11-20.txt / .json                                          |
+| Trivy fs 0.76.1 (vuln, misconfig, secret; HIGH/CRITICAL; ignore-unfixed) | **exit 0, 0 hallazgos** (antes 2 HIGH de x/text)                                                                                                                                | trivy-fs-versiones-2026-11-20.json / .log                                            |
+| e2e integrado (v3) + check:coverage                                      | **exit 0 / exit 0**: 29/29 pass, Go 90,91 % (270/297); runner `go1.26.11 linux/amd64`, `GOTOOLCHAIN=local`; Goose v3.30.1 con tags aplica las 2 migraciones                     | e2e-integracion-20261120004111/                                                      |
+| Compose integrado                                                        | **COMPOSE OK**: migrate exit 0 (Goose v3.30.1), backend y frontend healthy, 5 endpoints 200, POST por proxy y persistencia                                                      | compose-integracion-20261120005018/                                                  |
+| Imágenes (`.tmp/imagenes-escaneo.sh`, SHA `0d96944b…`)                   | **IMAGEN OK**, fallos=0: build api 23,3 MB, web 16,1 MB, migrate 29,6 MB; Trivy 0 hallazgos en las 3; Dockle aprobado en las 3                                                  | imagenes-integracion-20261120005607/                                                 |
+| pnpm verify                                                              | 1.º intento: falla `prettier --check` en los 4 JSON de Trivy recién generados (igual que en el Avance 19). Tras darles formato, **2.º intento exit 0**: Go ok, web 20/20, build | pnpm-verify-versiones-2026-11-20-intento1.txt / pnpm-verify-versiones-2026-11-20.txt |
+| govulncheck v1.9.0 API                                                   | **exit 0**, «No vulnerabilities found» (antes 21)                                                                                                                               | govulncheck-api-versiones-2026-11-20.txt                                             |
+| govulncheck v1.9.0 Goose (`-mode=binary`)                                | **exit 0**, «No vulnerabilities found» (antes 32). Binario compilado con go1.26.11 y los mismos tags                                                                            | govulncheck-goose-v3.30.1-postgres-versiones-2026-11-20.txt                          |
+
+- **Nada subió fuera de lo aprobado.**
+  - `go.mod`: solo toolchain, x/sync y x/text.
+  - Lock: solo vite, vitest y `@vitest/*`.
+  - Ningún paso modificó `go.mod`, `go.sum` ni el lock.
+  - El grafo de Goose lo fija su propio `go.mod` y no el nuestro: pgx 5.12.0, x/text 0.44.0, x/sync 0.25.0, puddle 2.2.3 y 7 módulos pequeños. Es el mismo grafo, con los mismos hashes h1, que el binario B+C evaluado en el Avance 27.
+- **Limpieza:** no queda ningún contenedor, red ni imagen de `pingeso-e2e-20261120004111`, del proyecto Compose `pingeso-integracion-20261120005018` ni de `pingeso-imagen-20261120005607`. El `.env` temporal de Compose se borró.
+- **Secretos:** Gitleaks 8.30.1 `dir` no encuentra fugas en las evidencias nuevas, y ninguna contiene `postgres://usuario:clave@`. Los 34 valores hexadecimales de 64 caracteres de Compose son digests `sha256:`.
+- **Incidencias del agente**, sin cambios en el repositorio: dos intentos de compilar Goose no llegaron a ejecutar `go` por errores del PATH del propio comando (`c:/…` con dos puntos, y un `$PWD` heredado de otra llamada). Se corrigió la construcción del PATH; la herramienta no había fallado.
+- Pendiente: ejecutar el CI real (`calidad`, `seguridad`, `imagen`) en el PR. **El Hito 0 sigue ABIERTO**: faltan el CI verde en GitHub, Sonar, test:mutation y el contrato funcional de Manuel.
+
 ### 16.4 Comandos pendientes para Daniel (PowerShell, desde el worktree)
 
 #### 16.4.a Bloque go get/tidy/vet/test — YA EJECUTADO por el agente (Avances 3–4), se conserva como histórico
@@ -923,3 +1030,55 @@ Estado del remoto (Avance 22): `main` = ed6f74d; PR #1 en borrador `feat/pipelin
 | C. No publicar todavía                                  | —                                                                                                                               | Esperar a que el jefe apruebe `pr-versiones.md` y a la revisión de `feat/contrato-hito0`. No habrá CI ni Sonar del estado integrado hasta entonces                                                                                        |
 
 En todos los casos: PR en borrador, sin merge hasta que los checks queden verdes y el equipo lo revise. El PR de versiones se monta después, sobre la rama integrada, como PR separado (DAS). No declarar cerrado el Hito 0.
+
+#### 16.4.g PR de versiones: rama y Go 1.26.11 local — la ejecuta Daniel
+
+```powershell
+# 1) Rama (lleva consigo los cambios sin stage del Avance 26; no hacer commit antes)
+git switch -c chore/versiones-hito0
+git --no-pager status --short
+
+# 2) Go 1.26.11 en ..\..\.tools\go1.26.11, SIN tocar ..\..\.tools\go (1.26.5)
+$zip = Join-Path $env:TEMP 'go1.26.11.windows-amd64.zip'
+Invoke-WebRequest -Uri 'https://go.dev/dl/go1.26.11.windows-amd64.zip' -OutFile $zip
+(Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()   # debe ser 71ae086f0137e665f855a811cc119152b6a783e0bbc1b906e709f46d80141eb0 (go.dev/dl, 75074581 bytes)
+$tmp = Join-Path $env:TEMP 'go1.26.11-extraer'
+Expand-Archive -LiteralPath $zip -DestinationPath $tmp     # el zip contiene una carpeta raíz "go"
+Move-Item -LiteralPath (Join-Path $tmp 'go') -Destination ..\..\.tools\go1.26.11
+& ..\..\.tools\go1.26.11\bin\go.exe version               # go version go1.26.11 windows/amd64
+& ..\..\.tools\go\bin\go.exe version                      # sigue siendo go1.26.5
+Remove-Item -LiteralPath $zip; Remove-Item -LiteralPath $tmp   # solo lo descargado y la carpeta temporal (ya vacía)
+```
+
+`..\..\scripts\entorno-local.ps1`, el del checkout principal en `feat/pipeline-hito0`, que es el que se carga desde el worktree, sigue apuntando a `.tools\go`. El de esta rama ya apunta a `go1.26.11`, pero calcula `.tools` relativo a su propia carpeta (el worktree, que no tiene `.tools`). Hasta que el cambio llegue al checkout principal, en cada sesión:
+
+```powershell
+. ..\..\scripts\entorno-local.ps1
+$env:PATH = "$((Resolve-Path ..\..\.tools\go1.26.11\bin).Path);$env:PATH"
+go version                                               # go1.26.11
+```
+
+Si se queda Go 1.26.5 en el PATH, el `toolchain go1.26.11` de `go.mod` hace que `go` descargue el toolchain por su cuenta (GOTOOLCHAIN=auto). Para evitarlo, comprobar `go version` antes de ejecutar verify.
+
+#### 16.4.h PR de versiones: commit, push y PR hacia `integration/pipeline-plantilla` — la ejecuta Daniel
+
+Base remota: `integration/pipeline-plantilla` = b14890a = HEAD de `chore/versiones-hito0`. El CI se dispara con `pull_request` sin filtro de rama, así que también corre con esta base. Antes del push, Daniel tiene que autorizarlo de forma explícita.
+
+```powershell
+# 1) Stage por ruta exacta (no usar "git add ." : .tmp/ queda fuera)
+git add -- .github/workflows/ci.yml Makefile README.md apps/api/Dockerfile apps/api/Dockerfile.migrate apps/api/Makefile apps/api/go.mod apps/api/go.sum apps/web/Dockerfile docs/integracion/continuidad-claude.md docs/integracion/pr-versiones.md docs/pipeline-hito0.md 'docs/referencias/DAS — Desarrollo de Microservicios.md' pnpm-lock.yaml pnpm-workspace.yaml scripts/entorno-local.ps1 scripts/tareas.mjs
+git add -- docs/evidencias/compose-integracion-20261120005018 docs/evidencias/e2e-integracion-20261120004111 docs/evidencias/imagenes-integracion-20261120005607 docs/evidencias/govulncheck-api-versiones-2026-11-20.txt docs/evidencias/govulncheck-goose-v3.30.1-postgres-versiones-2026-11-20.txt docs/evidencias/pnpm-audit-versiones-2026-11-20.json docs/evidencias/pnpm-audit-versiones-2026-11-20.txt docs/evidencias/pnpm-verify-versiones-2026-11-20-intento1.txt docs/evidencias/pnpm-verify-versiones-2026-11-20.txt docs/evidencias/trivy-fs-versiones-2026-11-20.json docs/evidencias/trivy-fs-versiones-2026-11-20.log
+
+# 2) Comprobación (solo lectura): no debe quedar ningún " M" ni "??" fuera de .tmp/
+git --no-pager status --short
+git --no-pager diff --cached --stat
+
+# 3) Commit
+git commit -F .tmp/mensaje-versiones.txt
+
+# 4) Push (requiere autorización explícita) y PR en borrador hacia la rama integrada, NO hacia main
+git push -u origin chore/versiones-hito0
+& ..\..\.tools\gh\bin\gh.exe pr create --draft --base integration/pipeline-plantilla --head chore/versiones-hito0 --title "chore: versiones por seguridad del Hito 0 (Go 1.26.11, x/text, Vite, Vitest, Goose)" --body-file .tmp/pr-versiones-cuerpo.md
+```
+
+El PR solo se da por bueno con `calidad`, `seguridad` e `imagen` en verde en GitHub. No se hace merge sin la revisión del equipo.

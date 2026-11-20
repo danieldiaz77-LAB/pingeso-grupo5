@@ -1,6 +1,6 @@
 # Borrador de PR: actualización de versiones por seguridad (Hito 0)
 
-Estado: **borrador para aprobación del jefe. No se ha cambiado ninguna versión.**
+Estado: **#1 a #6 aprobados por el jefe de proyecto (19 y 20/11/2026) y aplicados en `chore/versiones-hito0`.** El #6 se resolvió con la opción B+C: Goose v3.30.1 solo con el driver de PostgreSQL. También se aprobó golang.org/x/sync v0.20.0 → v0.22.0, que exige x/text v0.41.0. **Validación local aprobada** (continuidad-claude.md, Avance 29): govulncheck API y Goose, pnpm audit, Trivy fs y Trivy de las 3 imágenes sin hallazgos; e2e 29/29, Compose y verify OK. Falta el CI en GitHub.
 Fecha de los escaneos: 19/11/2026. PR separado de la integración, como exige el DAS, que además debe actualizar su tabla de versiones.
 
 ## Por qué
@@ -46,7 +46,9 @@ Se toma la mayor versión de corrección que piden govulncheck y Trivy.
 | github.com/ClickHouse/ch-go   | 0.61.5 | 0.65.0  | GO-2025-3603 (solo govulncheck)                                                                                                            |
 | stdlib                        | 1.26.5 | 1.26.11 | Mismo cambio que el #1                                                                                                                     |
 
-Alternativas para el #6 que conviene evaluar antes de aprobar, sin elegir ninguna aquí:
+**Decisión (20/11/2026): B+C.** Goose v3.30.1 con `-tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql`. Los mínimos de esta tabla aplican a A; con B+C el binario solo lleva pgx 5.12.0, x/text 0.44.0 y x/sync 0.25.0. La evidencia está en los Avances 27 y 29.
+
+Alternativas que se evaluaron para el #6 (se conservan como histórico):
 
 - **A, recomendada para empezar: módulo de herramientas.** Fija Goose v3.24.1 y esos mínimos. Mantiene la versión aprobada en el DAS y solo cambia sus dependencias.
 - **B: una versión más nueva de Goose** cuyo `go.mod` ya cumpla los mínimos. Hay que identificar y verificar la versión concreta; aquí no se propone ninguna sin comprobarla.

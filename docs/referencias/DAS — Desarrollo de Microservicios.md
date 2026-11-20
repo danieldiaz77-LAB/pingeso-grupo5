@@ -58,14 +58,15 @@ Las versiones de abajo son exactas, sin rangos. Subir una versión es un PR prop
 
 | Componente | Versión | Dónde se fija | Uso |
 | :---- | :---- | :---- | :---- |
-| Go (toolchain) | 1.26.5 | `go.mod`: `go 1.26.0` \+ `toolchain go1.26.5` y la imagen de build | Todos |
+| Go (toolchain) | 1.26.11 | `go.mod`: `go 1.26.0` \+ `toolchain go1.26.11` y la imagen de build | Todos |
 | `github.com/danielgtaylor/huma/v2` | v2.34.1 | `go.mod` | HTTP \+ OpenAPI 3.1 |
 | `github.com/jackc/pgx/v5` | v5.10.0 | `go.mod` | Driver PostgreSQL |
 | `github.com/sqlc-dev/sqlc` | v1.29.0 | `Makefile` (`go run ...@v1.29.0`) | Generación de queries |
-| `github.com/pressly/goose/v3` | v3.24.1 | `go.mod`, `Makefile`, `Dockerfile.migrate` | Migraciones |
+| `github.com/pressly/goose/v3` | v3.30.1 | `Makefile`, `apps/api/Makefile`, `Dockerfile.migrate`, `scripts/tareas.mjs` | Migraciones. Solo driver PostgreSQL: `-tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql` |
 | `github.com/riverqueue/river` (+ `riverpgxv5`, `rivertype`) | v0.40.0 | `go.mod` | Jobs, solo si el servicio los usa |
 | `github.com/golang-jwt/jwt/v5` | v5.3.1 | `go.mod` | Emisión (servicio de identidad) y validación de JWT |
 | `github.com/MicahParks/keyfunc/v3` | v3.9.1 | `go.mod` | Lectura y caché del JWKS |
+| `golang.org/x/text` (indirecta) | v0.41.0 | `go.mod` | Mínimo por seguridad (GO-2026-6629, GO-2026-5970) |
 | `golang.org/x/crypto` | v0.54.0 | `go.mod` | Hash de contraseñas, solo servicio de identidad |
 | `github.com/oapi-codegen/oapi-codegen/v2` | v2.8.2 | `Makefile` (`go run ...@v2.8.2`) | Cliente Go de servicios externos |
 | `github.com/testcontainers/testcontainers-go/modules/postgres` | v0.43.0 | `go.mod` | PostgreSQL real en pruebas |
@@ -79,7 +80,7 @@ Las versiones de abajo son exactas, sin rangos. Subir una versión es un PR prop
 | pnpm | 10.13.1 | `packageManager` de `package.json` |
 | react / react-dom | 19.2.8 | catalog de `pnpm-workspace.yaml` |
 | typescript | 6.0.3 | catalog |
-| vite | 8.1.5 | catalog |
+| vite | 8.1.6 | catalog |
 | @vitejs/plugin-react | 6.0.4 | `apps/web/package.json` |
 | tailwindcss / @tailwindcss/vite | 4.3.3 | `apps/web/package.json` |
 | @base-ui/react (shadcn, estilo `base-nova`) | 1.6.0 | `apps/web/package.json`, `components.json` |
@@ -89,7 +90,7 @@ Las versiones de abajo son exactas, sin rangos. Subir una versión es un PR prop
 | openapi-fetch | 0.15.2 | `apps/web/package.json` |
 | openapi-typescript | 7.13.0 | `apps/web/package.json` |
 | msw | 2.15.0 | `apps/web/package.json` |
-| vitest | 4.1.10 | `apps/web/package.json` |
+| vitest / @vitest/coverage-v8 | 4.1.12 | catalog de `pnpm-workspace.yaml` |
 | @playwright/test | 1.62.0 | `apps/web/package.json` |
 | oxlint | 1.75.0 | `package.json` raíz |
 | prettier / prettier-plugin-tailwindcss | 3.9.6 / 0.8.1 | `package.json` raíz |
@@ -99,7 +100,7 @@ Las versiones de abajo son exactas, sin rangos. Subir una versión es un PR prop
 
 | Imagen | Tag | Digest |
 | :---- | :---- | :---- |
-| golang (build) | `1.26.5-alpine3.23` | `sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc` |
+| golang (build) | `1.26.11-alpine3.23` | `sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a` |
 | node (build web) | `22.22.0-alpine3.23` | `sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34` |
 | distroless (runtime api y web) | `static-debian13:nonroot` | `sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6` |
 | alpine (runtime migrate) | `3.23.7` | Se fija en el Hito 0 |
@@ -164,7 +165,7 @@ Cada servicio publica dos imágenes, `api` y `migrate`, y su paquete de microcom
 
 | Regla | Cómo se cumple |
 | :---- | :---- |
-| Base fijada por versión y digest | `golang:1.26.5-alpine3.23@sha256:…`, nunca `latest` |
+| Base fijada por versión y digest | `golang:1.26.11-alpine3.23@sha256:…`, nunca `latest` |
 | Runtime mínimo | `gcr.io/distroless/static-debian13:nonroot` para api y web |
 | Usuario no root | `USER nonroot:nonroot`, archivos con `--chown` |
 | Binario reproducible | `CGO_ENABLED=0`, `-trimpath`, `-buildvcs=false`, `-ldflags="-s -w -X main.version=$VERSION"` |
@@ -178,7 +179,7 @@ Cada servicio publica dos imágenes, `api` y `migrate`, y su paquete de microcom
 
 ```dockerfile
 # syntax=docker/dockerfile:1.7
-FROM --platform=$BUILDPLATFORM golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc AS build
+FROM --platform=$BUILDPLATFORM golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a AS build
 WORKDIR /src
 COPY apps/api/go.mod apps/api/go.sum ./
 RUN --mount=type=cache,target=/go/pkg/mod go mod download
@@ -203,7 +204,7 @@ ENTRYPOINT ["/app/servicio"]
 
 ### Migraciones (`apps/api/Dockerfile.migrate`)
 
-Goose v3.24.1 se instala con `go install github.com/pressly/goose/v3/cmd/goose@v3.24.1` para que use su propio `go.mod`. La imagen final es `alpine:3.23.7` (digest fijado en el Hito 0\) con `goose`, `river-migrate` (si el servicio usa River) y `db/migrations/`. No contiene Go ni necesita internet. Comando: `goose -dir /app/db/migrations postgres "$DATABASE_URL" up`.
+Goose v3.30.1 se instala con `go install -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1` para que use su propio `go.mod`. Los tags dejan solo el driver de PostgreSQL y quitan del binario los grafos de los demás drivers (grpc, ch-go, brotli…); se usan los mismos en todos los sitios que instalan Goose. La imagen final es `alpine:3.23.7` (digest fijado en el Hito 0\) con `goose`, `river-migrate` (si el servicio usa River) y `db/migrations/`. No contiene Go ni necesita internet. Comando: `goose -dir /app/db/migrations postgres "$DATABASE_URL" up`.
 
 ### Web (`apps/web/Dockerfile`)
 

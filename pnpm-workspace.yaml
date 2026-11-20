@@ -9,7 +9,7 @@ catalog:
   '@types/react': '19.2.2'
   '@types/react-dom': '19.2.2'
   '@vitejs/plugin-react': '6.0.4'
-  '@vitest/coverage-v8': '4.1.10'
+  '@vitest/coverage-v8': '4.1.12'
   'lefthook': '2.1.10'
   'msw': '2.15.0'
   'openapi-fetch': '0.15.2'
@@ -23,8 +23,8 @@ catalog:
   'react-router': '8.3.0'
   'tailwindcss': '4.3.3'
   'typescript': '6.0.3'
-  'vite': '8.1.5'
-  'vitest': '4.1.10'
+  'vite': '8.1.6'
+  'vitest': '4.1.12'
 
 # Conservar las versiones transitivas de la plantilla: compatibles con Node 22.22.0.
 # Ver docs/integracion/resolucion-msw.md.
