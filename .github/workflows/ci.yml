@@ -47,7 +47,7 @@ jobs:
           cache: pnpm
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
-          go-version: '1.26.5'
+          go-version: '1.26.11'
           cache-dependency-path: apps/api/go.sum
       - run: pnpm install --frozen-lockfile
       - name: Formato, lint, tipos, pruebas y compilación
@@ -114,7 +114,7 @@ jobs:
           cache: pnpm
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
-          go-version: '1.26.5'
+          go-version: '1.26.11'
           cache-dependency-path: apps/api/go.sum
       - run: pnpm install --frozen-lockfile
       - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0

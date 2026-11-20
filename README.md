@@ -21,7 +21,7 @@ x/text documentadas en la guía.
 - [DAS](docs/referencias/DAS%20—%20Desarrollo%20de%20Microservicios.md)
 - [Contrato técnico generado](contracts/openapi.yaml)
 
-Inicio: Go 1.26.5, Node 22.22.0 y pnpm 10.13.1. Ejecutar `pnpm install --frozen-lockfile`,
+Inicio: Go 1.26.11, Node 22.22.0 y pnpm 10.13.1. Ejecutar `pnpm install --frozen-lockfile`,
 `pnpm exec lefthook install` y `pnpm verify`. Para Compose, completar `.env.example` como
 `.env` y acordar los puertos 51N0/51N1. No asumir N=5.
 

@@ -45,7 +45,7 @@ los push a main no se cancelan. No se publica ninguna imagen en Hito 0.
 
 ## Instalación y comandos
 
-Requiere Go 1.26.5, Node 22.22.0, pnpm 10.13.1, Git, Gitleaks 8.30.1 y Docker Linux activo.
+Requiere Go 1.26.11, Node 22.22.0, pnpm 10.13.1, Git, Gitleaks 8.30.1 y Docker Linux activo.
 Las copias portátiles descargadas para esta revisión están en `.tools/` (ignoradas).
 En esta computadora, cargar `. ./scripts/entorno-local.ps1` en PowerShell. En Linux/CI las
 Actions preparan las herramientas. No es necesario cambiar el Node global del usuario.

@@ -78,7 +78,15 @@ switch (process.argv[2]) {
     const gobinAnterior = process.env.GOBIN
     try {
       process.env.GOBIN = herramientas
-      ejecutar('go', ['install', 'github.com/pressly/goose/v3/cmd/goose@v3.24.1'], api)
+      ejecutar(
+        'go',
+        [
+          'install',
+          '-tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql',
+          'github.com/pressly/goose/v3/cmd/goose@v3.30.1',
+        ],
+        api,
+      )
     } finally {
       if (gobinAnterior === undefined) delete process.env.GOBIN
       else process.env.GOBIN = gobinAnterior
