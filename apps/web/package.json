@@ -1,0 +1,42 @@
+{
+  "name": "@pingeso-grupo5/web-tecnica",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "codegen": "openapi-typescript ../../contracts/openapi.yaml -o src/api/schema.d.ts",
+    "dev:mock": "vite --host 127.0.0.1 --open /?mocks=1"
+  },
+  "dependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "openapi-fetch": "catalog:",
+    "@base-ui/react": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "react-hook-form": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "vitest": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "@playwright/test": "catalog:",
+    "openapi-typescript": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "msw": "catalog:",
+    "tailwindcss": "catalog:",
+    "@tailwindcss/vite": "catalog:"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "comprobacion": "pnpm-verify",
+    "exit_code": 0,
+    "esperado": 0,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "mutacion",
+    "exit_code": 0,
+    "esperado": 0,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "actionlint",
+    "exit_code": 0,
+    "esperado": 0,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "hadolint",
+    "exit_code": 0,
+    "esperado": 0,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "compilacion-e2e-go",
+    "exit_code": 0,
+    "esperado": 0,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "compose-config",
+    "exit_code": 0,
+    "esperado": 0,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "sonar-sin-secret",
+    "exit_code": 1,
+    "esperado": 1,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "contrato-primera-base",
+    "exit_code": 0,
+    "esperado": 0,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "generados-no-commiteados",
+    "exit_code": 1,
+    "esperado": 1,
+    "resultado": "aprobada"
+  },
+  {
+    "comprobacion": "pnpm-audit",
+    "exit_code": 1,
+    "resultado": "bloqueado por HIGH conocido"
+  }
+]

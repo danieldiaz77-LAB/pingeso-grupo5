@@ -1,0 +1,25 @@
+[
+  {
+    "url": "https://sonarcloud.io/api/components/show?component=danieldiaz77-LAB_pingeso-grupo5",
+    "status": 200,
+    "respuesta": {
+      "component": {
+        "organization": "danieldiaz77-lab",
+        "key": "danieldiaz77-LAB_pingeso-grupo5",
+        "name": "pingeso-grupo5",
+        "qualifier": "TRK",
+        "tags": [],
+        "visibility": "public"
+      },
+      "ancestors": []
+    }
+  },
+  {
+    "url": "https://sonarcloud.io/api/qualitygates/get_by_project?project=danieldiaz77-LAB_pingeso-grupo5",
+    "status": 400
+  },
+  {
+    "url": "https://sonarcloud.io/api/new_code_periods/show?project=danieldiaz77-LAB_pingeso-grupo5",
+    "status": 404
+  }
+]

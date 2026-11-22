@@ -1,0 +1,406 @@
+== Proyecto pingeso-integracion-20261120005018  BD pingeso_integracion_20261120005018
+config OK
+ Image pingeso-integracion-20261120005018-migrate Building 
+ Image pingeso-integracion-20261120005018-backend Building 
+ Image pingeso-integracion-20261120005018-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.58kB 0.1s done
+#1 DONE 0.1s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 914B 0.1s done
+#2 DONE 0.3s
+
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.46kB 0.1s done
+#3 DONE 0.2s
+
+#4 [migrate internal] load build definition from Dockerfile.migrate
+#4 transferring dockerfile: 994B 0.1s done
+#4 DONE 0.2s
+
+#5 [backend internal] load metadata for docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#5 ...
+
+#6 [frontend internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#6 DONE 0.2s
+
+#5 [frontend internal] load metadata for docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#5 DONE 0.2s
+
+#7 [backend internal] load metadata for gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#7 ...
+
+#8 [auth] library/alpine:pull token for registry-1.docker.io
+#8 DONE 0.0s
+
+#9 [migrate internal] load metadata for docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#9 ...
+
+#7 [frontend internal] load metadata for gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#7 DONE 1.6s
+
+#10 [frontend internal] load .dockerignore
+#10 transferring context: 177B 0.1s done
+#10 DONE 0.1s
+
+#9 [migrate internal] load metadata for docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#9 DONE 2.0s
+
+#11 [backend internal] load build context
+#11 DONE 0.0s
+
+#12 [frontend internal] load build context
+#12 DONE 0.0s
+
+#13 [backend build 1/6] FROM docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#13 resolve docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#13 ...
+
+#10 [migrate internal] load .dockerignore
+#10 transferring context: 177B 0.1s done
+#10 DONE 0.1s
+
+#14 [frontend stage-2 1/3] FROM gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#14 resolve gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6 0.2s done
+#14 DONE 0.3s
+
+#15 [frontend web 1/8] FROM docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#15 resolve docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 0.2s done
+#15 DONE 0.3s
+
+#13 [frontend build 1/6] FROM docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a
+#13 resolve docker.io/library/golang:1.26.11-alpine3.23@sha256:23f198931d4bd83b4f5a613bd75656257ae8bf832dcbc2db80e1050b5219ca2a 0.3s done
+#13 CACHED
+
+#16 [frontend build 2/6] WORKDIR /src
+#16 ...
+
+#17 [migrate internal] load build context
+#17 transferring context: 318B 0.1s done
+#17 DONE 0.2s
+
+#18 [migrate stage-1 1/4] FROM docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+#18 resolve docker.io/library/alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63 0.3s done
+#18 DONE 0.3s
+
+#11 [backend internal] load build context
+#11 transferring context: 12.08kB 0.2s done
+#11 DONE 0.3s
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 ...
+
+#12 [frontend internal] load build context
+#12 transferring context: 148.43kB 0.3s done
+#12 DONE 0.4s
+
+#16 [frontend build 2/6] WORKDIR /src
+#16 DONE 0.4s
+
+#20 [frontend web 2/8] WORKDIR /src
+#20 CACHED
+
+#21 [frontend web 3/8] RUN npm install --global --ignore-scripts pnpm@10.13.1
+#21 CACHED
+
+#22 [frontend build 3/6] COPY apps/api/go.mod apps/api/go.sum ./
+#22 DONE 0.3s
+
+#23 [frontend web 4/8] COPY package.json pnpm-workspace.yaml pnpm-lock.yaml .npmrc ./
+#23 DONE 0.3s
+
+#24 [backend build 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#24 ...
+
+#25 [frontend web 5/8] COPY apps/web/package.json apps/web/package.json
+#25 DONE 0.2s
+
+#26 [frontend web 6/8] RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
+#26 ...
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 2.363 go: downloading github.com/pressly/goose/v3 v3.30.1
+#19 4.089 go: downloading github.com/jackc/pgx/v5 v5.12.0
+#19 4.246 go: downloading github.com/sethvargo/go-retry v0.5.0
+#19 4.450 go: downloading github.com/mfridman/interpolate v0.2.0
+#19 4.469 go: downloading golang.org/x/sync v0.25.0
+#19 5.828 go: downloading github.com/jackc/puddle/v2 v2.2.3
+#19 5.879 go: downloading golang.org/x/text v0.44.0
+#19 ...
+
+#26 [frontend web 6/8] RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
+#26 6.736 Scope: all 2 workspace projects
+#26 8.039 Lockfile is up to date, resolution step is skipped
+#26 8.817 Progress: resolved 1, reused 0, downloaded 0, added 0
+#26 9.848 Packages: +194
+#26 9.848 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#26 10.02 Progress: resolved 194, reused 0, downloaded 0, added 0
+#26 11.03 Progress: resolved 194, reused 1, downloaded 0, added 0
+#26 12.08 Progress: resolved 194, reused 56, downloaded 0, added 0
+#26 ...
+
+#24 [frontend build 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#24 DONE 12.5s
+
+#27 [backend build 5/6] COPY apps/api/ ./
+#27 DONE 0.7s
+
+#28 [frontend build 4/6] RUN --mount=type=cache,target=/go/pkg/mod go mod download
+#28 CACHED
+
+#29 [frontend build 3/6] COPY apps/api/go.mod apps/api/go.sum ./
+#29 CACHED
+
+#30 [frontend build 5/6] COPY apps/api/ ./
+#30 CACHED
+
+#26 [frontend web 6/8] RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
+#26 13.11 Progress: resolved 194, reused 117, downloaded 0, added 0
+#26 14.10 Progress: resolved 194, reused 184, downloaded 7, added 2
+#26 15.62 
+#26 15.62    ╭──────────────────────────────────────────╮
+#26 15.62    │                                          │
+#26 15.62    │   Update available! 10.13.1 → 12.21.0.   │
+#26 15.62    │   Changelog: https://pnpm.io/v/12.21.0   │
+#26 15.62    │     To update, run: pnpm add -g pnpm     │
+#26 15.62    │                                          │
+#26 15.62    ╰──────────────────────────────────────────╯
+#26 15.62 
+#26 15.64 Progress: resolved 194, reused 184, downloaded 10, added 17
+#26 16.67 Progress: resolved 194, reused 184, downloaded 10, added 23
+#26 17.69 Progress: resolved 194, reused 184, downloaded 10, added 30
+#26 18.78 Progress: resolved 194, reused 184, downloaded 10, added 34
+#26 19.80 Progress: resolved 194, reused 184, downloaded 10, added 38
+#26 20.84 Progress: resolved 194, reused 184, downloaded 10, added 41
+#26 21.85 Progress: resolved 194, reused 184, downloaded 10, added 44
+#26 22.86 Progress: resolved 194, reused 184, downloaded 10, added 48
+#26 ...
+
+#31 [frontend build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w" -o /out/spa-server ./cmd/spa-server
+#31 ...
+
+#32 [backend build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X main.version=dev" -o /out/api ./cmd/api
+#32 ...
+
+#26 [frontend web 6/8] RUN --mount=type=cache,target=/root/.local/share/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
+#26 23.89 Progress: resolved 194, reused 184, downloaded 10, added 49
+#26 24.91 Progress: resolved 194, reused 184, downloaded 10, added 59
+#26 25.96 Progress: resolved 194, reused 184, downloaded 10, added 75
+#26 26.96 Progress: resolved 194, reused 184, downloaded 10, added 104
+#26 27.97 Progress: resolved 194, reused 184, downloaded 10, added 114
+#26 28.97 Progress: resolved 194, reused 184, downloaded 10, added 125
+#26 29.98 Progress: resolved 194, reused 184, downloaded 10, added 146
+#26 30.99 Progress: resolved 194, reused 184, downloaded 10, added 169
+#26 31.98 Progress: resolved 194, reused 184, downloaded 10, added 172
+#26 32.99 Progress: resolved 194, reused 184, downloaded 10, added 175
+#26 34.01 Progress: resolved 194, reused 184, downloaded 10, added 176
+#26 35.01 Progress: resolved 194, reused 184, downloaded 10, added 178
+#26 36.03 Progress: resolved 194, reused 184, downloaded 10, added 180
+#26 37.03 Progress: resolved 194, reused 184, downloaded 10, added 192
+#26 38.04 Progress: resolved 194, reused 184, downloaded 10, added 193
+#26 38.51 Progress: resolved 194, reused 184, downloaded 10, added 194, done
+#26 41.37 
+#26 41.37 devDependencies:
+#26 41.37 + lefthook 2.1.10
+#26 41.37 + oxlint 1.75.0
+#26 41.37 + prettier 3.9.6
+#26 41.37 + prettier-plugin-tailwindcss 0.8.1
+#26 41.37 + typescript 6.0.3
+#26 41.37 
+#26 41.87 Done in 40.2s using pnpm v10.13.1
+#26 DONE 43.7s
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 ...
+
+#33 [frontend web 7/8] COPY apps/web/ apps/web/
+#33 DONE 1.7s
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 ...
+
+#34 [frontend web 8/8] RUN pnpm --dir apps/web build
+#34 8.756 
+#34 8.756 > @pingeso-grupo5/web-tecnica@0.0.0 build /src/apps/web
+#34 8.756 > vite build
+#34 8.756 
+#34 15.95 vite v8.1.6 building client environment for production...
+#34 16.36 [2Ktransforming...✓ 97 modules transformed.
+#34 21.88 rendering chunks...
+#34 22.78 computing gzip size...
+#34 22.84 dist/index.html                   0.41 kB │ gzip:  0.29 kB
+#34 22.84 dist/assets/index-Bvm4NeGH.css   13.50 kB │ gzip:  3.73 kB
+#34 22.84 dist/assets/index-ChzJZWGG.js   273.93 kB │ gzip: 86.95 kB
+#34 22.84 
+#34 22.84 ✓ built in 6.84s
+#34 DONE 26.2s
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 ...
+
+#31 [frontend build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w" -o /out/spa-server ./cmd/spa-server
+#31 DONE 141.1s
+
+#14 [frontend stage-2 1/3] FROM gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
+#14 CACHED
+
+#35 [frontend stage-2 2/3] COPY --from=build --chown=nonroot:nonroot /out/spa-server /app/spa-server
+#35 DONE 0.3s
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 ...
+
+#36 [frontend stage-2 3/3] COPY --from=web --chown=nonroot:nonroot /src/apps/web/dist /srv
+#36 DONE 0.5s
+
+#32 [backend build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X main.version=dev" -o /out/api ./cmd/api
+#32 ...
+
+#37 [frontend] exporting to image
+#37 exporting layers
+#37 exporting layers 2.0s done
+#37 exporting manifest sha256:c392e515e265cb04d63cc3e71b620db166fbb8e567990de740280c86a66ee950 0.1s done
+#37 exporting config sha256:2ff06f401a5a2b606876c66b23ac8927b9823f382582732d26be44ac3e0ebf86 0.1s done
+#37 exporting attestation manifest sha256:9c2c8d2bbe088c09d3d78d4415d9d63377447236fb617d0f667ee50aef608627 0.1s done
+#37 exporting manifest list sha256:38e910778801fbbe7a0ef50a36e07ec4a6b9f442d0704ff0664ff4f48e24b055
+#37 exporting manifest list sha256:38e910778801fbbe7a0ef50a36e07ec4a6b9f442d0704ff0664ff4f48e24b055 0.1s done
+#37 naming to docker.io/library/pingeso-integracion-20261120005018-frontend:latest 0.0s done
+#37 unpacking to docker.io/library/pingeso-integracion-20261120005018-frontend:latest
+#37 unpacking to docker.io/library/pingeso-integracion-20261120005018-frontend:latest 0.6s done
+#37 DONE 3.3s
+
+#32 [backend build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X main.version=dev" -o /out/api ./cmd/api
+#32 ...
+
+#38 [frontend] resolving provenance for metadata file
+#38 DONE 0.1s
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 ...
+
+#32 [backend build 6/6] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false -ldflags="-s -w -X main.version=dev" -o /out/api ./cmd/api
+#32 DONE 154.0s
+
+#39 [backend stage-1 2/3] WORKDIR /app
+#39 CACHED
+
+#40 [backend stage-1 3/3] COPY --from=build --chown=nonroot:nonroot /out/api /app/api
+#40 DONE 0.2s
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 ...
+
+#41 [backend] exporting to image
+#41 exporting layers
+#41 ...
+
+#19 [migrate build 2/2] RUN --mount=type=cache,target=/go/pkg/mod --mount=type=cache,target=/root/.cache/go-build     mkdir -p /out && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -trimpath -ldflags="-s -w" -tags=no_clickhouse,no_libsql,no_mssql,no_mysql,no_sqlite3,no_vertica,no_ydb,no_azuresql github.com/pressly/goose/v3/cmd/goose@v3.30.1 &&     find /go/bin -type f -name goose -exec cp {} /out/goose ;
+#19 DONE 168.5s
+
+#42 [migrate stage-1 2/4] WORKDIR /app
+#42 CACHED
+
+#43 [migrate stage-1 3/4] COPY --from=build --chown=65532:65532 /out/goose /usr/local/bin/goose
+#43 DONE 0.1s
+
+#41 [backend] exporting to image
+#41 ...
+
+#44 [migrate stage-1 4/4] COPY --chown=65532:65532 apps/api/db/migrations/ /app/db/migrations/
+#44 DONE 0.1s
+
+#45 [migrate] exporting to image
+#45 ...
+
+#41 [backend] exporting to image
+#41 exporting layers 1.8s done
+#41 exporting manifest sha256:9aabd9e272364d265149fff6b571b64819847337271622c25d824ffbf57b1a72 0.0s done
+#41 exporting config sha256:e334caa8b7688cf900a8168524fd147011ccbe5b5ffc10232fcfcbf746c91565 0.0s done
+#41 exporting attestation manifest sha256:c5cad558fd2882dd1a8df0ecd5af291c384ae0141a50781119cb38c9b999351c 0.1s done
+#41 exporting manifest list sha256:3be7744617d86e47fe4cf12c5e6efea1074116ba4ab72d38d7099d07dca8e102 0.1s done
+#41 naming to docker.io/library/pingeso-integracion-20261120005018-backend:latest 0.0s done
+#41 unpacking to docker.io/library/pingeso-integracion-20261120005018-backend:latest 0.4s done
+#41 DONE 2.7s
+
+#45 [migrate] exporting to image
+#45 exporting layers 2.1s done
+#45 exporting manifest sha256:73ffc4e9285ab1296a213d8f547fe3203c77f1a4187838dfc7d4ab3b914088cf
+#45 exporting manifest sha256:73ffc4e9285ab1296a213d8f547fe3203c77f1a4187838dfc7d4ab3b914088cf 0.1s done
+#45 exporting config sha256:a3e2f64df1729cef8e4b785daeafeaa4a5ffd5041fff9b5b85fbd1f0e3f63d0d 0.1s done
+#45 exporting attestation manifest sha256:130490ddffa15cf38a706cf21fefd57fd321c20804d917a96889d8e46c1e1f3c
+#45 exporting attestation manifest sha256:130490ddffa15cf38a706cf21fefd57fd321c20804d917a96889d8e46c1e1f3c 0.2s done
+#45 exporting manifest list sha256:20ef3214cf9a60c45a9ed54932bf97d2910727984fd198131ae0b26074c02e12
+#45 exporting manifest list sha256:20ef3214cf9a60c45a9ed54932bf97d2910727984fd198131ae0b26074c02e12 0.1s done
+#45 naming to docker.io/library/pingeso-integracion-20261120005018-migrate:latest 0.0s done
+#45 unpacking to docker.io/library/pingeso-integracion-20261120005018-migrate:latest
+#45 ...
+
+#46 [backend] resolving provenance for metadata file
+#46 DONE 0.1s
+
+#45 [migrate] exporting to image
+#45 unpacking to docker.io/library/pingeso-integracion-20261120005018-migrate:latest 0.6s done
+#45 DONE 3.4s
+
+#47 [migrate] resolving provenance for metadata file
+#47 DONE 0.1s
+ Image pingeso-integracion-20261120005018-migrate Built 
+ Image pingeso-integracion-20261120005018-backend Built 
+ Image pingeso-integracion-20261120005018-frontend Built 
+ Network pingeso-integracion-20261120005018_default Creating 
+ Network pingeso-integracion-20261120005018_default Created 
+ Volume pingeso-integracion-20261120005018_postgres-data Creating 
+ Volume pingeso-integracion-20261120005018_postgres-data Created 
+ Container pingeso-integracion-20261120005018-postgres-1 Creating 
+ Container pingeso-integracion-20261120005018-postgres-1 Created 
+ Container pingeso-integracion-20261120005018-migrate-1 Creating 
+ Container pingeso-integracion-20261120005018-migrate-1 Created 
+ Container pingeso-integracion-20261120005018-backend-1 Creating 
+ Container pingeso-integracion-20261120005018-backend-1 Created 
+ Container pingeso-integracion-20261120005018-frontend-1 Creating 
+ Container pingeso-integracion-20261120005018-frontend-1 Created 
+ Container pingeso-integracion-20261120005018-postgres-1 Starting 
+ Container pingeso-integracion-20261120005018-postgres-1 Started 
+ Container pingeso-integracion-20261120005018-postgres-1 Waiting 
+ Container pingeso-integracion-20261120005018-postgres-1 Healthy 
+ Container pingeso-integracion-20261120005018-migrate-1 Starting 
+ Container pingeso-integracion-20261120005018-migrate-1 Started 
+ Container pingeso-integracion-20261120005018-migrate-1 Waiting 
+ Container pingeso-integracion-20261120005018-migrate-1 Exited 
+ Container pingeso-integracion-20261120005018-backend-1 Starting 
+ Container pingeso-integracion-20261120005018-backend-1 Started 
+ Container pingeso-integracion-20261120005018-backend-1 Waiting 
+ Container pingeso-integracion-20261120005018-backend-1 Healthy 
+ Container pingeso-integracion-20261120005018-frontend-1 Starting 
+ Container pingeso-integracion-20261120005018-frontend-1 Started 
+ Container pingeso-integracion-20261120005018-migrate-1 Waiting 
+ Container pingeso-integracion-20261120005018-backend-1 Waiting 
+ Container pingeso-integracion-20261120005018-frontend-1 Waiting 
+ Container pingeso-integracion-20261120005018-postgres-1 Waiting 
+ Container pingeso-integracion-20261120005018-postgres-1 Healthy 
+ Container pingeso-integracion-20261120005018-migrate-1 Exited 
+ Container pingeso-integracion-20261120005018-backend-1 Healthy 
+ Container pingeso-integracion-20261120005018-frontend-1 Healthy 
+SERVICE    STATE     STATUS                          <no value>
+backend    running   Up About a minute (healthy)     0
+frontend   running   Up 31 seconds (healthy)         0
+migrate    exited    Exited (0) About a minute ago   0
+postgres   running   Up About a minute (healthy)     0
+== migrate
+migrate-1  | 2026/11/20 03:53:32 OK   00001_base_tecnica.sql (6.42ms)
+migrate-1  | 2026/11/20 03:53:32 OK   202611080001_crear_ejemplos.sql (12.29ms)
+migrate-1  | 2026/11/20 03:53:32 goose: successfully migrated database to version: 202611080001
+== api=127.0.0.1:32775 web=127.0.0.1:32776
+http://127.0.0.1:32775/healthz -> 200
+http://127.0.0.1:32775/readyz -> 200
+http://127.0.0.1:32775/api/v1/ejemplos -> 200
+http://127.0.0.1:32776/ -> 200
+http://127.0.0.1:32776/api/v1/ejemplos -> 200
+== POST (proxy web)
+{"$schema":"http://127.0.0.1:32776/api/schemas/Ejemplo.json","id":"0db2f5db-3875-4e9e-8653-36328d32b772","nombre":"compose-20261120005018","descripcion":"validacion compose","creadoEn":"2026-11-20T00:54:39.27994-03:00"}
+
+== GET (backend)
+persistido: compose-20261120005018
+COMPOSE OK

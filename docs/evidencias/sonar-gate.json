@@ -1,0 +1,56 @@
+{
+  "fuente": "https://sonarcloud.io/api/qualitygates/show?id=9&organization=danieldiaz77-lab",
+  "respuesta": {
+    "id": 9,
+    "name": "Sonar way",
+    "conditions": [
+      {
+        "id": 35,
+        "metric": "new_security_rating",
+        "op": "GT",
+        "error": "1"
+      },
+      {
+        "id": 36,
+        "metric": "new_reliability_rating",
+        "op": "GT",
+        "error": "1"
+      },
+      {
+        "id": 37,
+        "metric": "new_maintainability_rating",
+        "op": "GT",
+        "error": "1"
+      },
+      {
+        "id": 38,
+        "metric": "new_coverage",
+        "op": "LT",
+        "error": "80"
+      },
+      {
+        "id": 39,
+        "metric": "new_duplicated_lines_density",
+        "op": "GT",
+        "error": "3"
+      },
+      {
+        "id": 76287,
+        "metric": "new_security_hotspots_reviewed",
+        "op": "LT",
+        "error": "100"
+      }
+    ],
+    "isBuiltIn": true,
+    "actions": {
+      "rename": false,
+      "setAsDefault": false,
+      "copy": false,
+      "associateProjects": false,
+      "delete": false,
+      "manageConditions": false
+    },
+    "isCleanAsYouCode": true,
+    "isAiCodeAssuredCompliant": false
+  }
+}

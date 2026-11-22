@@ -1,0 +1,148 @@
+== Proyecto pingeso-e2e-20261119022013  BD pingeso_integracion_20261119022013  evidencias docs/evidencias/e2e-integracion-20261119022013
+d4d1811eba7f85dc1ff7bb60b3b33b341794a85596057b8131a96c8c8d257e87
+31fe6cd0605211518f2c9bfde31907639d685ba6622bb9a2a2f2fcf611cf5888
+PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 377B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 ...
+
+#3 [auth] library/golang:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#5 DONE 2.0s
+
+#2 [internal] load metadata for docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#2 DONE 2.0s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 2B 0.0s done
+#6 DONE 0.1s
+
+#7 FROM docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc
+#7 resolve docker.io/library/golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc 0.1s done
+#7 DONE 0.1s
+
+#8 [stage-0 1/2] FROM docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34
+#8 resolve docker.io/library/node:22.22.0-alpine3.23@sha256:e4bf2a82ad0a4037d28035ae71529873c069b13eb0455466ae0bc13363826e34 0.1s done
+#8 DONE 0.1s
+
+#9 [stage-0 2/2] COPY --from=golang:1.26.5-alpine3.23@sha256:622e56dbc11a8cfe87cafa2331e9a201877271cbff918af53d3be315f3da88cc /usr/local/go /usr/local/go
+#9 CACHED
+
+#10 exporting to image
+#10 exporting layers 0.0s done
+#10 exporting manifest sha256:b36448d115a51c08b83c49749d207e4fd77781850574cbf6266dc89e34eb31e8 0.0s done
+#10 exporting config sha256:826cf84dfa85e27b5fcbe8da99c5e9eb4e2ea6e8f928c9a826ae25bf2f47bf7f 0.0s done
+#10 exporting attestation manifest sha256:39b406626977f2d4aa3d2c5d7e30e154caefe59fa5e040abdd2469b373252f47 0.1s done
+#10 exporting manifest list sha256:99cb4b737b85b19ff7ffb4bd8a0a0666ba7a35cc1612d22410fd0e961e2b01ca
+#10 exporting manifest list sha256:99cb4b737b85b19ff7ffb4bd8a0a0666ba7a35cc1612d22410fd0e961e2b01ca 0.0s done
+#10 naming to docker.io/library/pingeso-e2e-20261119022013-runner:local done
+#10 unpacking to docker.io/library/pingeso-e2e-20261119022013-runner:local 0.0s done
+#10 DONE 0.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/thmvghjypaweyvzahksdfdf84
+v22.22.0
+go version go1.26.5 linux/amd64
+-mod=readonly
+local
+0
+go: downloading github.com/pressly/goose/v3 v3.24.1
+go: downloading github.com/ClickHouse/clickhouse-go/v2 v2.30.0
+go: downloading github.com/go-sql-driver/mysql v1.8.1
+go: downloading github.com/jackc/pgx/v5 v5.7.1
+go: downloading github.com/joho/godotenv v1.5.1
+go: downloading github.com/mfridman/xflag v0.1.0
+go: downloading github.com/microsoft/go-mssqldb v1.8.0
+go: downloading github.com/tursodatabase/libsql-client-go v0.0.0-20240902231107-85af5b9d094d
+go: downloading github.com/vertica/vertica-sql-go v1.3.3
+go: downloading github.com/ydb-platform/ydb-go-sdk/v3 v3.95.3
+go: downloading github.com/ziutek/mymysql v1.5.4
+go: downloading modernc.org/sqlite v1.34.1
+go: downloading github.com/sethvargo/go-retry v0.3.0
+go: downloading go.uber.org/multierr v1.11.0
+go: downloading filippo.io/edwards25519 v1.1.0
+go: downloading github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9
+go: downloading github.com/golang-sql/sqlexp v0.1.0
+go: downloading github.com/google/uuid v1.6.0
+go: downloading golang.org/x/text v0.21.0
+go: downloading github.com/ClickHouse/ch-go v0.61.5
+go: downloading github.com/andybalholm/brotli v1.1.1
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading go.opentelemetry.io/otel/trace v1.26.0
+go: downloading go.opentelemetry.io/otel v1.26.0
+go: downloading github.com/mfridman/interpolate v0.0.2
+go: downloading golang.org/x/sync v0.10.0
+go: downloading github.com/coder/websocket v1.8.12
+go: downloading github.com/elastic/go-sysinfo v1.11.2
+go: downloading golang.org/x/crypto v0.31.0
+go: downloading github.com/paulmach/orb v0.11.1
+go: downloading github.com/shopspring/decimal v1.4.0
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/ydb-platform/ydb-go-genproto v0.0.0-20241112172322-ea1f63298f77
+go: downloading google.golang.org/grpc v1.62.1
+go: downloading github.com/go-faster/city v1.0.1
+go: downloading github.com/go-faster/errors v0.7.1
+go: downloading github.com/pierrec/lz4/v4 v4.1.21
+go: downloading github.com/klauspost/compress v1.17.7
+go: downloading github.com/segmentio/asm v1.2.0
+go: downloading github.com/jackc/pgpassfile v1.0.0
+go: downloading github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761
+go: downloading github.com/jackc/puddle/v2 v2.2.2
+go: downloading github.com/golang-jwt/jwt/v4 v4.5.1
+go: downloading google.golang.org/protobuf v1.33.0
+go: downloading github.com/jonboulle/clockwork v0.4.0
+go: downloading github.com/antlr4-go/antlr/v4 v4.13.0
+go: downloading golang.org/x/net v0.33.0
+go: downloading google.golang.org/genproto/googleapis/rpc v0.0.0-20240318140521-94a12d6c2237
+go: downloading github.com/golang/protobuf v1.5.4
+go: downloading howett.net/plist v1.0.0
+go: downloading github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901
+go: downloading github.com/prometheus/procfs v0.12.0
+go: downloading golang.org/x/sys v0.28.0
+go: downloading golang.org/x/exp v0.0.0-20240325151524-a685a6edb6d8
+go: downloading modernc.org/libc v1.55.3
+go: downloading modernc.org/mathutil v1.6.0
+go: downloading modernc.org/memory v1.8.0
+go: downloading github.com/dustin/go-humanize v1.0.1
+go: downloading github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+2026/11/19 05:23:39 OK   00001_base_tecnica.sql (8.66ms)
+2026/11/19 05:23:39 OK   202611080001_crear_ejemplos.sql (7.96ms)
+2026/11/19 05:23:39 goose: successfully migrated database to version: 202611080001
+go: downloading github.com/jackc/pgx/v5 v5.10.0
+go: downloading github.com/MicahParks/keyfunc/v3 v3.9.1
+go: downloading github.com/danielgtaylor/huma/v2 v2.34.1
+go: downloading github.com/golang-jwt/jwt/v5 v5.3.1
+go: downloading github.com/MicahParks/jwkset v0.11.4
+go: downloading golang.org/x/time v0.15.0
+go: downloading golang.org/x/text v0.37.0
+go: downloading golang.org/x/sync v0.20.0
+node:fs:1597
+  const result = binding.readdir(
+                         ^
+
+Error: ENOENT: no such file or directory, scandir 'apps/web/src'
+    at readdirSync (node:fs:1597:26)
+    at listar (file:///work/scripts/validar-cobertura.mjs:51:10)
+    at Array.flatMap (<anonymous>)
+    at file:///work/scripts/validar-cobertura.mjs:56:4
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'apps/web/src'
+}
+
+Node.js v22.22.0
+e2e exit=0  check:coverage exit=1

@@ -1,0 +1,4 @@
+# Usar solo con un nombre de proyecto nuevo y el env efímero del runbook.
+services:
+  postgres:
+    ports: ['127.0.0.1:0:5432']

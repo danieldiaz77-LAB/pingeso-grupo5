@@ -1,0 +1,12 @@
+pnpm-lock.yaml
+contracts/openapi.yaml
+apps/web/src/api/schema.d.ts
+docs/referencias/
+docs/evidencias/versiones.json
+.tools/
+.tmp/
+coverage/
+dist/
+go.sum
+docs/evidencias/govulncheck.txt
+docs/evidencias/trivy-fs.json

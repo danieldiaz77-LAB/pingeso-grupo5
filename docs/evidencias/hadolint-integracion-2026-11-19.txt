@@ -1,0 +1,9 @@
+Haskell Dockerfile Linter 2.15.1
+== apps/api/Dockerfile
+apps/api/Dockerfile:14 DL3066 [92minfo[0m: Non-numeric user-id may not be resolvable by host system
+exit=0
+== apps/api/Dockerfile.migrate
+exit=0
+== apps/web/Dockerfile
+apps/web/Dockerfile:22 DL3066 [92minfo[0m: Non-numeric user-id may not be resolvable by host system
+exit=0
