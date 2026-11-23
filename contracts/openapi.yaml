@@ -17,17 +17,23 @@ info:
     los tipos definidos en Go/Huma, y los tipos del frontend deben derivarse
     del contrato generado.
 
-    **Dependencias sin contrato recibido:** Productos (Grupo 3) y Ventas
-    (Grupo 9). No se presupone ningún endpoint, identificador ni payload
-    específico de esos equipos.
+    **Productos (Grupo 3):** la versión dev consultada documenta
+    `GET /api/productos/{id}` para productos activos. Usamos `Producto.id`
+    (UUID) como referencia para `producto_id` y `Producto.nombre` como
+    fuente prevista del nombre. El costo unitario del catálogo es editable,
+    se expresa en CLP e incluye IVA.
+
+    **Ventas (Grupo 9):** falta revisar su contrato y confirmar que sus
+    líneas de venta referencian el mismo UUID de Productos.
   x-estado: borrador-para-revision
   x-pendientes-generales:
     - Acordar con Ventas qué estados cuentan y cómo tratar anulaciones y devoluciones.
     - Acordar si los importes incluyen IVA y cómo aplicar descuentos.
-    - Acordar fuente y definición del costo histórico de cada unidad vendida.
+    - Acordar la fuente del costo histórico por unidad vendida. Productos solo documenta el costo vigente.
     - Resolver si rentabilidad total equivale a suma de márgenes u otra métrica, como flujo de caja.
-    - Confirmar con el Grupo 6 el nombre de la cookie de sesión y acordar los permisos de cada consulta.
-    - Ajustar los modelos a los contratos reales de Productos (G3) y Ventas (G9).
+    - Confirmar el nombre de la cookie de sesión y los permisos de cada consulta.
+    - Confirmar con Ventas (G9) el UUID de producto y los datos de cada línea de venta.
+    - Definir de dónde obtener el nombre de productos desactivados que figuran en ventas históricas, ya que Productos deja de devolverlos por ID.
     - Confirmar nombres de campos y rutas con el grupo.
     - Comprobar que los códigos y cuerpos de error generados por Go/Huma coincidan con el contrato.
 
@@ -120,8 +126,9 @@ paths:
         `(margen_clp / ingresos_clp) * 100`, con dos decimales; si los
         ingresos son 0 o el margen es desconocido, su valor es `null`.
 
-        **Pendiente:** definir cómo se integran datos de Productos (Grupo 3)
-        y Ventas (Grupo 9), y qué ventas cuentan para el cálculo.
+        El costo vigente de Productos (Grupo 3) no se usa como reemplazo del
+        costo histórico. Falta confirmar con Ventas (Grupo 9) qué ventas
+        cuentan y cómo se obtienen los importes y costos de cada línea.
       parameters:
         - $ref: '#/components/parameters/Desde'
         - $ref: '#/components/parameters/Hasta'
@@ -268,7 +275,7 @@ components:
       name: sesion
       description: |
         JWT firmado en una cookie HttpOnly, Secure y SameSite=Lax.
-        El nombre `sesion` es provisional y se debe confirmar con el Grupo 6.
+        El nombre `sesion` es provisional y queda pendiente de confirmación.
         Los permisos de cada consulta quedan pendientes.
 
   parameters:
@@ -333,11 +340,11 @@ components:
         producto_id:
           type: string
           format: uuid
-          description: Identificador público del producto. Su correspondencia con Productos debe acordarse con el Grupo 3.
+          description: UUID público del producto, correspondiente a Producto.id del Grupo 3.
           example: 11111111-1111-4111-8111-111111111111
         nombre:
           type: string
-          description: Nombre visible del producto; fuente a confirmar con Grupo 3.
+          description: Nombre visible según Productos. La fuente para productos desactivados está pendiente.
           example: Café americano
         unidades_vendidas:
           type: integer
@@ -353,7 +360,7 @@ components:
         producto_id:
           type: string
           format: uuid
-          description: Identificador público del producto.
+          description: UUID público del producto, correspondiente a Producto.id del Grupo 3.
           example: 11111111-1111-4111-8111-111111111111
         nombre:
           type: string
