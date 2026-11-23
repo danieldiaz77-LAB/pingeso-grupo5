@@ -1,22 +1,62 @@
+# Dependabot: revisa versiones nuevas una vez por semana (lunes 09:00, Chile).
+# Agrupa los cambios menores y parches en un solo PR por ecosistema,
+# para no recibir un PR por cada dependencia.
+# Los saltos de versión mayor siguen llegando en PRs separados para revisarlos con calma.
+# Cambiar una pieza del stack (Go 1.27, Node distinto de 22) requiere aprobación del
+# jefe de proyecto y actualizar el DAS, por eso se ignoran aquí.
 version: 2
 updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: America/Santiago
+    groups:
+      acciones:
+        patterns: ['*']
+        update-types: [minor, patch]
+
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: America/Santiago
+    groups:
+      frontend:
+        patterns: ['*']
+        update-types: [minor, patch]
+
   - package-ecosystem: gomod
     directory: /apps/api
     schedule:
       interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: America/Santiago
+    groups:
+      go:
+        patterns: ['*']
+        update-types: [minor, patch]
+
   - package-ecosystem: docker
-    directory: /apps/api
+    directories:
+      - /apps/api
+      - /apps/web
     schedule:
       interval: weekly
-  - package-ecosystem: docker
-    directory: /apps/web
-    schedule:
-      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: America/Santiago
+    groups:
+      imagenes:
+        patterns: ['*']
+    ignore:
+      # Go y Node quedan fijados por el DAS; se suben a mano en un PR propio.
+      - dependency-name: golang
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
+      - dependency-name: node
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
